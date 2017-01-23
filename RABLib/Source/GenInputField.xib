@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenInputField" customModule="RABLib" customModuleProvider="target">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="NO"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="contentView" destination="063-z1-B2Y" id="jGk-kj-Cd4"/>
+                <outlet property="placeImage" destination="kip-No-XMs" id="SJv-1Y-5wN"/>
+                <outlet property="placeImageWidth" destination="ZsC-tI-Ocd" id="r8x-Bg-99X"/>
+                <outlet property="textField" destination="cWs-YC-i4f" id="n0a-pN-Ly7"/>
+                <outlet property="textFieldLeading" destination="VNA-cN-Jvu" id="fzL-lV-ljk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="063-z1-B2Y">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kip-No-XMs">
+                            <rect key="frame" x="20" y="290" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="ZsC-tI-Ocd"/>
+                                <constraint firstAttribute="width" secondItem="kip-No-XMs" secondAttribute="height" multiplier="1:1" id="dHM-Vn-fJH"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="placeholder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWs-YC-i4f">
+                            <rect key="frame" x="48" y="8" width="532" height="584"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="kip-No-XMs" firstAttribute="leading" secondItem="063-z1-B2Y" secondAttribute="leading" constant="20" id="6ez-iq-iWW"/>
+                        <constraint firstItem="kip-No-XMs" firstAttribute="centerY" secondItem="063-z1-B2Y" secondAttribute="centerY" id="BbO-ek-cih"/>
+                        <constraint firstAttribute="bottom" secondItem="cWs-YC-i4f" secondAttribute="bottom" constant="8" id="KqS-Vp-cAu"/>
+                        <constraint firstItem="cWs-YC-i4f" firstAttribute="top" secondItem="063-z1-B2Y" secondAttribute="top" constant="8" id="PW3-lf-s0H"/>
+                        <constraint firstItem="cWs-YC-i4f" firstAttribute="leading" secondItem="kip-No-XMs" secondAttribute="trailing" constant="8" id="VNA-cN-Jvu"/>
+                        <constraint firstAttribute="trailing" secondItem="cWs-YC-i4f" secondAttribute="trailing" constant="20" id="ieY-m9-1dq"/>
+                        <constraint firstAttribute="width" constant="600" id="plw-ug-EM1"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="063-z1-B2Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9XX-gx-ncs"/>
+                <constraint firstAttribute="trailing" secondItem="063-z1-B2Y" secondAttribute="trailing" id="ANl-HC-VPg"/>
+                <constraint firstAttribute="bottom" secondItem="063-z1-B2Y" secondAttribute="bottom" id="liA-tC-33Q"/>
+                <constraint firstItem="063-z1-B2Y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mIg-fb-O5h"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="623" y="415"/>
+        </view>
+    </objects>
+</document>

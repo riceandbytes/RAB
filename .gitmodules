@@ -1,0 +1,3 @@
+[submodule "RABLib/Vendors/Kingfisher"]
+	path = RABLib/Vendors/Kingfisher
+	url = https://github.com/onevcat/Kingfisher.git

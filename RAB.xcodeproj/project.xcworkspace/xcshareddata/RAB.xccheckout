@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B9E59346-C917-4EC5-A3D7-5E414CBE8F71</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RAB</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CEF68D41F49A4024CE425B6077C3BC7DC8C6F219</key>
+		<string>https://bitbucket.org/trivastllc/flipbook.git</string>
+		<key>FF5AA5D503565121ECB7CCBE3E9B314F2F9F51A9</key>
+		<string>https://github.com/riceandbytes/RAB.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RAB.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CEF68D41F49A4024CE425B6077C3BC7DC8C6F219</key>
+		<string>../../..</string>
+		<key>FF5AA5D503565121ECB7CCBE3E9B314F2F9F51A9</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/riceandbytes/RAB.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FF5AA5D503565121ECB7CCBE3E9B314F2F9F51A9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CEF68D41F49A4024CE425B6077C3BC7DC8C6F219</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FF5AA5D503565121ECB7CCBE3E9B314F2F9F51A9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RAB</string>
+		</dict>
+	</array>
+</dict>
+</plist>

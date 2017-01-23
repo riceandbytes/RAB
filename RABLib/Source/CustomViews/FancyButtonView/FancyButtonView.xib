@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FancyButtonView" customModule="RABLib" customModuleProvider="target">
+            <connections>
+                <outlet property="mainButton" destination="WM1-rK-Bsd" id="D5w-4I-uMI"/>
+                <outlet property="mainLabel" destination="9Rl-7G-37T" id="fbJ-YN-M6I"/>
+                <outlet property="mainView" destination="iN0-l3-epB" id="uzN-BI-Thu"/>
+                <outlet property="rightImageHeight" destination="SLa-cG-3qY" id="A2Z-kZ-MKD"/>
+                <outlet property="rightImageView" destination="YXy-DH-sIi" id="FxE-Pt-bld"/>
+                <outlet property="sideButton" destination="K6m-Oe-271" id="g3h-ly-ebN"/>
+                <outlet property="sideView" destination="DRz-Jk-dDK" id="ufC-DN-IHB"/>
+                <outlet property="sideViewLeading" destination="nf4-xO-PET" id="cJn-bp-H6S"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-7G-37T">
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                    <color key="textColor" red="0.37254902720451355" green="0.41568627953529358" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WM1-rK-Bsd"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRz-Jk-dDK" userLabel="SideView">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-DH-sIi">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="SLa-cG-3qY"/>
+                                <constraint firstAttribute="width" secondItem="YXy-DH-sIi" secondAttribute="height" multiplier="123:116" id="ech-7n-kAi"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-Oe-271" userLabel="sideButton">
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YXy-DH-sIi" firstAttribute="leading" secondItem="DRz-Jk-dDK" secondAttribute="leading" id="De3-5Y-LKJ"/>
+                        <constraint firstAttribute="trailing" secondItem="K6m-Oe-271" secondAttribute="trailing" id="JLY-9R-zYj"/>
+                        <constraint firstItem="YXy-DH-sIi" firstAttribute="width" secondItem="DRz-Jk-dDK" secondAttribute="width" id="PHm-JJ-2Eq"/>
+                        <constraint firstItem="K6m-Oe-271" firstAttribute="leading" secondItem="DRz-Jk-dDK" secondAttribute="leading" id="auY-QV-cyk"/>
+                        <constraint firstItem="K6m-Oe-271" firstAttribute="top" secondItem="DRz-Jk-dDK" secondAttribute="top" id="dz1-sc-duh"/>
+                        <constraint firstAttribute="bottom" secondItem="K6m-Oe-271" secondAttribute="bottom" id="lTX-Zb-pzB"/>
+                        <constraint firstItem="YXy-DH-sIi" firstAttribute="centerY" secondItem="DRz-Jk-dDK" secondAttribute="centerY" id="r0L-ti-M7r"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="9Rl-7G-37T" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3rD-y1-XmK"/>
+                <constraint firstItem="K6m-Oe-271" firstAttribute="leading" secondItem="WM1-rK-Bsd" secondAttribute="trailing" constant="15" id="4L3-XQ-bqZ"/>
+                <constraint firstItem="9Rl-7G-37T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7sC-AR-Zga"/>
+                <constraint firstAttribute="bottom" secondItem="DRz-Jk-dDK" secondAttribute="bottom" id="E8f-8r-faM"/>
+                <constraint firstItem="DRz-Jk-dDK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ycv-OJ-B8R"/>
+                <constraint firstItem="WM1-rK-Bsd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zgx-jJ-ZT4"/>
+                <constraint firstItem="WM1-rK-Bsd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="auP-6G-x3I"/>
+                <constraint firstAttribute="trailing" secondItem="DRz-Jk-dDK" secondAttribute="trailing" constant="20" id="dPo-1P-A3b"/>
+                <constraint firstItem="DRz-Jk-dDK" firstAttribute="leading" secondItem="9Rl-7G-37T" secondAttribute="trailing" constant="15" id="nf4-xO-PET"/>
+                <constraint firstAttribute="bottom" secondItem="WM1-rK-Bsd" secondAttribute="bottom" id="soQ-1f-jSz"/>
+                <constraint firstItem="WM1-rK-Bsd" firstAttribute="trailing" secondItem="K6m-Oe-271" secondAttribute="trailing" id="wqw-ou-1PO"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="wqw-ou-1PO"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
