@@ -358,6 +358,14 @@ public extension Date {
         let cal = Calendar.current
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
+
+    public func addHours(_ hours: Int) -> Date? {
+        let startDate = self
+        var dateComponent = DateComponents()
+        dateComponent.hour = hours
+        let cal = Calendar.current
+        return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
+    }
     
     /**
      Self is date in the past
@@ -449,7 +457,7 @@ extension Date {
     // https://www.timeanddate.com/date/duration.html
     public func numberOfDaysUntilDateTimeAdjusted(_ toDateTimeUTC: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current
-        let adjustedDate = toDateTimeUTC.add(days: 1)
+        let adjustedDate = toDateTimeUTC
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
         }
@@ -593,9 +601,9 @@ extension Date {
     // MARK: - Shows extact time difference between two dates like "1h 59m 20s" ago
 
     public func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
-        let adjustedDate = date.add(days: 1)
+        let adjustedDate = date
         let unitFlags = Set<Calendar.Component>([.month, .day, .hour])
-        var diff = NSCalendar.current.dateComponents(unitFlags, from: self.toGlobalTime(), to: adjustedDate)
+        var diff = NSCalendar.current.dateComponents(unitFlags, from: Date(), to: adjustedDate)
         return (abs(diff.month ?? 0), abs(diff.day ?? 0), abs(diff.hour ?? 0))
     }
     
