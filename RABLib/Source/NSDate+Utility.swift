@@ -500,7 +500,7 @@ extension Date {
         return add(years: inverseYears, months: inverseMonths, days: inverseDays, hours: inverseHours, minutes: inverseMinutes, seconds: inverseSeconds)
     }
 
-    // MARK: Zero out time
+    // MARK: Zero out time - removes the time from the date
     // http://stackoverflow.com/questions/4187478/truncate-nsdate-zero-out-time
     //
     public func trimTime() -> Date {
