@@ -454,8 +454,8 @@ public func doOnMain(_ block: @escaping ()->()) {
     GlobalMainQueue.async(execute: block)
 }
 
-public func doOnMainAfterTime(_ delay: Double, block: @escaping ()->()) {
-    let delayTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+public func doOnMainAfterTime(_ delaySeconds: Double, block: @escaping ()->()) {
+    let delayTime = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     GlobalMainQueue.asyncAfter(deadline: delayTime, execute: block)
 }
 
