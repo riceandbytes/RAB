@@ -462,7 +462,7 @@ extension Date {
             calendar.timeZone = timeZone
         }
         let comps: Set<Calendar.Component> = [Calendar.Component.day]
-        let components = calendar.dateComponents(comps, from: self.toGlobalTime(), to: adjustedDate)
+        let components = calendar.dateComponents(comps, from: Date(), to: adjustedDate)
         return components.day ?? 0  // This will return the number of day(s) between dates
     }
     
