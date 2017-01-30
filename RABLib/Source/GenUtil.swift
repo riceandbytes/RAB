@@ -28,8 +28,9 @@ open class GenUtil {
         return Int(val)
     }
 
+    // if maxInt32 is 4, then possible values are 0, 1, 2, 3
     open class func getRandomNumber(_ maxInt32: Int32) -> Int {
-        let val: Int32 = Int32(arc4random_uniform(UInt32(maxInt32 - 1)))
+        let val: Int32 = Int32(arc4random_uniform(UInt32(maxInt32)))
         return Int(val)
     }
     
