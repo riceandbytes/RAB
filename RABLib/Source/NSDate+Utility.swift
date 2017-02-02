@@ -366,6 +366,14 @@ public extension Date {
         let cal = Calendar.current
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
+
+    public func addSeconds(_ sec: Int) -> Date? {
+        let startDate = self
+        var dateComponent = DateComponents()
+        dateComponent.second = sec
+        let cal = Calendar.current
+        return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
+    }
     
     /**
      Self is date in the past
@@ -453,8 +461,10 @@ extension Date {
 //        return Calendar.current.date(from: comps)!
 //    }
     
-    // MARK: - Find number of days between 2 NSDates
-    // https://www.timeanddate.com/date/duration.html
+    /// MARK: - Find number of days between 2 NSDates
+    /// https://www.timeanddate.com/date/duration.html
+    /// Usage: Date().numberOfDaysUntilDateTimeAdjusted(sd, inTimeZone: TimeZone(abbreviation: "UTC"))
+    ///
     public func numberOfDaysUntilDateTimeAdjusted(_ toDateTimeUTC: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current
         let adjustedDate = toDateTimeUTC
@@ -603,8 +613,7 @@ extension Date {
     public func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
         let adjustedDate = date
         let unitFlags = Set<Calendar.Component>([.month, .day, .hour])
-        var diff = NSCalendar.current.dateComponents(unitFlags, from: Date(), to: adjustedDate)
+        var diff = NSCalendar.current.dateComponents(unitFlags, from: self, to: adjustedDate)
         return (abs(diff.month ?? 0), abs(diff.day ?? 0), abs(diff.hour ?? 0))
     }
-    
 }
