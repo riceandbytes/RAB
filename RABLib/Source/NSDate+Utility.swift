@@ -238,15 +238,8 @@ public extension Date {
      */
     public static func dateFromISOString(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
-//        dateFormatter.calendar = Calendar(identifier: .iso8601)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"        
         return dateFormatter.date(from: string)
     }
     
@@ -359,6 +352,7 @@ public extension Date {
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
 
+    // - param Float because you can have .5 hour offset
     public func addHours(_ hours: Int) -> Date? {
         let startDate = self
         var dateComponent = DateComponents()
@@ -367,6 +361,22 @@ public extension Date {
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
 
+    // use this when you have a time that is a local port and you have
+    // the offset
+    public func addHoursInverse(_ hoursOffset: Float) -> Date? {
+        // need to convert hours to seconds becuase date component for hours
+        // is only Int
+        let secs: Int = Int(hoursOffset * 60 * 60) * -1
+        return self.addSeconds(secs)
+    }
+    
+    public func addHours(_ hours: Float) -> Date? {
+        // need to convert hours to seconds becuase date component for hours
+        // is only Int
+        let secs: Int = Int(hours * 60 * 60)
+        return self.addSeconds(secs)
+    }
+    
     public func addSeconds(_ sec: Int) -> Date? {
         let startDate = self
         var dateComponent = DateComponents()
