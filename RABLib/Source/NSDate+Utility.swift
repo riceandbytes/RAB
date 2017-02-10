@@ -376,6 +376,10 @@ public extension Date {
         let secs: Int = Int(hours * 60 * 60)
         return self.addSeconds(secs)
     }
+
+    public func addSecondsInverse(_ sec: Int) -> Date? {
+        return addSeconds(sec * -1)
+    }
     
     public func addSeconds(_ sec: Int) -> Date? {
         let startDate = self
