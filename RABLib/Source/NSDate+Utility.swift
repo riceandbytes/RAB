@@ -545,6 +545,25 @@ extension Date {
         comps.second = 0
         return Calendar.current.date(from: comps)!
     }
+    
+    /// MARK: Sets the exact time
+    ///
+    /// ex:
+    /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
+    ///
+    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
+        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let cal = Calendar.current
+        var components = cal.dateComponents(x, from: self)
+
+        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
+        // Change the time to 9:30:00 in your locale
+        components.hour = hour
+        components.minute = min
+        components.second = sec
+
+        return cal.date(from: components)
+    }
 }
 
 // MARK: - Find Time Between Two Dates
