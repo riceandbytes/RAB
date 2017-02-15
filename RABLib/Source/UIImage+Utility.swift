@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreImage.CIImage
 
 extension UIImage {
     public func isPortrait() -> Bool {
@@ -187,5 +188,27 @@ extension UIImage {
         }
         
         return returnImage;
+    }
+}
+
+// MARK: - Selfie - Face Detection
+
+extension UIImage {
+    
+    /// Checks UIImage if it has a face in it
+    /// - if any feature of a face is present then its a selfie
+    ///
+    public func isSelfie() -> Bool {
+        guard let myCIImage = self.ciImage ?? CIImage(image: self) else { return false }
+        let context = CIContext(options: nil)
+        let detectionOptions = [ CIDetectorAccuracy: CIDetectorAccuracyHigh ]
+        guard let detector = CIDetector(ofType: CIDetectorTypeFace,
+                                        context: context,
+                                        options: detectionOptions) else {
+                                            return false
+        }
+        let features = detector.features(in: myCIImage)
+        return features.count > 0
+        // return features.count == 1 && features.first!.type == CIFeatureTypeFace
     }
 }
