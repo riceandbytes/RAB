@@ -472,10 +472,14 @@ public var GlobalMainQueue: DispatchQueue {
     return DispatchQueue.main
 }
 
+/// https://developer.apple.com/library/content/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html
+
+/// Work is virtually instantaneous.
 public var GlobalUserInteractiveQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive)
 }
 
+/// Work is nearly instantaneous, such as a few seconds or less.
 public var GlobalUserInitiatedQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated)
 }
@@ -484,10 +488,12 @@ public var GlobalDefaultQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
 }
 
+/// Work takes a few seconds to a few minutes.
 public var GlobalUtilityQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.utility)
 }
 
+/// Work takes significant time, such as minutes or hours.
 public var GlobalBackgroundQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
 }
