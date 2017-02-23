@@ -16,6 +16,7 @@
 		1410AD0B1D237D4800DEA84C /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410AD0A1D237D4800DEA84C /* Array+Utility.swift */; };
 		141547281CDAA0E800424B03 /* UIScrollView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141547271CDAA0E800424B03 /* UIScrollView+Utility.swift */; };
 		141547361CDB1C9900424B03 /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141547351CDB1C9900424B03 /* UITableView+Utility.swift */; };
+		141BBA241E5F765F00CB7E1C /* GenUtil+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BBA231E5F765F00CB7E1C /* GenUtil+Image.swift */; };
 		143572061D42C27F009C8FB2 /* BottomIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143572051D42C27F009C8FB2 /* BottomIndicatorView.swift */; };
 		143B5DF51C76783200C70DBF /* TwoButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 143B5DF41C76783200C70DBF /* TwoButtonView.xib */; };
 		143B5DF71C7678DF00C70DBF /* TwoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143B5DF61C7678DF00C70DBF /* TwoButtonView.swift */; };
@@ -112,6 +113,7 @@
 		1410AD0A1D237D4800DEA84C /* Array+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utility.swift"; sourceTree = "<group>"; };
 		141547271CDAA0E800424B03 /* UIScrollView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utility.swift"; sourceTree = "<group>"; };
 		141547351CDB1C9900424B03 /* UITableView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
+		141BBA231E5F765F00CB7E1C /* GenUtil+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GenUtil+Image.swift"; sourceTree = "<group>"; };
 		143572051D42C27F009C8FB2 /* BottomIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomIndicatorView.swift; sourceTree = "<group>"; };
 		143B5DF41C76783200C70DBF /* TwoButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwoButtonView.xib; path = CustomViews/TwoButtonView.xib; sourceTree = "<group>"; };
 		143B5DF61C7678DF00C70DBF /* TwoButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwoButtonView.swift; path = CustomViews/TwoButtonView.swift; sourceTree = "<group>"; };
@@ -310,7 +312,6 @@
 		149DAF941AB188630093CA5B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				14A547551E1CDAA5008B8BC3 /* RABGradient.swift */,
 				148917A61AEE023800448450 /* Activity Indicator */,
 				1410AD0A1D237D4800DEA84C /* Array+Utility.swift */,
 				14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */,
@@ -322,6 +323,7 @@
 				14A4FDE61CA8D39A00BC09EE /* GenAnimateUtil.swift */,
 				146DD33E1BEF523D009E330F /* GenConst.swift */,
 				148917971AEDFB1D00448450 /* GenExt.swift */,
+				141BBA231E5F765F00CB7E1C /* GenUtil+Image.swift */,
 				146DD33C1BEF4EB2009E330F /* GenLogging.swift */,
 				14A1A6F81B048A2300985DF7 /* GenShapes.swift */,
 				14E2F4B51CCF2A69008D4279 /* GenSocialNetwork.swift */,
@@ -333,6 +335,9 @@
 				146DD34C1BEF5A96009E330F /* NSURL+Utility.swift */,
 				14F0BEC71BF127050095068E /* OpenSansHelper.swift */,
 				14FB12F61C2769D6005D2E8D /* OrderedDictionary.swift */,
+				14A547551E1CDAA5008B8BC3 /* RABGradient.swift */,
+				146FCDB81E1F95AD00CD68D8 /* RabMusic.swift */,
+				1469B69B1E1CD4DC00B28AE4 /* RabSound.swift */,
 				1401FB4E1C1417E000AB5E03 /* RabTableView */,
 				145549631D30DC070078EAEF /* Semaphore.swift */,
 				14CB4C801BEF468400AE709C /* String+Utility.swift */,
@@ -350,8 +355,6 @@
 				14E2F4C61CD16C10008D4279 /* UIView */,
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
-				1469B69B1E1CD4DC00B28AE4 /* RabSound.swift */,
-				146FCDB81E1F95AD00CD68D8 /* RabMusic.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				145549641D30DC070078EAEF /* Semaphore.swift in Sources */,
 				144912231CF59062000A1A6E /* UIApplication+Utility.swift in Sources */,
 				14A4FDE71CA8D39A00BC09EE /* GenAnimateUtil.swift in Sources */,
+				141BBA241E5F765F00CB7E1C /* GenUtil+Image.swift in Sources */,
 				1401FB6C1C1417E000AB5E03 /* RabTableView.swift in Sources */,
 				143B5DF71C7678DF00C70DBF /* TwoButtonView.swift in Sources */,
 				149F02A21D80D78F00E211B9 /* UICollectionView+Utility.swift in Sources */,
