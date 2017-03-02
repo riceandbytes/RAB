@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1401FB641C1417E000AB5E03 /* KeyValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FB551C1417E000AB5E03 /* KeyValueCell.swift */; };
 		1401FB651C1417E000AB5E03 /* KeyValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1401FB561C1417E000AB5E03 /* KeyValueCell.xib */; };
-		1401FB681C1417E000AB5E03 /* SingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FB591C1417E000AB5E03 /* SingleCell.swift */; };
-		1401FB691C1417E000AB5E03 /* SingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1401FB5A1C1417E000AB5E03 /* SingleCell.xib */; };
+		1401FB681C1417E000AB5E03 /* RabSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FB591C1417E000AB5E03 /* RabSingleCell.swift */; };
+		1401FB691C1417E000AB5E03 /* RabSingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1401FB5A1C1417E000AB5E03 /* RabSingleCell.xib */; };
 		1401FB6C1C1417E000AB5E03 /* RabTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FB5D1C1417E000AB5E03 /* RabTableView.swift */; };
 		1401FB6D1C1417E000AB5E03 /* RabTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401FB5E1C1417E000AB5E03 /* RabTableDataSource.swift */; };
 		1410AD0B1D237D4800DEA84C /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1410AD0A1D237D4800DEA84C /* Array+Utility.swift */; };
@@ -105,8 +105,8 @@
 /* Begin PBXFileReference section */
 		1401FB551C1417E000AB5E03 /* KeyValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueCell.swift; sourceTree = "<group>"; };
 		1401FB561C1417E000AB5E03 /* KeyValueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyValueCell.xib; sourceTree = "<group>"; };
-		1401FB591C1417E000AB5E03 /* SingleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCell.swift; sourceTree = "<group>"; };
-		1401FB5A1C1417E000AB5E03 /* SingleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleCell.xib; sourceTree = "<group>"; };
+		1401FB591C1417E000AB5E03 /* RabSingleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RabSingleCell.swift; sourceTree = "<group>"; };
+		1401FB5A1C1417E000AB5E03 /* RabSingleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RabSingleCell.xib; sourceTree = "<group>"; };
 		1401FB5D1C1417E000AB5E03 /* RabTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RabTableView.swift; sourceTree = "<group>"; };
 		1401FB5E1C1417E000AB5E03 /* RabTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RabTableDataSource.swift; sourceTree = "<group>"; };
 		1410AD0A1D237D4800DEA84C /* Array+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utility.swift"; sourceTree = "<group>"; };
@@ -220,8 +220,8 @@
 				1401FB561C1417E000AB5E03 /* KeyValueCell.xib */,
 				14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */,
 				14FB12FF1C277DFB005D2E8D /* PicWithInfoCell.xib */,
-				1401FB591C1417E000AB5E03 /* SingleCell.swift */,
-				1401FB5A1C1417E000AB5E03 /* SingleCell.xib */,
+				1401FB591C1417E000AB5E03 /* RabSingleCell.swift */,
+				1401FB5A1C1417E000AB5E03 /* RabSingleCell.xib */,
 				149A84771C1569B30004C185 /* SinglePicCell.swift */,
 				149A84751C15699A0004C185 /* SinglePicCell.xib */,
 				146FF9091C1A161700C90A42 /* TitleDetailPicCell.swift */,
@@ -523,7 +523,7 @@
 				143B5DF51C76783200C70DBF /* TwoButtonView.xib in Resources */,
 				14FB13001C277DFB005D2E8D /* PicWithInfoCell.xib in Resources */,
 				1443C74F1C9740B40093FC4D /* FancyButtonView.xib in Resources */,
-				1401FB691C1417E000AB5E03 /* SingleCell.xib in Resources */,
+				1401FB691C1417E000AB5E03 /* RabSingleCell.xib in Resources */,
 				146FF90C1C1A180000C90A42 /* TitleDetailPicCell.xib in Resources */,
 				1401FB651C1417E000AB5E03 /* KeyValueCell.xib in Resources */,
 			);
@@ -593,7 +593,7 @@
 				14E2F4D71CD16D43008D4279 /* UIView+Keyboard.swift in Sources */,
 				146DD3411BEF558B009E330F /* CoreGraphicsExt.swift in Sources */,
 				14F0BEE71BF2C5280095068E /* GenImagePicker.swift in Sources */,
-				1401FB681C1417E000AB5E03 /* SingleCell.swift in Sources */,
+				1401FB681C1417E000AB5E03 /* RabSingleCell.swift in Sources */,
 				146DB4501D0FD43F00833C8C /* UIView+AutoLayout.swift in Sources */,
 				14CB4C7D1BEF422800AE709C /* GenRoundRectButton.swift in Sources */,
 				148917A81AEE028400448450 /* DotIndicatorView.swift in Sources */,

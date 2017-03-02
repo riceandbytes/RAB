@@ -19,20 +19,20 @@ public protocol DidSelectCell {
     @objc optional func didScrollToBottom()
 }
 
-public enum RabTableType {
-    case keyValue
-    case picWithInfoCell
-    case singleCell
-    case singlePic
-    case titleWithPic
-    case titleDetailPicCell
-    case revCell
-    case unknown
-}
+//public enum RabTableType {
+//    case keyValue
+//    case picWithInfoCell
+//    case RabSingleCell
+//    case singlePic
+//    case titleWithPic
+//    case titleDetailPicCell
+//    case revCell
+//    case unknown
+//}
 
 public typealias TableCallback = (_ dataRow: DataRow?) -> Void
 
-open class RabTableView: UITableView {
+public class RabTableView: UITableView {
     
     static let HeightDetailControllerTablerHeader: CGFloat = 105
     
@@ -87,7 +87,6 @@ open class RabTableView: UITableView {
      - parameter canSelectCallback: when user selects the row
      */
     open func setup(_ tableData: [RabTableDataSource],
-                      supportedTypes: [RabTableType],
                       hideSeparator: Bool               = true,
                       textFont: UIFont?                 = nil,
                       selectionColor: UIColor?          = UIColor(hex: "#6AA2D7", alpha: 10),
@@ -123,6 +122,8 @@ open class RabTableView: UITableView {
         
         if hideSeparator {
             self.separatorColor = UIColor.clear
+        } else {
+            self.separatorColor = UIColor.groupTableViewBackground
         }
         
         self.tableData = tableData
@@ -130,10 +131,6 @@ open class RabTableView: UITableView {
         
         if self.tableData.count > 0 {
             hasResults = true
-        }
-        
-        if supportedTypes.count <= 0 {
-            pAssert(false, "supportedTypes not set")
         }
         
         self.delegate = self
@@ -146,33 +143,14 @@ open class RabTableView: UITableView {
             selectCallback = x
         }
         
-        for tableType in supportedTypes {
-            if tableType == .keyValue {
-                let keyValueNib = UINib(nibName: KeyValueCell.dynamicClassName, bundle: Bundle(for: KeyValueCell.self))
-                self.register(keyValueNib, forCellReuseIdentifier: KeyValueCell.dynamicClassName)
-            } else if tableType == .singleCell {
-                let nib = UINib(nibName: SingleCell.dynamicClassName, bundle: Bundle(for: SingleCell.self))
-                self.register(nib, forCellReuseIdentifier: SingleCell.dynamicClassName)
-            } else if tableType == .singlePic {
-                let nib = UINib(nibName: SinglePicCell.dynamicClassName, bundle: Bundle(for: SinglePicCell.self))
-                self.register(nib, forCellReuseIdentifier: SinglePicCell.dynamicClassName)
-            } else if tableType == .titleWithPic {
-                let nib = UINib(nibName: TitleWithPicCell.dynamicClassName, bundle: Bundle(for: TitleWithPicCell.self))
-                self.register(nib, forCellReuseIdentifier: TitleWithPicCell.dynamicClassName)
-            } else if tableType == .titleDetailPicCell {
-                let nib = UINib(nibName: TitleDetailPicCell.dynamicClassName, bundle: Bundle(for: TitleDetailPicCell.self))
-                self.register(nib, forCellReuseIdentifier: TitleDetailPicCell.dynamicClassName)
-            } else if tableType == .picWithInfoCell {
-                let nib = UINib(nibName: PicWithInfoCell.dynamicClassName, bundle: Bundle(for: PicWithInfoCell.self))
-                self.register(nib, forCellReuseIdentifier: PicWithInfoCell.dynamicClassName)
-            } else if tableType == .revCell {
-                let nib = UINib(nibName: RevCell.dynamicClassName, bundle: Bundle(for: RevCell.self))
-                self.register(nib, forCellReuseIdentifier: RevCell.dynamicClassName)
-            } else {
-                pAssert(false, "Unknown table type")
+        var supportedTypes: Set<String> = []
+        for x in tableData {
+            for d in x.items {
+                supportedTypes.insert(d.type)
             }
-            
         }
+        pln(supportedTypes)
+        self.registerCells(Array(supportedTypes))
     }
     
     deinit {
@@ -180,6 +158,105 @@ open class RabTableView: UITableView {
     }
 }
 
+// MARK: - Subclassing
+
+extension RabTableView {
+    
+    func registerCells(_ supportedTypes: [String]) {
+        for tableType in supportedTypes {
+            if tableType == KeyValueCell.type() {
+                let keyValueNib = UINib(nibName: KeyValueCell.dynamicClassName, bundle: Bundle(for: KeyValueCell.self))
+                self.register(keyValueNib, forCellReuseIdentifier: KeyValueCell.dynamicClassName)
+            } else if tableType == RabSingleCell.type() {
+                let nib = UINib(nibName: RabSingleCell.dynamicClassName, bundle: Bundle(for: RabSingleCell.self))
+                self.register(nib, forCellReuseIdentifier: RabSingleCell.dynamicClassName)
+            } else if tableType == SinglePicCell.type() {
+                let nib = UINib(nibName: SinglePicCell.dynamicClassName, bundle: Bundle(for: SinglePicCell.self))
+                self.register(nib, forCellReuseIdentifier: SinglePicCell.dynamicClassName)
+            } else if tableType == TitleWithPicCell.type() {
+                let nib = UINib(nibName: TitleWithPicCell.dynamicClassName, bundle: Bundle(for: TitleWithPicCell.self))
+                self.register(nib, forCellReuseIdentifier: TitleWithPicCell.dynamicClassName)
+            } else if tableType == TitleDetailPicCell.type() {
+                let nib = UINib(nibName: TitleDetailPicCell.dynamicClassName, bundle: Bundle(for: TitleDetailPicCell.self))
+                self.register(nib, forCellReuseIdentifier: TitleDetailPicCell.dynamicClassName)
+            } else if tableType == PicWithInfoCell.type() {
+                let nib = UINib(nibName: PicWithInfoCell.dynamicClassName, bundle: Bundle(for: PicWithInfoCell.self))
+                self.register(nib, forCellReuseIdentifier: PicWithInfoCell.dynamicClassName)
+            } else if tableType == RevCell.type() {
+                let nib = UINib(nibName: RevCell.dynamicClassName, bundle: Bundle(for: RevCell.self))
+                self.register(nib, forCellReuseIdentifier: RevCell.dynamicClassName)
+            } else {
+                pAssert(false, "Unknown table type")
+            }
+        }
+    }
+    
+    func dequeueCell(_ tt: String, td: DataRow, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell? {
+        var cell: UITableViewCell? = nil
+
+        if tt == KeyValueCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: KeyValueCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? KeyValueCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == RabSingleCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: RabSingleCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? RabSingleCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == SinglePicCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: SinglePicCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? SinglePicCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == TitleWithPicCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: TitleWithPicCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? TitleWithPicCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == TitleDetailPicCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: TitleDetailPicCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? TitleDetailPicCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == PicWithInfoCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: PicWithInfoCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? PicWithInfoCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else if tt == RevCell.type() {
+            cell = tableView.dequeueReusableCell(withIdentifier: RevCell.dynamicClassName,
+                                                 for: indexPath)
+            if let c = cell as? RevCell {
+                c.configure(td)
+                self.updateCell(c)
+                return c
+            }
+        } else {
+            pAssert(false, "Not supported type")
+        }
+        
+        return cell
+    }
+}
 
 // MARK: - Helper
 
@@ -216,6 +293,7 @@ extension RabTableView {
     //            }
     //        }
     //    }
+    
     
     /**
      Removes cell by index
@@ -258,116 +336,18 @@ extension RabTableView {
 
 extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     
-    //    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        let tt = self.tableType[indexPath.section]
-    //        if tt == .SinglePic {
-    //            return 275
-    //        } else if tt == .TitleWithPic || tt == .TitleDetailPicCell {
-    //            return 72
-    //        } else if tt == .UpcomingCruiseCell {
-    //            return 91
-    //        } else if tt == .ReviewCell {
-    //            return 260
-    //        } else if tt == .HorzScrollPicsCell {
-    //            return 118
-    //        } else if tt == .PicWithInfoCell {
-    //            let td = self.tableData[indexPath.section][indexPath.row]
-    //            if let s = td.get("info") as? String {
-    //
-    //                // Should match settings for cell
-    //                let label:UILabel = UILabel(frame: CGRectMake(0, 0, self.frame.width-30, CGFloat.max))
-    //                label.numberOfLines = 40
-    //                label.lineBreakMode = NSLineBreakMode.ByWordWrapping
-    //                label.font = self.textFont
-    //                label.text = s
-    //                label.sizeToFit()
-    //                pln(label.frame.height)
-    //                return label.frame.height + 120
-    //            } else {
-    //                return 160
-    //            }
-    //        } else {
-    //            return 44
-    //        }
-    //    }
-    
     public func numberOfSections(in tableView: UITableView) -> Int {
-        //        pln("num sections count: \(self.tableData.count)")
         return self.tableData.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = self.tableData[section].count
-        //        pln("count: \(count)")
-        return count
+        return self.tableData[section].count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        var cell: UITableViewCell? = nil
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let td = self.tableData[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        let tt = td.type
-        
-        if tt == .keyValue {
-            cell = tableView.dequeueReusableCell(withIdentifier: KeyValueCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? KeyValueCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .singleCell {
-            cell = tableView.dequeueReusableCell(withIdentifier: SingleCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? SingleCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .singlePic {
-            cell = tableView.dequeueReusableCell(withIdentifier: SinglePicCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? SinglePicCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .titleWithPic {
-            cell = tableView.dequeueReusableCell(withIdentifier: TitleWithPicCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? TitleWithPicCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .titleDetailPicCell {
-            cell = tableView.dequeueReusableCell(withIdentifier: TitleDetailPicCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? TitleDetailPicCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .picWithInfoCell {
-            cell = tableView.dequeueReusableCell(withIdentifier: PicWithInfoCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? PicWithInfoCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else if tt == .revCell {
-            cell = tableView.dequeueReusableCell(withIdentifier: RevCell.dynamicClassName,
-                                                               for: indexPath)
-            if let c = cell as? RevCell {
-                c.configure(td)
-                self.updateCell(c)
-                return c
-            }
-        } else {
-            pAssert(false, "Not supported type")
-        }
-        return cell!
+        let tt = td.type ?? ""
+        return self.dequeueCell(tt, td: td, indexPath: indexPath, tableView: tableView)!
     }
     
     fileprivate func updateCell(_ cell: UITableViewCell) {
@@ -414,16 +394,6 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     // http://stackoverflow.com/questions/27996438/jerky-scrolling-after-updating-uitableviewcell-in-place-with-uitableviewautomati
     //
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        // This method will get your cell identifier based on your data
-        //        let cellType = reuseIdentifierForIndexPath(indexPath)
-        //
-        //        if cellType == kFirstCellIdentifier
-        //        return kFirstCellHeight
-        //        else if cellType == kSecondCellIdentifier
-        //        return kSecondCellHeight
-        //        else if cellType == kThirdCellIdentifier
-        //        return kThirdCellHeight
-        //        else
         return UITableViewAutomaticDimension
     }
     // MARK: Headers & Footer
@@ -559,6 +529,7 @@ extension RabTableView {
     
     // http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
     public func addFixToRemoveGapAboveTableView() {
-        self.contentInset = UIEdgeInsetsMake(-36, 0, 0, 0);
+        let inset = self.contentInset
+        self.contentInset = UIEdgeInsetsMake(inset.top - 36.0, inset.left, inset.bottom, inset.right)
     }
 }

@@ -29,3 +29,9 @@ class TitleDetailPicCell: UITableViewCell {
 //        }
     }
 }
+
+extension TitleDetailPicCell: DataSourceProtocol {
+    static func type() -> String {
+        return TitleDetailPicCell.className
+    }
+}

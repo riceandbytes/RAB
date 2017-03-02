@@ -35,3 +35,9 @@ open class SinglePicCell: UITableViewCell {
 //        }
     }
 }
+
+extension SinglePicCell: DataSourceProtocol {
+    public static func type() -> String {
+        return SinglePicCell.className
+    }
+}

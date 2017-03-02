@@ -135,4 +135,17 @@ public extension NSObject {
         return results
     }
     
+    // MARK: - Get class names
+    /// http://stackoverflow.com/questions/24494784/get-class-name-of-object-as-string-in-swift
+    /// Usage: 
+    /// print(self.className)
+    /// print(ViewController.className)
+    ///
+    var className: String {
+        return String(describing: type(of: self))
+    }
+    
+    class var className: String {
+        return String(describing: self)
+    }
 }

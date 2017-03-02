@@ -20,3 +20,9 @@ class KeyValueCell: UITableViewCell {
         valueLabel.text = (dataRow[KeyValueCell.kValue] as? String) ?? ""
     }
 }
+
+extension KeyValueCell: DataSourceProtocol {
+    static func type() -> String {
+        return KeyValueCell.className
+    }
+}

@@ -26,3 +26,9 @@ class TitleWithPicCell: UITableViewCell {
 //        }
     }
 }
+
+extension TitleWithPicCell: DataSourceProtocol {
+    static func type() -> String {
+        return TitleWithPicCell.className
+    }
+}

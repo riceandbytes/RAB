@@ -19,13 +19,6 @@ class PicWithInfoCell: UITableViewCell {
     func configure(_ dataRow: DataRow) {
         self.selectionStyle = .none
         
-//        if let data = dataRow.get("url") as? String {
-//            if let url = NSURL(string: data) {
-//                userImage.kf_setImage(with:url,
-//                    placeholder: UIImage(named: "anonymous-user-pic"))
-//            }
-//        }
-        
         if let data = dataRow.get("userInfo") as? String {
             self.userInfoLabel.text = data
         } else {
@@ -37,5 +30,11 @@ class PicWithInfoCell: UITableViewCell {
         } else {
             self.infoLabel.text = ""
         }
+    }
+}
+
+extension PicWithInfoCell: DataSourceProtocol {
+    static func type() -> String {
+        return PicWithInfoCell.className
     }
 }

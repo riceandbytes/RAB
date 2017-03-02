@@ -48,3 +48,9 @@ class RevCell: UITableViewCell {
     @IBAction func actionButton4(_ sender: AnyObject) {
     }
 }
+
+extension RevCell: DataSourceProtocol {
+    public static func type() -> String {
+        return RevCell.className
+    }
+}
