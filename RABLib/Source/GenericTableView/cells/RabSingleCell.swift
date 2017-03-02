@@ -27,7 +27,7 @@ public struct RabSingleCellModel {
 open class RabSingleCell: UITableViewCell {
     @IBOutlet weak var titleLabel_height: NSLayoutConstraint!  // default 88
     @IBOutlet weak var titleLabel: UILabel!
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
         guard let model = dataRow.model as? RabSingleCellModel else {
             pAssert(false, "Invalid Model Type")
             return

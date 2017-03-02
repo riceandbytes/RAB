@@ -19,20 +19,9 @@ public protocol DidSelectCell {
     @objc optional func didScrollToBottom()
 }
 
-//public enum RabTableType {
-//    case keyValue
-//    case picWithInfoCell
-//    case RabSingleCell
-//    case singlePic
-//    case titleWithPic
-//    case titleDetailPicCell
-//    case revCell
-//    case unknown
-//}
-
 public typealias TableCallback = (_ dataRow: DataRow?) -> Void
 
-public class RabTableView: UITableView {
+open class RabTableView: UITableView {
     
     static let HeightDetailControllerTablerHeader: CGFloat = 105
     
@@ -156,13 +145,10 @@ public class RabTableView: UITableView {
     deinit {
         pln()
     }
-}
 
 // MARK: - Subclassing
-
-extension RabTableView {
     
-    func registerCells(_ supportedTypes: [String]) {
+    open func registerCells(_ supportedTypes: [String]) {
         for tableType in supportedTypes {
             if tableType == KeyValueCell.type() {
                 let keyValueNib = UINib(nibName: KeyValueCell.dynamicClassName, bundle: Bundle(for: KeyValueCell.self))
@@ -191,7 +177,7 @@ extension RabTableView {
         }
     }
     
-    func dequeueCell(_ tt: String, td: DataRow, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell? {
+    open func dequeueCell(_ tt: String, td: DataRow, indexPath: IndexPath, tableView: UITableView) -> UITableViewCell? {
         var cell: UITableViewCell? = nil
 
         if tt == KeyValueCell.type() {
@@ -350,7 +336,7 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
         return self.dequeueCell(tt, td: td, indexPath: indexPath, tableView: tableView)!
     }
     
-    fileprivate func updateCell(_ cell: UITableViewCell) {
+    open func updateCell(_ cell: UITableViewCell) {
         if let sc = self.selectionColor {
             cell.selectionStyle = .default
             let bgColorView = UIView()

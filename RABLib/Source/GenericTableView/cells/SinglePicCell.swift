@@ -10,7 +10,7 @@ import Foundation
 
 open class SinglePicCell: UITableViewCell {
     @IBOutlet weak var singlePic: UIImageView!
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
 //        if let data = dataRow.get("url") as? String {
 //            if let refererUrl = dataRow.get("referer") as? String {
 //                let downloader = KingfisherManager.sharedManager.downloader

@@ -9,12 +9,12 @@
 import Foundation
 //import Kingfisher
 
-class TitleWithPicCell: UITableViewCell {
+open class TitleWithPicCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
     
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
 //        self.selectionStyle = .None
 
 //        titleLabel.text = dataRow.title
@@ -28,7 +28,7 @@ class TitleWithPicCell: UITableViewCell {
 }
 
 extension TitleWithPicCell: DataSourceProtocol {
-    static func type() -> String {
+    public static func type() -> String {
         return TitleWithPicCell.className
     }
 }

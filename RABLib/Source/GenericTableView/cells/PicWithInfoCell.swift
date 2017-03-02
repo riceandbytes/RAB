@@ -10,13 +10,13 @@ import Foundation
 
 // Remember if you adjust you need update the calculation for cell height
 //
-class PicWithInfoCell: UITableViewCell {
+open class PicWithInfoCell: UITableViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
 
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
         self.selectionStyle = .none
         
         if let data = dataRow.get("userInfo") as? String {
@@ -34,7 +34,7 @@ class PicWithInfoCell: UITableViewCell {
 }
 
 extension PicWithInfoCell: DataSourceProtocol {
-    static func type() -> String {
+    public static func type() -> String {
         return PicWithInfoCell.className
     }
 }

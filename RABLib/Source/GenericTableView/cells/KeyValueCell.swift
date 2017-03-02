@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-class KeyValueCell: UITableViewCell {
+open class KeyValueCell: UITableViewCell {
     static let kValue = "value"
     
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
         keyLabel.text = dataRow.title
         valueLabel.text = (dataRow[KeyValueCell.kValue] as? String) ?? ""
     }
 }
 
 extension KeyValueCell: DataSourceProtocol {
-    static func type() -> String {
+    public static func type() -> String {
         return KeyValueCell.className
     }
 }

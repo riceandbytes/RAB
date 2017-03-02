@@ -9,7 +9,7 @@
 import Foundation
 //import Kingfisher
 
-class RevCell: UITableViewCell {
+open class RevCell: UITableViewCell {
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -20,7 +20,7 @@ class RevCell: UITableViewCell {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
 //        self.selectionStyle = .None
 //        
 //        if let data = dataRow.get("userUrl") as? String {
