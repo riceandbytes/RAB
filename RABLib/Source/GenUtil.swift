@@ -28,8 +28,9 @@ open class GenUtil {
         return Int(val)
     }
 
+    // if maxInt32 is 4, then possible values are 0, 1, 2, 3
     open class func getRandomNumber(_ maxInt32: Int32) -> Int {
-        let val: Int32 = Int32(arc4random_uniform(UInt32(maxInt32 - 1)))
+        let val: Int32 = Int32(arc4random_uniform(UInt32(maxInt32)))
         return Int(val)
     }
     
@@ -297,56 +298,6 @@ extension GenUtil {
     }
 }
 
-// MARK: - Image
-
-extension GenUtil {
-//    public class func contentTypeForImageData(data: NSData) -> String? {
-//        var c: Int = 0
-//        data.getBytes(&c, length: 1)
-//        
-//        switch c {
-//        case 0xFF:
-//            return "image/jpeg"
-//        case 0x89:
-//            return "image/png"
-//        case 0x47:
-//            return "image/gif"
-//        case 0x49:
-//            fallthrough
-//        case 0x4D:
-//            return "image/tiff"
-//        default:
-//            return nil
-//        }
-//    }
-    
-    /**
-    Find image type from NSData
-    http://stackoverflow.com/questions/29644168/get-image-file-type-programmatically-in-swift
-    
-    - parameter imgData: <#imgData description#>
-    
-    - returns: <#return value description#>
-    */
-    public class func contentTypeForImageData(_ imgData : Data) -> String? {
-        var c = [UInt8](repeating: 0, count: 1)
-        (imgData as NSData).getBytes(&c, length: 1)
-        let ext : String
-        switch (c[0]) {
-        case 0xFF:
-            ext = "jpg"
-        case 0x89:
-            ext = "png"
-        case 0x47:
-            ext = "gif"
-        case 0x49, 0x4D :
-            ext = "tiff"
-        default:
-            return nil
-        }
-        return ext
-    }
-}
 // MARK: - Video
 
 extension GenUtil {
@@ -454,8 +405,8 @@ public func doOnMain(_ block: @escaping ()->()) {
     GlobalMainQueue.async(execute: block)
 }
 
-public func doOnMainAfterTime(_ delay: Double, block: @escaping ()->()) {
-    let delayTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+public func doOnMainAfterTime(_ delaySeconds: Double, block: @escaping ()->()) {
+    let delayTime = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     GlobalMainQueue.asyncAfter(deadline: delayTime, execute: block)
 }
 
@@ -471,10 +422,14 @@ public var GlobalMainQueue: DispatchQueue {
     return DispatchQueue.main
 }
 
+/// https://developer.apple.com/library/content/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html
+
+/// Work is virtually instantaneous.
 public var GlobalUserInteractiveQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive)
 }
 
+/// Work is nearly instantaneous, such as a few seconds or less.
 public var GlobalUserInitiatedQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated)
 }
@@ -483,10 +438,12 @@ public var GlobalDefaultQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
 }
 
+/// Work takes a few seconds to a few minutes.
 public var GlobalUtilityQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.utility)
 }
 
+/// Work takes significant time, such as minutes or hours.
 public var GlobalBackgroundQueue: DispatchQueue {
     return DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
 }

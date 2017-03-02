@@ -238,15 +238,8 @@ public extension Date {
      */
     public static func dateFromISOString(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
-//        dateFormatter.calendar = Calendar(identifier: .iso8601)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"        
         return dateFormatter.date(from: string)
     }
     
@@ -358,6 +351,43 @@ public extension Date {
         let cal = Calendar.current
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
+
+    // - param Float because you can have .5 hour offset
+    public func addHours(_ hours: Int) -> Date? {
+        let startDate = self
+        var dateComponent = DateComponents()
+        dateComponent.hour = hours
+        let cal = Calendar.current
+        return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
+    }
+
+    // use this when you have a time that is a local port and you have
+    // the offset
+    public func addHoursInverse(_ hoursOffset: Float) -> Date? {
+        // need to convert hours to seconds becuase date component for hours
+        // is only Int
+        let secs: Int = Int(hoursOffset * 60 * 60) * -1
+        return self.addSeconds(secs)
+    }
+    
+    public func addHours(_ hours: Float) -> Date? {
+        // need to convert hours to seconds becuase date component for hours
+        // is only Int
+        let secs: Int = Int(hours * 60 * 60)
+        return self.addSeconds(secs)
+    }
+
+    public func addSecondsInverse(_ sec: Int) -> Date? {
+        return addSeconds(sec * -1)
+    }
+    
+    public func addSeconds(_ sec: Int) -> Date? {
+        let startDate = self
+        var dateComponent = DateComponents()
+        dateComponent.second = sec
+        let cal = Calendar.current
+        return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
+    }
     
     /**
      Self is date in the past
@@ -445,16 +475,18 @@ extension Date {
 //        return Calendar.current.date(from: comps)!
 //    }
     
-    // MARK: - Find number of days between 2 NSDates
-    // https://www.timeanddate.com/date/duration.html
+    /// MARK: - Find number of days between 2 NSDates
+    /// https://www.timeanddate.com/date/duration.html
+    /// Usage: Date().numberOfDaysUntilDateTimeAdjusted(sd, inTimeZone: TimeZone(abbreviation: "UTC"))
+    ///
     public func numberOfDaysUntilDateTimeAdjusted(_ toDateTimeUTC: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current
-        let adjustedDate = toDateTimeUTC.add(days: 1)
+        let adjustedDate = toDateTimeUTC
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
         }
         let comps: Set<Calendar.Component> = [Calendar.Component.day]
-        let components = calendar.dateComponents(comps, from: self.toGlobalTime(), to: adjustedDate)
+        let components = calendar.dateComponents(comps, from: Date(), to: adjustedDate)
         return components.day ?? 0  // This will return the number of day(s) between dates
     }
     
@@ -512,6 +544,25 @@ extension Date {
         comps.minute = 0
         comps.second = 0
         return Calendar.current.date(from: comps)!
+    }
+    
+    /// MARK: Sets the exact time
+    ///
+    /// ex:
+    /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
+    ///
+    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
+        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let cal = Calendar.current
+        var components = cal.dateComponents(x, from: self)
+
+        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
+        // Change the time to 9:30:00 in your locale
+        components.hour = hour
+        components.minute = min
+        components.second = sec
+
+        return cal.date(from: components)
     }
 }
 
@@ -593,10 +644,9 @@ extension Date {
     // MARK: - Shows extact time difference between two dates like "1h 59m 20s" ago
 
     public func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
-        let adjustedDate = date.add(days: 1)
+        let adjustedDate = date
         let unitFlags = Set<Calendar.Component>([.month, .day, .hour])
-        var diff = NSCalendar.current.dateComponents(unitFlags, from: self.toGlobalTime(), to: adjustedDate)
+        var diff = NSCalendar.current.dateComponents(unitFlags, from: self, to: adjustedDate)
         return (abs(diff.month ?? 0), abs(diff.day ?? 0), abs(diff.hour ?? 0))
     }
-    
 }

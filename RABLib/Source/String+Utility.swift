@@ -162,7 +162,7 @@ extension String {
         return iso8601String
     }
 
-    public func toDateCustomFormat_toNewYourTimeZone() -> Date? {
+    public func toDateCustomFormat_toNewYorkTimeZone() -> Date? {
         let dateFormatter = DateFormatter()
         let differenceBettwenNYAndGMT = 5 * 60 * 60 * -1 // 5hrs
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
