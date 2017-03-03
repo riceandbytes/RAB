@@ -8,13 +8,13 @@
 
 import Foundation
 
-class TitleDetailPicCell: UITableViewCell {
+open class TitleDetailPicCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var picView: UIImageView!
     
-    func configure(_ dataRow: DataRow) {
+    open func configure(_ dataRow: DataRow) {
 //        titleLabel.text = dataRow.title
 //        
 //        if let data = dataRow.get("url") as? String {
@@ -27,5 +27,11 @@ class TitleDetailPicCell: UITableViewCell {
 //        if let data = dataRow.get("detail") as? String {
 //            detailLabel.text = data
 //        }
+    }
+}
+
+extension TitleDetailPicCell: DataSourceProtocol {
+    public static func type() -> String {
+        return TitleDetailPicCell.className
     }
 }

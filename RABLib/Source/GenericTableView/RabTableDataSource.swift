@@ -8,6 +8,12 @@
 
 import Foundation
 
+/// RawRepresentable, Equatable, Hashable, Comparable {
+
+public protocol DataSourceProtocol {
+    static func type() -> String
+}
+
 public enum RabTableKey: String {
     case subTitle
     case someId
@@ -26,25 +32,29 @@ open class RabTableDataSource {
         self.tableTitle = title
     }
     
-    open func addSingleCell(_ title: String, subTitle: String) {
-        self.add(DataRow(title: title,
-            type: .singleCell,
-            custom: [RabTableKey.subTitle.rawValue: subTitle]))
+    /// Adds a single row with a title
+    ///
+    open func addRabSingleCell(_ model: RabSingleCellModel) {
+        let dr = DataRow(title: model.title,
+                         type: RabSingleCell.type(),
+                         custom: [:])
+        dr.model = model
+        self.add(dr)
     }
     
     open func addKeyValue(_ key: String, value: String) {
         let custom = [KeyValueCell.kValue: value]
-        self.add(DataRow(title: key, type: .keyValue, custom: custom))
+        self.add(DataRow(title: key, type: KeyValueCell.type(), custom: custom))
     }
     
     open func addSinglePic(_ url: String, useReferer: String? = nil,
                              useForceRefresh: Bool = false, showIndicatorWhenLoading: Bool = false, noSideBorder: Bool = false) {
         
         if let referer = useReferer {
-            self.add(.singlePic, custom: ["url": url, "referer": referer, "useForceRefresh": useForceRefresh,
+            self.add(SinglePicCell.type(), custom: ["url": url, "referer": referer, "useForceRefresh": useForceRefresh,
                 "showIndicatorWhenLoading": showIndicatorWhenLoading, "noSideBorder": noSideBorder])
         } else {
-            self.add(.singlePic, custom: ["url": url, "useForceRefresh": useForceRefresh,
+            self.add(SinglePicCell.type(), custom: ["url": url, "useForceRefresh": useForceRefresh,
                 "showIndicatorWhenLoading": showIndicatorWhenLoading, "noSideBorder": noSideBorder])
         }
     }
@@ -52,19 +62,19 @@ open class RabTableDataSource {
     open func addTitleDetailPicCell(_ title: String, url: String, slug: String = ""
         , detail: String = "") {
         self.add(DataRow(title: title,
-            type: .titleDetailPicCell,
+            type: TitleDetailPicCell.type(),
             custom: ["url": url, "slug": slug,
                 "detail": detail]))
     }
     
     open func addPicWithInfoCell(_ userInfo: String, url: String, info: String) {
         self.add(DataRow(title: "",
-            type: .picWithInfoCell,
+            type: PicWithInfoCell.type(),
             custom: ["url": url, "userInfo": userInfo,
                 "info": info]))
     }
     
-    open func add(_ type: RabTableType, custom: [String: Any]) {
+    open func add(_ type: String, custom: [String: Any]) {
         self.add(DataRow(title: "", type: type, custom: custom))
     }
     
@@ -127,7 +137,8 @@ extension RabTableDataSource {
 open class DataRow: AnyObject {
     
     open var title = ""
-    open var type: RabTableType = .unknown
+    var model: Any? = nil
+    open var type: String!
     fileprivate var custom: [String: Any] = [:]
     open var editStyle: UITableViewCellEditingStyle = .none
     open var block1: DataRowBlock? = nil
@@ -140,7 +151,7 @@ open class DataRow: AnyObject {
      Add a single block1
      */
     public convenience init(title: String,
-                            type: RabTableType,
+                            type: String,
                             custom: [String: Any]? = nil,
                             block1: @escaping DataRowBlock)
     {
@@ -149,7 +160,7 @@ open class DataRow: AnyObject {
     }
     
     public convenience init(title: String,
-                            type: RabTableType,
+                            type: String,
                             custom: [String: Any]? = nil,
                             block1: @escaping DataRowBlock,
                             block2: @escaping DataRowBlock,
@@ -166,7 +177,7 @@ open class DataRow: AnyObject {
     }
     
     public convenience init(title: String,
-                            type: RabTableType,
+                            type: String,
                             custom: [String: Any]? = nil,
                             block1: @escaping DataRowBlock,
                             block2: @escaping DataRowBlock,
@@ -183,7 +194,7 @@ open class DataRow: AnyObject {
     }
     
     public init(title: String,
-                type: RabTableType,
+                type: String,
                 custom: [String: Any]? = nil,
                 editStyle: UITableViewCellEditingStyle = .none)
     {
@@ -197,7 +208,7 @@ open class DataRow: AnyObject {
     }
     
     public init(title: String,
-                type: RabTableType,
+                type: String,
                 editStyle: UITableViewCellEditingStyle = .none)
     {
         self.title = title
