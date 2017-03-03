@@ -253,6 +253,18 @@ extension UIView {
                 self.isHidden = hide
         })
     }
+    
+    /// Use this to show a view that load from bottom up
+    /// - vc.view.addAnimateShowFromBottomUp()
+    ///
+    public func addAnimateShowFromBottomUp() {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromBottom
+        self.layer.add(transition, forKey: kCATransition)
+    }
 }
 
 
