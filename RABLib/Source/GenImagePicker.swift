@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 
-public protocol GenImagePickerDelegate {
+@objc public protocol GenImagePickerDelegate: class {
     func didFinishPickingImage(_ image: UIImage)
     func cancelPickingImage()
     func cancelActionSheet()
+    
+    // If implemented then the menu will show Clear Photo
+    @objc optional func clearPhoto()
 }
 
 open class GenImagePicker: NSObject {
@@ -28,7 +31,8 @@ open class GenImagePicker: NSObject {
      * will display on this item.
      */
     open func show(_ viewController: UIViewController,
-                   showPopOverOnView: UIView? = nil) {
+                   showPopOverOnView: UIView? = nil,
+                   useClearPhoto: Bool = false) {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         { [unowned self] (action) -> Void in
             self.delegate?.cancelActionSheet()
@@ -48,6 +52,15 @@ open class GenImagePicker: NSObject {
         alert.addAction(cancelAction)
         alert.addAction(cameraAction)
         alert.addAction(libraryAction)
+        
+        // only add if delegate is added
+        if useClearPhoto == true && self.delegate?.clearPhoto != nil {
+            let clearPhotoAction = UIAlertAction(title: "Clear Photo", style: .default)
+            { [unowned self] (action) -> Void in
+                self.delegate?.clearPhoto?()
+            }
+            alert.addAction(clearPhotoAction)
+        }
         
         if let presenter = alert.popoverPresentationController {
             if let rightButton = viewController.navigationItem.rightBarButtonItem {
