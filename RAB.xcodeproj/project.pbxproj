@@ -41,6 +41,7 @@
 		146FF8FE1C192C8800C90A42 /* TitleWithPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 146FF8FD1C192C8800C90A42 /* TitleWithPicCell.xib */; };
 		146FF90A1C1A161700C90A42 /* TitleDetailPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146FF9091C1A161700C90A42 /* TitleDetailPicCell.swift */; };
 		146FF90C1C1A180000C90A42 /* TitleDetailPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 146FF90B1C1A180000C90A42 /* TitleDetailPicCell.xib */; };
+		1476B7831E79E31B009AA539 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476B7821E79E31B009AA539 /* UIImageView+Utility.swift */; };
 		148917981AEDFB1D00448450 /* GenExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148917971AEDFB1D00448450 /* GenExt.swift */; };
 		148917991AEDFB1D00448450 /* GenExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148917971AEDFB1D00448450 /* GenExt.swift */; };
 		148917A81AEE028400448450 /* DotIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148917A71AEE028400448450 /* DotIndicatorView.swift */; };
@@ -138,6 +139,7 @@
 		146FF8FD1C192C8800C90A42 /* TitleWithPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleWithPicCell.xib; sourceTree = "<group>"; };
 		146FF9091C1A161700C90A42 /* TitleDetailPicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleDetailPicCell.swift; sourceTree = "<group>"; };
 		146FF90B1C1A180000C90A42 /* TitleDetailPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleDetailPicCell.xib; sourceTree = "<group>"; };
+		1476B7821E79E31B009AA539 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
 		148917971AEDFB1D00448450 /* GenExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenExt.swift; sourceTree = "<group>"; };
 		148917A71AEE028400448450 /* DotIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotIndicatorView.swift; path = ActivityIndicator/DotIndicatorView.swift; sourceTree = "<group>"; };
 		149A84751C15699A0004C185 /* SinglePicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePicCell.xib; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				14B052FC1C861FA1002172E6 /* CoreData+Utility.swift */,
 				146DD3401BEF558B009E330F /* CoreGraphicsExt.swift */,
 				143B5DF31C76780700C70DBF /* CustomStuff */,
+				141027F21E60E660007AD2DD /* Data+Utility.swift */,
 				14E1B77D1C52148500E7D7AD /* FacebookHelper.swift */,
 				145F14531DAB64E900BBD534 /* GenAlertView.swift */,
 				14A4FDE61CA8D39A00BC09EE /* GenAnimateUtil.swift */,
@@ -348,6 +351,7 @@
 				149F02A11D80D78F00E211B9 /* UICollectionView+Utility.swift */,
 				149DAF961AB188630093CA5B /* UIColor+RGB.swift */,
 				149DAF971AB188630093CA5B /* UIImage+Utility.swift */,
+				1476B7821E79E31B009AA539 /* UIImageView+Utility.swift */,
 				14A78C111D9EEF6300DDCD6B /* UILabel+Utility.swift */,
 				14DDF0351E0A51C600C72C5F /* UINavigationController+Utility.swift */,
 				146DD3481BEF5988009E330F /* UIPickerView+Utility.swift */,
@@ -357,7 +361,6 @@
 				14E2F4C61CD16C10008D4279 /* UIView */,
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
-				141027F21E60E660007AD2DD /* Data+Utility.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				141547281CDAA0E800424B03 /* UIScrollView+Utility.swift in Sources */,
 				141547361CDB1C9900424B03 /* UITableView+Utility.swift in Sources */,
 				14E2F4D81CD16D43008D4279 /* UIView+Utility.swift in Sources */,
+				1476B7831E79E31B009AA539 /* UIImageView+Utility.swift in Sources */,
 				14E2F4D41CD16C3E008D4279 /* UIView+Snapshots.swift in Sources */,
 				14A547561E1CDAA5008B8BC3 /* RABGradient.swift in Sources */,
 				149A84781C1569B30004C185 /* SinglePicCell.swift in Sources */,
