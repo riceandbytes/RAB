@@ -85,8 +85,8 @@
 		14F0BEC81BF127060095068E /* OpenSansHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0BEC71BF127050095068E /* OpenSansHelper.swift */; };
 		14F0BEE71BF2C5280095068E /* GenImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0BEE61BF2C5280095068E /* GenImagePicker.swift */; };
 		14FA583F1B20335E00DA3638 /* UIViewController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */; };
-		14FA58421B20341300DA3638 /* NSObject+PathName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA58411B20341300DA3638 /* NSObject+PathName.swift */; };
-		14FA58431B20341300DA3638 /* NSObject+PathName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA58411B20341300DA3638 /* NSObject+PathName.swift */; };
+		14FA58421B20341300DA3638 /* NSObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA58411B20341300DA3638 /* NSObject+Utility.swift */; };
+		14FA58431B20341300DA3638 /* NSObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA58411B20341300DA3638 /* NSObject+Utility.swift */; };
 		14FB12F71C2769D6005D2E8D /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB12F61C2769D6005D2E8D /* OrderedDictionary.swift */; };
 		14FB13001C277DFB005D2E8D /* PicWithInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB12FF1C277DFB005D2E8D /* PicWithInfoCell.xib */; };
 		14FB13021C2780BA005D2E8D /* PicWithInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */; };
@@ -178,7 +178,7 @@
 		14F0BEC71BF127050095068E /* OpenSansHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenSansHelper.swift; path = Fonts/OpenSansHelper.swift; sourceTree = "<group>"; };
 		14F0BEE61BF2C5280095068E /* GenImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenImagePicker.swift; sourceTree = "<group>"; };
 		14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utility.swift"; sourceTree = "<group>"; };
-		14FA58411B20341300DA3638 /* NSObject+PathName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+PathName.swift"; sourceTree = "<group>"; };
+		14FA58411B20341300DA3638 /* NSObject+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utility.swift"; sourceTree = "<group>"; };
 		14FB12F61C2769D6005D2E8D /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		14FB12FF1C277DFB005D2E8D /* PicWithInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicWithInfoCell.xib; sourceTree = "<group>"; };
 		14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicWithInfoCell.swift; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 				141BBA231E5F765F00CB7E1C /* GenUtil+Image.swift */,
 				14B5FF521D2D7033005D414C /* Gestures */,
 				146DD3421BEF57CF009E330F /* NSDate+Utility.swift */,
-				14FA58411B20341300DA3638 /* NSObject+PathName.swift */,
+				14FA58411B20341300DA3638 /* NSObject+Utility.swift */,
 				146DD34C1BEF5A96009E330F /* NSURL+Utility.swift */,
 				14F0BEC71BF127050095068E /* OpenSansHelper.swift */,
 				14FB12F61C2769D6005D2E8D /* OrderedDictionary.swift */,
@@ -571,7 +571,7 @@
 				146DD3491BEF5988009E330F /* UIPickerView+Utility.swift in Sources */,
 				146FF8FC1C192C6100C90A42 /* TitleWithPicCell.swift in Sources */,
 				14A78C121D9EEF6300DDCD6B /* UILabel+Utility.swift in Sources */,
-				14FA58421B20341300DA3638 /* NSObject+PathName.swift in Sources */,
+				14FA58421B20341300DA3638 /* NSObject+Utility.swift in Sources */,
 				148917981AEDFB1D00448450 /* GenExt.swift in Sources */,
 				14B5FF601D2D7059005D414C /* TickleGestureRecognizer.swift in Sources */,
 				14FB12F71C2769D6005D2E8D /* OrderedDictionary.swift in Sources */,
@@ -620,7 +620,7 @@
 			files = (
 				14BE52221ADA568F00B82323 /* GenTypes.swift in Sources */,
 				14BE52201ADA568F00B82323 /* GenUIBarButtonItem.swift in Sources */,
-				14FA58431B20341300DA3638 /* NSObject+PathName.swift in Sources */,
+				14FA58431B20341300DA3638 /* NSObject+Utility.swift in Sources */,
 				149DAF9C1AB188630093CA5B /* UIColor+RGB.swift in Sources */,
 				149DAF9E1AB188630093CA5B /* UIImage+Utility.swift in Sources */,
 				149DAFA01AB188630093CA5B /* GenUtil.swift in Sources */,
