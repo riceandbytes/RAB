@@ -20,7 +20,7 @@ import UIKit
 
 open class GenImagePicker: NSObject {
     
-    open var delegate: GenImagePickerDelegate?
+    open weak var delegate: GenImagePickerDelegate?
     var alert: UIAlertController!
     
     /**
@@ -34,18 +34,21 @@ open class GenImagePicker: NSObject {
                    showPopOverOnView: UIView? = nil,
                    useClearPhoto: Bool = false) {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        { [unowned self] (action) -> Void in
-            self.delegate?.cancelActionSheet()
+        { [weak self] (action) -> Void in
+            guard let sSelf = self else { return }
+            sSelf.delegate?.cancelActionSheet()
         }
         
         let cameraAction = UIAlertAction(title: "Take a Photo", style: .default)
-        { [unowned self] (action) -> Void in
-            self.captureFromCamera(viewController)
+        { [weak self] (action) -> Void in
+            guard let sSelf = self else { return }
+            sSelf.captureFromCamera(viewController)
         }
         
         let libraryAction = UIAlertAction(title: "Choose from Library", style: .default)
-        { [unowned self] (action) -> Void in
-            self.selectImageFromGallery(viewController)
+        { [weak self] (action) -> Void in
+            guard let sSelf = self else { return }
+            sSelf.selectImageFromGallery(viewController)
         }
         
         alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -56,8 +59,9 @@ open class GenImagePicker: NSObject {
         // only add if delegate is added
         if useClearPhoto == true && self.delegate?.clearPhoto != nil {
             let clearPhotoAction = UIAlertAction(title: "Clear Photo", style: .default)
-            { [unowned self] (action) -> Void in
-                self.delegate?.clearPhoto?()
+            { [weak self] (action) -> Void in
+                guard let sSelf = self else { return }
+                sSelf.delegate?.clearPhoto?()
             }
             alert.addAction(clearPhotoAction)
         }
