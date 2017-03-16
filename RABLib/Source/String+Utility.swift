@@ -249,7 +249,7 @@ extension String {
                         NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue]
             let result = try NSAttributedString(data: data!, options: opt, documentAttributes: nil)
             
-            // need to conver to mutable to add the font
+            // need to convert to mutable to add the font
             let final = NSMutableAttributedString(attributedString: result)
             final.addAttribute(NSFontAttributeName,
                 value: font,

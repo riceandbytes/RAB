@@ -235,6 +235,48 @@ public extension UIView {
     }
 }
 
+// MARK: - Add Activity
+
+// Usage:
+// - start animation
+// tableView.activityIndicatorView.startAnimating()
+//
+// - stop animation
+// tableView.activityIndicatorView.stopAnimating()
+// http://stackoverflow.com/questions/29912852/how-to-show-activity-indicator-while-tableview-loads
+//
+fileprivate var kActivityIndicatorViewAssociativeKey = "kActivityIndicatorViewAssociativeKey"
+public extension UIView {
+    var activityIndicatorView: UIActivityIndicatorView {
+        get {
+            guard let activityIndicatorView = getAssociatedObject(&kActivityIndicatorViewAssociativeKey) as? UIActivityIndicatorView else {
+                
+                let activityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                activityIndicatorView.activityIndicatorViewStyle = .gray
+                activityIndicatorView.color = .gray
+                activityIndicatorView.center = center
+                activityIndicatorView.frame.y = activityIndicatorView.frame.y - 40
+                activityIndicatorView.hidesWhenStopped = true
+                addSubview(activityIndicatorView)
+                
+                setAssociatedObject(activityIndicatorView, associativeKey: &kActivityIndicatorViewAssociativeKey, policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return activityIndicatorView
+            }
+            return activityIndicatorView
+        }
+        
+        set {
+            addSubview(newValue)
+            setAssociatedObject(newValue, associativeKey:&kActivityIndicatorViewAssociativeKey, policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    func setupActivityIndicator(style: UIActivityIndicatorViewStyle, color: UIColor) {
+        activityIndicatorView.activityIndicatorViewStyle = style
+        activityIndicatorView.color = color
+    }
+}
+
 // MARK: - Add Animations
 
 extension UIView {
@@ -252,6 +294,18 @@ extension UIView {
             }, completion: { finished in
                 self.isHidden = hide
         })
+    }
+    
+    /// Use this to show a view that load from bottom up
+    /// - vc.view.addAnimateShowFromBottomUp()
+    ///
+    public func addAnimateShowFromBottomUp() {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromBottom
+        self.layer.add(transition, forKey: kCATransition)
     }
 }
 
