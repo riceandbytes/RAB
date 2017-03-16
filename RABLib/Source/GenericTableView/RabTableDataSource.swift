@@ -147,6 +147,18 @@ open class DataRow: AnyObject {
     open var block4: DataRowBlock? = nil
     open var userProfileBlock: DataRowBlock? = nil
     
+    public convenience init(_ type: String, custom: [String: Any]? = nil,
+                            block1: DataRowBlock? = nil,
+                            editStyle: UITableViewCellEditingStyle = .none)
+    {
+        self.init(title: "", type: type, custom: custom)
+        self.editStyle = editStyle
+        
+        if let b = block1 {
+            self.block1 = b
+        }
+    }
+    
     /**
      Add a single block1
      */
