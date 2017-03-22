@@ -314,8 +314,8 @@ extension UIView {
 
 extension UIView {
     
-    public func addGradient_topDown_whiteToDark() {
-            let gradientLayer = CAGradientLayer()
+    public func addGradient_topDown_whiteToDark(_ gradientLayer: CAGradientLayer) {
+//            let gradientLayer = CAGradientLayer()
             gradientLayer.frame = self.bounds
             let color1 = UIColor.clear.cgColor as CGColor
             let color2 = UIColor(white: 0.0, alpha: 0.5).cgColor as CGColor
