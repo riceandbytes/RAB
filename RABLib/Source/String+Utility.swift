@@ -161,12 +161,27 @@ extension String {
         let iso8601String = dateFormatter.date(from: self)
         return iso8601String
     }
-
+    
+    /// Convert New York date string thats passed in to a nsdate
+    ///
     public func toDateCustomFormat_toNewYorkTimeZone() -> Date? {
+        
+        // Lets get timezone sec difference betweeen 2 locs
+        guard let sourceTimeZone = TimeZone(abbreviation: "GMT") else {
+            return nil
+        }
+        guard let destinationTimeZone = TimeZone(abbreviation: "EST") else {
+            return nil
+        }
+        let sourceSeconds = sourceTimeZone.secondsFromGMT(for: Date())
+        let destinationSeconds = destinationTimeZone.secondsFromGMT(for: Date())
+        
+        let interval = destinationSeconds - sourceSeconds
+        
         let dateFormatter = DateFormatter()
-        let differenceBettwenNYAndGMT = 5 * 60 * 60 * -1 // 5hrs
+
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: differenceBettwenNYAndGMT)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: interval)
         let iso8601String = dateFormatter.date(from: self)
         return iso8601String
     }
