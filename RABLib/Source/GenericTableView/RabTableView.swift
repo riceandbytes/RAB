@@ -360,8 +360,8 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let td = self.tableData[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        let tt = td.type ?? ""
-        return self.dequeueCell(tt, td: td, indexPath: indexPath, tableView: tableView)!
+        let tt = td?.type ?? ""
+        return self.dequeueCell(tt, td: td!, indexPath: indexPath, tableView: tableView)!
     }
     
     open func updateCell(_ cell: UITableViewCell) {
@@ -401,7 +401,7 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         pln()
-        return self.tableData[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row].editStyle
+        return self.tableData[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]?.editStyle ?? UITableViewCellEditingStyle.none
     }
     
     //TODO: implement this to improve smooth scrolling

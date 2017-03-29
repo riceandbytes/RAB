@@ -89,23 +89,28 @@ public class RabTableDataSource {
         items.append(any)
     }
     
-    open subscript (index: Int) -> DataRow {
+    open subscript (index: Int) -> DataRow? {
+        guard items.containsIndex(index) else { return nil }
         return items[index]
     }
     
-    open func objectAtIndex(_ index: Int) -> DataRow {
+    open func objectAtIndex(_ index: Int) -> DataRow? {
+        guard items.containsIndex(index) else { return nil }
         return items[index]
     }
     
     open func remove(_ index: Int) {
+        guard items.count > 0 else { return }
         items.remove(at: index)
     }
     
     open func removeLastItem() {
+        guard items.count > 0 else { return }
         items.removeLast()
     }
     
     open func clearAllData() {
+        guard items.count > 0 else { return }
         items.removeAll()
     }
 }
