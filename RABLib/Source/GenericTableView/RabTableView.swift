@@ -15,6 +15,15 @@ public protocol DidSelectCell {
     func didSelectCell()
 }
 
+public protocol RabTableCellProtocol {
+    func configure(_ model: Any?)
+}
+
+public protocol RabTableModelProtocol {
+    var headerOrFooterClassName: String { get }
+    var headerOrFooterHeight: CGFloat { get }
+}
+
 @objc public protocol RabTableDelegate: class {
     @objc optional func didScrollToBottom()
 }
@@ -37,6 +46,11 @@ open class RabTableView: UITableView {
     fileprivate var footerBlock1: DataRowBlock?            = nil
     fileprivate var footerBlock2: DataRowBlock?            = nil
     fileprivate var textFont: UIFont?                      = nil
+    
+    // Hide and show header and footer
+    public var isHideHeader: Bool = false
+    public var isHideFooter: Bool = false
+    
     // bottom refresh control
     fileprivate var bottomRefreshView: BottomIndicatorView? = nil
     // this is the selection color of the cell when you select it
@@ -57,6 +71,10 @@ open class RabTableView: UITableView {
     
     // scrollview helpers
     fileprivate var checkDidMove_y: CGFloat = 0
+    
+    // Used to find what header you want to use with table
+    open var headerData: Any? = nil
+    open var footerData: Any? = nil
     
     /**
      Setup table data
@@ -80,6 +98,8 @@ open class RabTableView: UITableView {
                       textFont: UIFont?                 = nil,
                       selectionColor: UIColor?          = UIColor(hex: "#6AA2D7", alpha: 10),
                       headerBackgroundColor: UIColor?   = nil,
+                      headerData: Any?          = nil,
+                      footerData: Any?          = nil,
                       needPullUpToLoadMore: Bool        = false,
                       footerRollcallTitle: String?      = nil,
                       footerRollcallBlock: DataRowBlock? = nil,
@@ -101,6 +121,14 @@ open class RabTableView: UITableView {
             self.headerBackgroundColor = color
         }
         
+        // Setup header and footer
+        if let hn = headerData {
+            self.headerData = hn
+        }
+        if let f = footerData {
+            self.footerData = f
+        }
+
         if let tf = textFont {
             self.textFont = tf
         }
@@ -382,53 +410,65 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
     // MARK: Headers & Footer
-    
-//    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if let sectionTitle = self.tableData[section].tableTitle {
-//            let nib = UINib(nibName: "SectionHeaderCell", bundle: NSBundle.mainBundle())
-//            let view = nib.instantiateWithOwner(self, options: nil)[0] as! SectionHeaderCell
-//            view.configure(sectionTitle)
-//            
-//            if let bkgColor = self.headerBackgroundColor {
-//                view.backgroundColor = bkgColor
-//            }
-//            
-//            return view
-////        } else if headerTitle != nil && headerImage != nil {
-////            guard let title = headerTitle, let img = headerImage else {
-////                return nil
-////            }
-////            let nib = UINib(nibName: "HeaderView", bundle: NSBundle.mainBundle())
-////            let view = nib.instantiateWithOwner(self, options: nil)[0] as! HeaderView
-////            view.configure(title, image: img)
-////            return view
-//        } else {
-//            return nil
-//        }
-//    }
-    
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isHideHeader {
+            return nil
+        } else {
+            return helperTableView(tableView, viewForHeaderInSection: section)
+        }
+    }
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isHideHeader {
+            return 0
+        } else {
+            return helperTableView(tableView, heightForHeaderInSection: section)
+        }
+    }
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if isHideFooter {
+            return nil
+        } else {
+            return helperTableView(tableView, viewForFooterInSection: section)
+        }
+    }
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if isHideFooter {
+            return 0
+        } else {
+        return helperTableView(tableView, heightForFooterInSection: section)
+        }
+    }
+    
+    open func helperTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    open func helperTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if self.tableData[section].tableTitle != nil && self.tableData[section].tableTitle?.isEmpty == false {
             return sectionHeight
         } else if headerTitle != nil && headerImage != nil {
             return RabTableView.HeightDetailControllerTablerHeader
-        }
-        return 0
-    }
-    
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if footerReadMore != nil {
-            return 84
+        } else if let hd = headerData as? RabTableModelProtocol {
+            return hd.headerOrFooterHeight
         } else {
             return 0
         }
     }
-    
+    open func helperTableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    open func helperTableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if footerReadMore != nil {
+            return 84
+        } else if let hd = footerData as? RabTableModelProtocol {
+            return hd.headerOrFooterHeight
+        } else {
+            return 0
+        }
+    }
+            
     // Using custom headers so we dont need this any more
     
     //    public func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

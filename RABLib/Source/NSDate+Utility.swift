@@ -105,6 +105,9 @@ public enum NSDateStringStyle {
     /// ISO Formatted string, year month day only
     /// format: yyyy-MM-dd
     case isoMonthDayYear
+    
+    /// 02/12/17 08:48:48 PM
+    case full
 }
 
 extension DateFormatter {
@@ -126,6 +129,8 @@ extension DateFormatter {
         case .year:
             self.dateStyle = DateFormatter.Style.short
             self.timeStyle = DateFormatter.Style.none
+        case .full:
+            self.dateFormat = "MM/dd/yy hh:mm:ss a"
         case .debug:
             self.dateFormat = "MM/dd/yy HH:mm:ss:SSS"
         case .isoDateTimeUTC:

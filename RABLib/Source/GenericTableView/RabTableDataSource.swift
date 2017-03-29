@@ -20,12 +20,19 @@ public enum RabTableKey: String {
     case Unknown
 }
 
-open class RabTableDataSource {
+public class RabTableDataSource {
     var tableTitle: String?
     
     var items: [DataRow] = []
-    var count: Int {
-        return items.count
+    public var count: Int {
+        get {
+            return items.count
+        }
+    }
+    public var isEmpty: Bool {
+        get {
+            return count == 0
+        }
     }
     
     public init(title: String?) {

@@ -65,7 +65,7 @@ open class GenInputField: UIView {
         }
     }
     
-    open var placeholderTextColor: UIColor = UIColor(hex: "#FFFFFF", alpha: 75)
+    public var placeholderTextColor: UIColor = UIColor(hex: "#FFFFFF", alpha: 75)
     
     @IBInspectable open var placeholderImage: String! = ""  {
         didSet {

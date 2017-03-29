@@ -379,26 +379,6 @@ extension GenUtil {
     }
 }
 
-// MARK: - Colors
-//
-extension GenUtil {
-//    public class func colorHexToCGContextSetRGBFillColor(hex: String, context: CGContext) {
-//        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
-//        
-//        if (cString.hasPrefix("#")) {
-//            cString = (cString as NSString).substringFromIndex(1)
-//        }
-//        
-//        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0, a:CUnsignedInt = 0
-//        NSScanner(string: cString.substringWithRange(2...2)).scanHexInt(&r)
-//        NSScanner(string: cString.substringWithRange(4...2)).scanHexInt(&g)
-//        NSScanner(string: cString.substringWithRange(6...2)).scanHexInt(&b)
-//        NSScanner(string: cString.substringWithRange(7...2)).scanHexInt(&a)
-//        
-//        CGContextSetRGBFillColor(context,r/255.0,g/255.0,b/255.0,a/255.0)
-//    }
-}
-
 // MARK: - Threading
 
 public func doOnMain(_ block: @escaping ()->()) {
