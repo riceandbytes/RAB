@@ -53,7 +53,7 @@ func handleRotate(recognizer:CircleGestureRecognizer) {
  
  */
 
-let π = CGFloat(M_PI)
+let π = CGFloat(Double.pi)
 
 extension CGFloat {
     public var degrees:CGFloat {

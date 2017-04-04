@@ -215,11 +215,11 @@ extension Double {
 //
 extension GenUtil {
     public class func degreesToRadians(_ degrees: Double) -> Double {
-        return (M_PI * degrees) / 180.0
+        return (Double.pi * degrees) / 180.0
     }
     
     public class func RadiansToDegrees(_ radians: Double) -> Double {
-        return (radians * 180) / M_PI
+        return (radians * 180) / Double.pi
     }
     
 }
