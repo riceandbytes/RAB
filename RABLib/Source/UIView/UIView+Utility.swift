@@ -90,54 +90,57 @@ public extension UIView {
                         offsetEdge: CGFloat = 0,
                         textColor: UIColor = .white,
                         makeCircle: Bool = true) {
-        if let parentView = self.superview {
-            var badgeText = String(badge)
-            
-            if badge > 99 {
-                badgeText = "99+"
-            } else if badge == 0 {
-                removeBadge()
-                return
-            }
-            
-            let badgeTag = getBadgeTag()
-            // make a generic label and get the size for it; we'll create a frame later
-            let label = (parentView.viewWithTag(badgeTag) as? UILabel) ?? UILabel()
-            label.tag = badgeTag
-            label.text = badgeText
-            label.font = font
-            label.textColor = UIColor.white
-            label.backgroundColor = bkgColor
-            label.isCircle = makeCircle
-            label.textAlignment = .center
-            label.sizeToFit()
-
-            // get the values to use for creating the label's frame
-            let width = label.frame.width
-            let height = label.frame.height
-            let charCount: CGFloat = CGFloat(badgeText.characters.count)
-            let widthPerChar = width / charCount
-            
-            // for each additional character, the label grows; we want to move it to the left as we add more chars
-            let offsetFromRightEdge = ((charCount - 1) * widthPerChar / 2 )
-            
-            let x: CGFloat = self.frame.origin.x + self.frame.width - offsetFromRightEdge - offsetEdge
-            let y: CGFloat = self.frame.origin.y - 10 + offsetEdge
-            
-            if makeCircle {
-                let border: CGFloat = 5
-                var w: CGFloat = width
-                if height > width {
-                    w = height
-                }
-                w += border
-                label.frame = CGRect(x: x, y: y, width: w, height: w)
-            } else {
-                label.frame = CGRect(x: x, y: y, width: width, height: height)
-            }
-            
-            parentView.addSubview(label)
+        
+        // Find which view we can add to sometimes superview is not avail
+        let parentView = self.superview ?? self
+        
+        var badgeText = String(badge)
+        
+        if badge > 99 {
+            badgeText = "99+"
+        } else if badge == 0 {
+            removeBadge()
+            return
         }
+        
+        let badgeTag = getBadgeTag()
+        // make a generic label and get the size for it; we'll create a frame later
+        let label = (parentView.viewWithTag(badgeTag) as? UILabel) ?? UILabel()
+        label.tag = badgeTag
+        label.text = badgeText
+        label.font = font
+        label.textColor = UIColor.white
+        label.backgroundColor = bkgColor
+        label.isCircle = makeCircle
+        label.textAlignment = .center
+        label.sizeToFit()
+
+        // get the values to use for creating the label's frame
+        let width = label.frame.width
+        let height = label.frame.height
+        let charCount: CGFloat = CGFloat(badgeText.characters.count)
+        let widthPerChar = width / charCount
+        
+        // for each additional character, the label grows; we want to move it to the left as we add more chars
+        let offsetFromRightEdge = ((charCount - 1) * widthPerChar / 2 )
+        
+        let x: CGFloat = self.frame.origin.x + self.frame.width - offsetFromRightEdge - offsetEdge
+        let y: CGFloat = self.frame.origin.y - 10 + offsetEdge
+        
+        if makeCircle {
+            let border: CGFloat = 5
+            var w: CGFloat = width
+            if height > width {
+                w = height
+            }
+            w += border
+            label.frame = CGRect(x: x, y: y, width: w, height: w)
+        } else {
+            label.frame = CGRect(x: x, y: y, width: width, height: height)
+        }
+    
+        self.addSubview(label)
+        parentView.addSubview(label)
     }
     
     func removeBadge() {
