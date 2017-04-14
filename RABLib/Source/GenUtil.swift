@@ -131,6 +131,11 @@ extension GenUtil {
 
 extension GenUtil {
     
+    public class func removeUserDefault(key: String) {
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: key)
+    }
+    
     public class func setUserDefault(_ key: String, value: AnyObject) {
         let prefs = UserDefaults.standard
         prefs.setValue(value, forKey: key)
@@ -181,6 +186,7 @@ extension GenUtil {
         pWarn("-----> TIME \(label): \(timeInterval)")
     }
 }
+
 // MARK: - Numbers
 
 //EX
