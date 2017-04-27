@@ -38,22 +38,6 @@ public extension UIViewController {
         }
     }
     
-//    public func isModal() -> Bool {
-//        if self.presentingViewController != nil {
-//            return true
-//        }
-//        if self.presentingViewController?.presentedViewController == self {
-//            return true
-//        }
-//        if self.navigationController?.presentingViewController?.presentedViewController == self.navigationController  {
-//            return true
-//        }
-//        if self.tabBarController?.presentingViewController is UITabBarController {
-//            return true
-//        }
-//        return false
-//    }
-    
     /// Checks if the view controller is presented modal
     ///
     public func isModal() -> Bool {
