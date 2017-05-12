@@ -257,12 +257,14 @@ extension String {
      */
     public func convertHTMLtoAttributedStr(_ font: UIFont, color: UIColor = UIColor.black) -> NSMutableAttributedString? {
         do {
-            let data = self.data(using: String.Encoding.utf8, allowLossyConversion: true
-            )
+            guard let data = self.data(using: String.Encoding.utf8, allowLossyConversion: true
+                ) else {
+                    return nil
+            }
             
             let opt: [String : Any] = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                         NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue]
-            let result = try NSAttributedString(data: data!, options: opt, documentAttributes: nil)
+            let result = try NSAttributedString(data: data, options: opt, documentAttributes: nil)
             
             // need to convert to mutable to add the font
             let final = NSMutableAttributedString(attributedString: result)
