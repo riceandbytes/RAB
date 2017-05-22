@@ -313,6 +313,13 @@ extension String {
             return self
         }
     }
+    
+    /// Remove all non numbers from string
+    ///
+    public func removeAllNonNumeric() -> String {
+        return self.components(separatedBy: CharacterSet.decimalDigits.inverted)
+            .joined()
+    }
 }
 
 // MARK: - URLEncoding - UrlEscape
