@@ -642,7 +642,7 @@ extension Date {
     }
 }
 
-
+// MARK: - Date Helpers
 
 extension Date {
 
@@ -653,5 +653,28 @@ extension Date {
         let unitFlags = Set<Calendar.Component>([.month, .day, .hour])
         var diff = NSCalendar.current.dateComponents(unitFlags, from: self, to: adjustedDate)
         return (abs(diff.month ?? 0), abs(diff.day ?? 0), abs(diff.hour ?? 0))
+    }
+    
+    // MARK: Get Start and End of Day
+    
+    // usage: 
+    // let pred = NSPredicate(format: "(createdAt => %@) AND (createdAt <= %@)", Date().startOfDay() as NSDate, Date().endOfDay() as NSDate)
+
+    public func startOfDay() -> Date {
+        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let unitFlags: NSCalendar.Unit = [.minute, .hour, .day, .month, .year]
+        var todayComponents = gregorian!.components(unitFlags, from: self)
+        todayComponents.hour = 0
+        todayComponents.minute = 0
+        return (gregorian?.date(from: todayComponents))!
+    }
+    
+    public func endOfDay() -> Date {
+        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let unitFlags: NSCalendar.Unit = [.minute, .hour, .day, .month, .year]
+        var todayComponents = gregorian!.components(unitFlags, from: self)
+        todayComponents.hour = 23
+        todayComponents.minute = 59
+        return (gregorian?.date(from: todayComponents))!
     }
 }
