@@ -24,5 +24,29 @@ extension UIView {
         let c: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: self.superview, attribute: .centerY, multiplier: 1, constant: 0)
         self.superview?.addConstraint(c)
     }
-    
+
+    /**
+     Sets full Width and Height constraints
+     
+     - goes from edge to edge
+     */
+    public func addSubview_fullWidthHeightLayoutConstraints(_ v: UIView) {
+        self.addSubview(v)
+        v.translatesAutoresizingMaskIntoConstraints = false
+        let bindings: [String: UIView] = ["myView": v]
+        
+        let horizontalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-0-[myView]-0-|",
+                metrics: nil,
+                views: bindings)
+        self.addConstraints(horizontalConstraints)
+        
+        let verticalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-0-[myView]-0-|",
+                metrics: nil,
+                views: bindings)
+        self.addConstraints(verticalConstraints)
+    }
 }

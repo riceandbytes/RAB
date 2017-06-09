@@ -21,11 +21,16 @@ public enum GenInputFieldMode: String {
     case TextFieldOnly
 }
 
+public protocol GenInputFieldDelegate: class {
+    func didPressReturn()
+}
+
 @IBDesignable
 open class GenInputField: UIView {
     fileprivate var view: UIView!
     var currentPlaceholderText: String = ""
     open var mode: GenInputFieldMode = .ImageAndTextField
+    open weak var delegate: GenInputFieldDelegate? = nil
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var textFieldLeading: NSLayoutConstraint!
@@ -178,5 +183,14 @@ extension GenInputField: UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         self.placeholder = self.currentPlaceholderText
+    }
+    
+    /**
+     Called when you hit done
+     */
+    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
+        delegate?.didPressReturn()
+        textField.resignFirstResponder()
+        return true
     }
 }
