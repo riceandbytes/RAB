@@ -5,15 +5,21 @@
 import Foundation
 import UIKit
 
-public enum GenInputFieldType: String {
-    case Date
-    case String
-    case Email
-    case PhoneNumber
-    case Number
-    case Unknown
-    static let values: [GenInputFieldType] = [Date, String, Email,
-        PhoneNumber, Number, Unknown]
+//public enum GenInputFieldType: String {
+//    case Date
+//    case String
+//    case Email
+//    case PhoneNumber
+//    case Number
+//    case Unknown
+//    static let values: [GenInputFieldType] = [Date, String, Email,
+//        PhoneNumber, Number, Unknown]
+//}
+
+public enum GenInputFieldType {
+    case string
+    case number // number keyboard
+    case dateDayMonYear // date picker
 }
 
 public enum GenInputFieldMode: String {
@@ -32,6 +38,23 @@ open class GenInputField: UIView {
     open var mode: GenInputFieldMode = .ImageAndTextField
     open weak var delegate: GenInputFieldDelegate? = nil
     
+    open var keyboardType: GenInputFieldType = .string {
+        didSet {
+            switch keyboardType {
+            case .string:
+                self.textField.keyboardType = .default
+            case .number:
+                self.textField.keyboardType = .numberPad
+                self.addToolbar()
+            case .dateDayMonYear:
+                // but not used we just set as default
+                self.textField.keyboardType = .default
+                self.addToolbar()
+            }
+        }
+    }
+    
+    open var pickerToolbarTintColor: UIColor = .lightGray
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var textFieldLeading: NSLayoutConstraint!
     @IBOutlet weak var placeImageWidth: NSLayoutConstraint!
@@ -90,6 +113,12 @@ open class GenInputField: UIView {
             self.setNeedsLayout()
         }
     }
+
+    open var borderWidth: CGFloat = 2.0 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
     
     /// Color of the background rectangle
     open var bkgColor: UIColor = UIColor.white {
@@ -127,6 +156,8 @@ open class GenInputField: UIView {
         self.textField.autocorrectionType = UITextAutocorrectionType.no
         
         self.textField.delegate = self
+        
+
         
         // set return button to Done
 //        self.textField.returnKeyType = UIReturnKeyType.Done
@@ -170,8 +201,27 @@ open class GenInputField: UIView {
         view.layer.cornerRadius = self.cornerRadius
         view.layer.masksToBounds = true
         view.layer.borderColor = self.strokeColor.cgColor
-        view.layer.borderWidth = 2.0
+        view.layer.borderWidth = self.borderWidth
         self.contentView.backgroundColor = self.bkgColor
+    }
+    
+    // MARK: - Utility
+    
+    func addToolbar() {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = .white
+        toolBar.backgroundColor = pickerToolbarTintColor
+        toolBar.barTintColor = pickerToolbarTintColor
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(GenInputField.donePicker))
+        let f1 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let f2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        toolBar.setItems([f1, f2, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
     }
 }
 
@@ -179,6 +229,34 @@ extension GenInputField: UITextFieldDelegate {
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         self.textField.placeholder = nil
+        
+        switch keyboardType {
+        case .dateDayMonYear:
+            let datePickerView:UIDatePicker = UIDatePicker()
+            datePickerView.datePickerMode = UIDatePickerMode.date
+            datePickerView.timeZone = TimeZone(abbreviation: "UTC")
+            textField.inputView = datePickerView
+            datePickerView.addTarget(self,
+                                     action: #selector(GenInputField.datePickerValueChanged),
+                                     for: UIControlEvents.valueChanged)
+
+        default:
+            break
+        }
+    }
+    
+    /**
+     When we use the picker, and the value changes
+     */
+    func datePickerValueChanged(sender: UIDatePicker) {
+        textField.text = sender.date.toString(NSDateStringStyle.monthDayYear, timeZone: "UTC")
+    }
+    
+    /**
+     Picker done button
+     */
+    func donePicker() {
+        textField.resignFirstResponder()
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -188,7 +266,7 @@ extension GenInputField: UITextFieldDelegate {
     /**
      Called when you hit done
      */
-    func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.didPressReturn()
         textField.resignFirstResponder()
         return true
