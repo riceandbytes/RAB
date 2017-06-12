@@ -5,6 +5,19 @@
 import Foundation
 import UIKit
 
+/**
+ - usage:
+ 
+ Normal GenInput
+     input.setupWith(.clearBkgLightBorderBlackText, .shipNotShownPlaceholder)
+     input.textField.returnKeyType = UIReturnKeyType.done
+ 
+ Date Input:
+     dateInput.setupWith(.clearBkgLightBorderBlackText, .datePickerPlaceholder)
+     dateInput.pickerToolbarTintColor = SMColor.NavBlue_106
+     dateInput.keyboardType = .dateDayMonYear
+ */
+
 //public enum GenInputFieldType: String {
 //    case Date
 //    case String
@@ -55,6 +68,7 @@ open class GenInputField: UIView {
     }
     
     open var pickerToolbarTintColor: UIColor = .lightGray
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var textFieldLeading: NSLayoutConstraint!
     @IBOutlet weak var placeImageWidth: NSLayoutConstraint!
@@ -94,6 +108,12 @@ open class GenInputField: UIView {
     }
     
     public var placeholderTextColor: UIColor = UIColor(hex: "#FFFFFF", alpha: 75)
+    
+    open var isPlaceholderCenterAlign: Bool = false {
+        didSet {
+            updatePlaceholderText()
+        }
+    }
     
     @IBInspectable open var placeholderImage: String! = ""  {
         didSet {
@@ -178,7 +198,15 @@ open class GenInputField: UIView {
     fileprivate func updatePlaceholderText() {
         var text = NSMutableAttributedString(string: placeholder)
         let len = placeholder.characters.count
-
+        
+        if isPlaceholderCenterAlign {
+            let centeredParagraphStyle = NSMutableParagraphStyle()
+            centeredParagraphStyle.alignment = .center
+            text.addAttribute(NSParagraphStyleAttributeName,
+                              value: centeredParagraphStyle,
+                              range: NSRange(location: 0, length: len))
+        }
+        
         if required {
             text = NSMutableAttributedString(string: "\(placeholder)*")
             text.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(len, 1))
