@@ -33,6 +33,7 @@ public enum GenInputFieldType {
     case string
     case number // number keyboard
     case dateDayMonYear // date picker
+    case day
 }
 
 public enum GenInputFieldMode: String {
@@ -59,6 +60,7 @@ open class GenInputField: UIView {
             case .number:
                 self.textField.keyboardType = .numberPad
                 self.addToolbar()
+            case .day: fallthrough
             case .dateDayMonYear:
                 // but not used we just set as default
                 self.textField.keyboardType = .default

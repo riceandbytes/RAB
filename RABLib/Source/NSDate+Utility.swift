@@ -677,4 +677,15 @@ extension Date {
         todayComponents.minute = 59
         return (gregorian?.date(from: todayComponents))!
     }
+    
+    /**
+     Uses Date() object and check to see how
+     many days are in this month
+     */
+    public func howManyDaysInMonth() -> Int {
+        let cal = Calendar(identifier: .gregorian)
+        let monthRange = cal.range(of: .day, in: .month, for: self)!
+        let daysInMonth = monthRange.count
+        return daysInMonth
+    }
 }
