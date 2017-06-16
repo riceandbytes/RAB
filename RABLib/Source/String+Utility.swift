@@ -320,6 +320,16 @@ extension String {
         return self.components(separatedBy: CharacterSet.decimalDigits.inverted)
             .joined()
     }
+    
+    // Capitalize frist letter
+    public func capitalizingFirstLetter() -> String {
+        let first = String(characters.prefix(1)).capitalized
+        let other = String(characters.dropFirst())
+        return first + other
+    }
+    public mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
 
 // MARK: - URLEncoding - UrlEscape
