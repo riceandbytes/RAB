@@ -69,6 +69,12 @@ open class GenInputField: UIView {
         }
     }
     
+    open var capitalType: UITextAutocapitalizationType = .none {
+        didSet {
+            self.textField.autocapitalizationType = capitalType
+        }
+    }
+    
     open var pickerToolbarTintColor: UIColor = .lightGray
     
     @IBOutlet weak var contentView: UIView!
