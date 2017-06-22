@@ -259,6 +259,10 @@ open class GenInputField: UIView {
         toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
     }
+    
+    public func setBottomBorder() {
+        textField.setBottomBorder()
+    }
 }
 
 extension GenInputField: UITextFieldDelegate {
