@@ -194,8 +194,15 @@ extension String {
         return x
     }
     
-    // MARK: - Utiltiy
+    // MARK: - Utility
 
+    /**
+     Check for whitespaces, newlines, and tabs
+     */
+    public var isEmptyField: Bool {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
     public func contains(_ other: String) -> Bool{
         if self.range(of: other) != nil {
             return true
