@@ -38,7 +38,10 @@ public enum GenInputFieldType {
 
 public enum GenInputFieldMode: String {
     case ImageAndTextField
+    // Has border of 20 on lead and tail
     case TextFieldOnly
+    // Has border of 0 on all sides
+    case TextFieldOnlyNoEdge
 }
 
 public protocol GenInputFieldDelegate: class {
@@ -83,6 +86,11 @@ open class GenInputField: UIView {
     @IBOutlet open weak var textField: UITextField!
     @IBOutlet open weak var placeImage: UIImageView!
 
+    @IBOutlet weak var leadingEdge: NSLayoutConstraint!
+    @IBOutlet weak var tailEdge: NSLayoutConstraint!
+    @IBOutlet weak var topEdge: NSLayoutConstraint!
+    @IBOutlet weak var bottomEdge: NSLayoutConstraint!
+    
     override open func updateConstraints() {
         switch self.mode {
         case .ImageAndTextField:
@@ -93,6 +101,15 @@ open class GenInputField: UIView {
             placeImage.isHidden = true
             placeImageWidth.constant = 0
             textFieldLeading.constant = 0
+        case .TextFieldOnlyNoEdge:
+            placeImage.isHidden = true
+            placeImageWidth.constant = 0
+            textFieldLeading.constant = 0
+            
+            topEdge.constant = 5
+            bottomEdge.constant = 5
+            leadingEdge.constant = 5
+            tailEdge.constant = 5
         }
         super.updateConstraints()
     }
@@ -150,6 +167,12 @@ open class GenInputField: UIView {
     
     /// Color of the background rectangle
     open var bkgColor: UIColor = UIColor.white {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    open var bkgColorForView: UIColor = UIColor.clear {
         didSet {
             self.setNeedsLayout()
         }
@@ -238,6 +261,8 @@ open class GenInputField: UIView {
         view.layer.masksToBounds = true
         view.layer.borderColor = self.strokeColor.cgColor
         view.layer.borderWidth = self.borderWidth
+        
+        view.backgroundColor = self.bkgColorForView
         self.contentView.backgroundColor = self.bkgColor
     }
     
@@ -260,8 +285,8 @@ open class GenInputField: UIView {
         textField.inputAccessoryView = toolBar
     }
     
-    public func setBottomBorder() {
-        textField.setBottomBorder()
+    public func setBottomBorder(borderColor: UIColor = .white) {
+        textField.setBottomBorder(borderColor: borderColor)
     }
 }
 
@@ -310,5 +335,26 @@ extension GenInputField: UITextFieldDelegate {
         delegate?.didPressReturn()
         textField.resignFirstResponder()
         return true
+    }
+}
+
+// MARK: - Setup UI
+
+extension GenInputField {
+    
+    /**
+     http://imgur.com/a/Sa2Zg
+     */
+    public func setupUIUnderline(backgroundColor: UIColor,
+                          borderColor: UIColor = .white)
+    {
+        self.mode = .TextFieldOnlyNoEdge
+        
+        // must clear before set bottom border
+        self.bkgColorForView = UIColor.clear
+        self.setBottomBorder(borderColor: borderColor)
+        
+        self.textField.backgroundColor = backgroundColor
+        self.bkgColor = backgroundColor
     }
 }

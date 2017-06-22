@@ -19,11 +19,15 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="NO"/>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="bottomEdge" destination="KqS-Vp-cAu" id="gka-Tu-pD5"/>
                 <outlet property="contentView" destination="063-z1-B2Y" id="jGk-kj-Cd4"/>
+                <outlet property="leadingEdge" destination="6ez-iq-iWW" id="ByU-ra-0ic"/>
                 <outlet property="placeImage" destination="kip-No-XMs" id="SJv-1Y-5wN"/>
                 <outlet property="placeImageWidth" destination="ZsC-tI-Ocd" id="r8x-Bg-99X"/>
+                <outlet property="tailEdge" destination="ieY-m9-1dq" id="FBZ-Bs-dgT"/>
                 <outlet property="textField" destination="cWs-YC-i4f" id="n0a-pN-Ly7"/>
                 <outlet property="textFieldLeading" destination="VNA-cN-Jvu" id="fzL-lV-ljk"/>
+                <outlet property="topEdge" destination="PW3-lf-s0H" id="Q6Q-sc-KXA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
