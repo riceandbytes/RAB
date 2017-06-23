@@ -288,7 +288,12 @@ open class GenInputField: UIView {
     public func setBottomBorder(borderColor: UIColor = .white) {
         textField.setBottomBorder(borderColor: borderColor)
     }
+    
+    // MARK: Picker Stuff
+    var currentPickerValue: String = ""
 }
+
+// MARK: - UITextFieldDelegate
 
 extension GenInputField: UITextFieldDelegate {
     
@@ -297,14 +302,15 @@ extension GenInputField: UITextFieldDelegate {
         
         switch keyboardType {
         case .dateDayMonYear:
-            let datePickerView:UIDatePicker = UIDatePicker()
+            // MARK: Setup Picker
+            let datePickerView: UIDatePicker = UIDatePicker()
             datePickerView.datePickerMode = UIDatePickerMode.date
             datePickerView.timeZone = TimeZone(abbreviation: "UTC")
             textField.inputView = datePickerView
             datePickerView.addTarget(self,
                                      action: #selector(GenInputField.datePickerValueChanged),
                                      for: UIControlEvents.valueChanged)
-
+            currentPickerValue = datePickerView.date.toString(NSDateStringStyle.monthDayYear, timeZone: "UTC")
         default:
             break
         }
@@ -314,13 +320,15 @@ extension GenInputField: UITextFieldDelegate {
      When we use the picker, and the value changes
      */
     func datePickerValueChanged(sender: UIDatePicker) {
-        textField.text = sender.date.toString(NSDateStringStyle.monthDayYear, timeZone: "UTC")
+        currentPickerValue = sender.date.toString(NSDateStringStyle.monthDayYear, timeZone: "UTC")
+        textField.text = currentPickerValue
     }
     
     /**
      Picker done button
      */
     func donePicker() {
+        textField.text = currentPickerValue
         textField.resignFirstResponder()
     }
     
