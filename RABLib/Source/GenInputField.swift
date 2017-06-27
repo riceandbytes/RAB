@@ -33,7 +33,7 @@ public enum GenInputFieldType {
     case string
     case number // number keyboard
     case dateDayMonYear // date picker
-    case day
+    case day  // use number pad
 }
 
 public enum GenInputFieldMode: String {
@@ -328,7 +328,12 @@ extension GenInputField: UITextFieldDelegate {
      Picker done button
      */
     func donePicker() {
-        textField.text = currentPickerValue
+        switch keyboardType {
+        case .dateDayMonYear:
+            textField.text = currentPickerValue
+        default:
+            break
+        }
         textField.resignFirstResponder()
     }
     
