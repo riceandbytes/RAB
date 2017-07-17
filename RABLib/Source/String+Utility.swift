@@ -370,7 +370,7 @@ extension Character {
     
 }
 
-// MARK: - Phone Number
+// MARK: - Phone Number - Website
 //
 public extension String {
     
@@ -385,6 +385,36 @@ public extension String {
     */
     public func toPhoneNumber() -> String {
         return replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: nil)
+    }
+    
+    /**
+     Calls phone number
+     */
+    public func openPhoneNumber() {
+        if let url = URL(string: "tel://\(self)"),
+            UIApplication.shared.canOpenURL(url)
+        {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    /**
+     Opens a website
+     */
+    public func openWebsite() -> Bool {
+        guard let url = URL(string: self) else {
+            return false
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+        return true
     }
 }
 
