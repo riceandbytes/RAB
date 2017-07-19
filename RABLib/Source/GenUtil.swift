@@ -89,6 +89,28 @@ extension GenUtil {
     }
 }
 
+// MARK: - Check Longitutde and Latitude
+
+extension GenUtil {
+    
+    // The latitude must be a number between -90 and 90 and the longitude between -180 and 180
+    public class func checkLatitude(_ val: Double) -> Bool {
+        if val >= -90 && val <= 90 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    public class func checkLongitude(_ val: Double) -> Bool {
+        if val >= -180 && val <= 180 {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 // MARK: - Conversion
 extension GenUtil {
     
