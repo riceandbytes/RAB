@@ -21,6 +21,14 @@ extension Array {
     public func containsIndex(_ index: Int) -> Bool {
         return self.indices.contains(index)
     }
+    
+    /**
+     Just gets a random item from array
+     */
+    public func randomItem() -> Element {
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        return self[index]
+    }
 }
 
 // MARK: - Shuffle Array
