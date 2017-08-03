@@ -83,6 +83,7 @@
 		14E2F4D81CD16D43008D4279 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2F4D61CD16D43008D4279 /* UIView+Utility.swift */; };
 		14E2F4DB1CD16E89008D4279 /* UIViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2F4DA1CD16E89008D4279 /* UIViewController+Animation.swift */; };
 		14E2F4EC1CD913C4008D4279 /* CollectionType+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */; };
+		14E5050B1F33912400A5A8BD /* Float+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5050A1F33912400A5A8BD /* Float+Utility.swift */; };
 		14F0BEC81BF127060095068E /* OpenSansHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0BEC71BF127050095068E /* OpenSansHelper.swift */; };
 		14F0BEE71BF2C5280095068E /* GenImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0BEE61BF2C5280095068E /* GenImagePicker.swift */; };
 		14FA583F1B20335E00DA3638 /* UIViewController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */; };
@@ -177,6 +178,7 @@
 		14E2F4D61CD16D43008D4279 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Utility.swift"; path = "UIView/UIView+Utility.swift"; sourceTree = "<group>"; };
 		14E2F4DA1CD16E89008D4279 /* UIViewController+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Animation.swift"; path = "UIViewController/UIViewController+Animation.swift"; sourceTree = "<group>"; };
 		14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Utility.swift"; sourceTree = "<group>"; };
+		14E5050A1F33912400A5A8BD /* Float+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Utility.swift"; sourceTree = "<group>"; };
 		14F0BEC71BF127050095068E /* OpenSansHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenSansHelper.swift; path = Fonts/OpenSansHelper.swift; sourceTree = "<group>"; };
 		14F0BEE61BF2C5280095068E /* GenImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenImagePicker.swift; sourceTree = "<group>"; };
 		14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utility.swift"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				148917A61AEE023800448450 /* Activity Indicator */,
 				1410AD0A1D237D4800DEA84C /* Array+Utility.swift */,
+				14E5050A1F33912400A5A8BD /* Float+Utility.swift */,
 				14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */,
 				14B052FC1C861FA1002172E6 /* CoreData+Utility.swift */,
 				146DD3401BEF558B009E330F /* CoreGraphicsExt.swift */,
@@ -555,6 +558,7 @@
 				141547281CDAA0E800424B03 /* UIScrollView+Utility.swift in Sources */,
 				141547361CDB1C9900424B03 /* UITableView+Utility.swift in Sources */,
 				14E2F4D81CD16D43008D4279 /* UIView+Utility.swift in Sources */,
+				14E5050B1F33912400A5A8BD /* Float+Utility.swift in Sources */,
 				1476B7831E79E31B009AA539 /* UIImageView+Utility.swift in Sources */,
 				14E2F4D41CD16C3E008D4279 /* UIView+Snapshots.swift in Sources */,
 				14A547561E1CDAA5008B8BC3 /* RABGradient.swift in Sources */,
