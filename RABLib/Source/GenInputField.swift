@@ -46,6 +46,8 @@ public enum GenInputFieldMode: String {
 
 public protocol GenInputFieldDelegate: class {
     func didPressReturn()
+    func genInputDidBeginEditing(_ textField: UITextField)
+    func genInputDidEndEditing(_ textField: UITextField)
 }
 
 @IBDesignable
@@ -299,6 +301,7 @@ extension GenInputField: UITextFieldDelegate {
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         self.textField.placeholder = nil
+        delegate?.genInputDidBeginEditing(textField)
         
         switch keyboardType {
         case .dateDayMonYear:
@@ -339,6 +342,7 @@ extension GenInputField: UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         self.placeholder = self.currentPlaceholderText
+        delegate?.genInputDidEndEditing(textField)
     }
     
     /**
