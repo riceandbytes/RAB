@@ -108,6 +108,9 @@ public enum NSDateStringStyle {
     
     /// 02/12/17 08:48:48 PM
     case full
+    
+    /// 02/12/17 08:48 PM
+    case fullNoSec
 }
 
 extension DateFormatter {
@@ -139,6 +142,8 @@ extension DateFormatter {
             self.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         case .isoMonthDayYear:
             self.dateFormat = "yyyy-MM-dd"
+        case .fullNoSec:
+            self.dateFormat = "MM/dd/yy hh:mm a"
         }
     }
 }
