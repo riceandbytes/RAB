@@ -83,7 +83,7 @@ public extension UIView {
             self.layer.masksToBounds = true
         }
     }
-
+    
     func addBadge(_ badge: Int,
                         font: UIFont,
                         bkgColor: UIColor,
@@ -121,7 +121,8 @@ public extension UIView {
         let charCount: CGFloat = CGFloat(badgeText.characters.count)
         let widthPerChar = width / charCount
         
-        // for each additional character, the label grows; we want to move it to the left as we add more chars
+        // for each additional character, the label grows
+        // we want to move it to the left as we add more chars
         let offsetFromRightEdge = ((charCount - 1) * widthPerChar / 2 )
         
         let x: CGFloat = self.frame.origin.x + self.frame.width - offsetFromRightEdge - offsetEdge
@@ -139,16 +140,41 @@ public extension UIView {
             label.frame = CGRect(x: x, y: y, width: width, height: height)
         }
     
-        self.addSubview(label)
+//        self.addSubview(label)
         parentView.addSubview(label)
     }
     
     func removeBadge() {
         guard getBadgeTag() > 0 else { return }
-        if let badgeView = self.superview?.viewWithTag(getBadgeTag()) as? UILabel {
+
+        // Find which view we can add to sometimes superview is not avail
+        let parentView = self.superview ?? self
+
+        if let badgeView = parentView.viewWithTag(getBadgeTag()) as? UILabel {
             badgeView.removeFromSuperview()
         }
     }
+    
+    /**
+     When we rotate screen we need to recalc
+     */
+//    func updateBadgeFrame() {
+//        let parentView = self.superview ?? self
+//        
+//        if let badgeView = parentView.viewWithTag(getBadgeTag()) as? UILabel {
+//            if makeCricle {
+//                let border: CGFloat = 5
+//                var w: CGFloat = width
+//                if height > width {
+//                    w = height
+//                }
+//                w += border
+//                badgeView.frame = CGRect(x: x, y: y, width: w, height: w)
+//            } else {
+//                badgeView.frame = CGRect(x: x, y: y, width: width, height: height)
+//            }
+//        }
+//    }
     
     fileprivate func getBadgeTag() -> Int {
         // tag this label with the x/y of the view it's for so we can find it later
