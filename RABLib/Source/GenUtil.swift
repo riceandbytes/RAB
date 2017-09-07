@@ -185,6 +185,17 @@ extension GenUtil {
     }
 }
 
+// MARK: - Time and Date, for more look at NSDate+Utility
+
+extension GenUtil {
+    
+    public class func getUTCInSeconds() -> Int64 {
+        // UNIX time format is with milliseconds
+        let x = Int64(floor(Date().timeIntervalSince1970 * 1000))
+        return x
+    }
+}
+
 // MARK: - Time Elapsed for Testing
 
 extension GenUtil {
