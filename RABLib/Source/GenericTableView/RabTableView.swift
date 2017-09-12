@@ -445,6 +445,7 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
     open func helperTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
+    
     open func helperTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if self.tableData[section].tableTitle != nil && self.tableData[section].tableTitle?.isEmpty == false {
             return sectionHeight

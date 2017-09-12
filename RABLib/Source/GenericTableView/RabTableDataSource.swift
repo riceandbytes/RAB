@@ -21,7 +21,7 @@ public enum RabTableKey: String {
 }
 
 public class RabTableDataSource {
-    var tableTitle: String?
+    public var tableTitle: String?
     
     var items: [DataRow] = []
     public var count: Int {
