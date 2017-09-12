@@ -93,6 +93,11 @@ open class GenInputField: UIView {
     @IBOutlet weak var topEdge: NSLayoutConstraint!
     @IBOutlet weak var bottomEdge: NSLayoutConstraint!
     
+    // Shortcut to get textfield value
+    open var text: String? {
+        return textField.text
+    }
+    
     override open func updateConstraints() {
         switch self.mode {
         case .ImageAndTextField:
@@ -192,6 +197,35 @@ open class GenInputField: UIView {
         if view == nil {
             xibSetup()
         }
+    }
+    
+    /**
+     Use this when not loading with storyboard
+     
+     - ex:
+        let textField = GenInputField()
+     */
+    public init(_ coder: NSCoder? = nil) {
+        if let coder = coder {
+            super.init(coder: coder)!
+        } else {
+            super.init()
+        }
+        
+        let name = NSStringFromClass(type(of: self)).components(separatedBy: ".").last!
+        Bundle.main.loadNibNamed(name, owner: self, options: nil)
+        self.addSubview(view)
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addConstraints(
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
+                                           options: NSLayoutFormatOptions.alignAllCenterY ,
+                                           metrics: nil, views: ["view": self.view]))
+        
+        self.addConstraints(
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|",
+                                           options: NSLayoutFormatOptions.alignAllCenterX,
+                                           metrics: nil, views: ["view": self.view]))
     }
     
     func xibSetup() {

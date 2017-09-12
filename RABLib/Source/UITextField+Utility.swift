@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public extension UITextField {
     
@@ -56,5 +57,36 @@ extension UITextField {
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
+    }
+}
+
+// MARK: - Add Max Length to UITextField
+
+private var __maxLengths = [UITextField: Int]()
+extension UITextField {
+    @IBInspectable public var maxLength: Int {
+        get {
+            guard let l = __maxLengths[self] else {
+                return 150 // (global default-limit. or just, Int.max)
+            }
+            return l
+        }
+        set {
+            __maxLengths[self] = newValue
+            addTarget(self, action: #selector(fix), for: .editingChanged)
+        }
+    }
+    func fix(textField: UITextField) {
+        let t = textField.text
+        textField.text = t?.safelyLimitedTo(length: maxLength)
+    }
+}
+
+extension String
+{
+    func safelyLimitedTo(length n: Int)->String {
+        let c = self.characters
+        if (c.count <= n) { return self }
+        return String( Array(c).prefix(upTo: n) )
     }
 }
