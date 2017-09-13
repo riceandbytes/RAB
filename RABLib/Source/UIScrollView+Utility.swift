@@ -16,8 +16,11 @@ extension UIScrollView {
     }
 
     public func scrollToBottom(animated: Bool = true) {
-        let bottomOffset = CGPoint(x: 0, y: max(contentSize.height, 0))
-        setContentOffset(bottomOffset, animated: animated)
+        guard isAtBottom == false else { return }
+        
+        var offset = self.contentOffset
+        offset.y = self.contentSize.height + self.contentInset.bottom - self.bounds.size.height
+        self.setContentOffset(offset, animated: animated)
     }
 
     public var isAtTop: Bool {
