@@ -1,2 +1,7 @@
 MUST IMPORT
 pod 'Kingfisher'
+
+NSDate+Utility
+
+- Creates date object using day, month, year
+    - public static func make(day: Int, month: Int, year: Int) -> Date?

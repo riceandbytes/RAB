@@ -651,7 +651,7 @@ extension Date {
 
 extension Date {
 
-    // MARK: - Shows extact time difference between two dates like "1h 59m 20s" ago
+    // MARK: Shows extact time difference between two dates like "1h 59m 20s" ago
 
     public func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
         let adjustedDate = date
@@ -692,5 +692,21 @@ extension Date {
         let monthRange = cal.range(of: .day, in: .month, for: self)!
         let daysInMonth = monthRange.count
         return daysInMonth
+    }
+    
+    /**
+     Creates date object using day, month, year
+     
+     - Usage:
+        let monthCheck = Date.make(day: 1, month: monthInt, year: yearInt)
+     */
+    public static func make(day: Int, month: Int, year: Int) -> Date? {
+        var c = DateComponents()
+        c.year = year
+        c.month = month
+        c.day = day
+        
+        // Get NSDate given the above date components
+        return NSCalendar(identifier: NSCalendar.Identifier.gregorian)?.date(from: c)
     }
 }
