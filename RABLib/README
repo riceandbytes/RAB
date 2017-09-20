@@ -1,7 +1,25 @@
-MUST IMPORT
-pod 'Kingfisher'
+----------------------------
+GenUtil
 
+- Creates a attributed string used as a helper
+public class func attStr(_ text: String, _ font: UIFont, _ color: UIColor) -> NSMutableAttributedString {
+
+
+----------------------------
 NSDate+Utility
 
 - Creates date object using day, month, year
-    - public static func make(day: Int, month: Int, year: Int) -> Date?
+public static func make(day: Int, month: Int, year: Int) -> Date?
+
+
+----------------------------
+UILabel+Utility
+
+- Helper set text, font, and color
+public func setup(_ text: String, _ font: UIFont, _ textColor: UIColor)
+
+- Stop clipping of letters like y or g
+public func dontClipBottom()
+
+- Set HTML String
+func setHTML(html: String)

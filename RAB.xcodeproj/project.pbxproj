@@ -46,6 +46,7 @@
 		148917991AEDFB1D00448450 /* GenExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148917971AEDFB1D00448450 /* GenExt.swift */; };
 		148917A81AEE028400448450 /* DotIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148917A71AEE028400448450 /* DotIndicatorView.swift */; };
 		1498E3C91F703A2400D9FF16 /* Optional+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */; };
+		1498E3D81F71CCA200D9FF16 /* NSAttributedString+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */; };
 		149A84761C15699A0004C185 /* SinglePicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149A84751C15699A0004C185 /* SinglePicCell.xib */; };
 		149A84781C1569B30004C185 /* SinglePicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A84771C1569B30004C185 /* SinglePicCell.swift */; };
 		149DAF9B1AB188630093CA5B /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149DAF961AB188630093CA5B /* UIColor+RGB.swift */; };
@@ -145,6 +146,7 @@
 		148917971AEDFB1D00448450 /* GenExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenExt.swift; sourceTree = "<group>"; };
 		148917A71AEE028400448450 /* DotIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotIndicatorView.swift; path = ActivityIndicator/DotIndicatorView.swift; sourceTree = "<group>"; };
 		1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Utility.swift"; sourceTree = "<group>"; };
+		1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utility.swift"; sourceTree = "<group>"; };
 		149A84751C15699A0004C185 /* SinglePicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePicCell.xib; sourceTree = "<group>"; };
 		149A84771C1569B30004C185 /* SinglePicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePicCell.swift; sourceTree = "<group>"; };
 		149DAF961AB188630093CA5B /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */,
+				1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				14BE521F1ADA568F00B82323 /* GenUIBarButtonItem.swift in Sources */,
 				14FA583F1B20335E00DA3638 /* UIViewController+Utility.swift in Sources */,
 				149DAF9B1AB188630093CA5B /* UIColor+RGB.swift in Sources */,
+				1498E3D81F71CCA200D9FF16 /* NSAttributedString+Utility.swift in Sources */,
 				14F0BEC81BF127060095068E /* OpenSansHelper.swift in Sources */,
 				14E2F4B61CCF2A69008D4279 /* GenSocialNetwork.swift in Sources */,
 				145549641D30DC070078EAEF /* Semaphore.swift in Sources */,

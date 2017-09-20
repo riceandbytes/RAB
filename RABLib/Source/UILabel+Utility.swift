@@ -10,7 +10,12 @@ import Foundation
 
 extension UILabel {
     
-    public func setup(_ text: String, _ font: UIFont, _ textColor: UIColor) {
+    /**
+     Helper set text, font, and color
+     */
+    public func setup(_ text: String,
+                      _ font: UIFont,
+                      _ textColor: UIColor) {
         self.text = text
         self.font = font
         self.textColor = textColor
@@ -26,5 +31,32 @@ extension UILabel {
         self.numberOfLines = 2
         self.minimumScaleFactor = 0.7
         self.adjustsFontSizeToFitWidth = true
+    }
+    
+    /**
+     Set HTML String
+     */
+    public func setHTML(_ html: String,
+                        _ font: UIFont,
+                        _ color: UIColor) {
+        do {
+            let at = try NSAttributedString(HTMLString: html,
+                                            font: font,
+                                            color: color)
+            self.attributedText = at
+        } catch {
+            self.text = html
+        }
+    }
+    
+    public func setHTML(_ html: String) {
+        do {
+            let at = try NSAttributedString(HTMLString: html,
+                                            font: nil,
+                                            color: nil)
+            self.attributedText = at
+        } catch {
+            self.text = html
+        }
     }
 }

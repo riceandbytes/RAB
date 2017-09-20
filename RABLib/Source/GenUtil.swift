@@ -46,6 +46,15 @@ open class GenUtil {
     }
 }
 
+// MARK: - Text Helper
+extension GenUtil {
+    
+    public class func attStr(_ text: String, _ font: UIFont, _ color: UIColor) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: text, attributes: [NSFontAttributeName: font,
+                            NSForegroundColorAttributeName: color])
+    }
+}
+
 // MARK: - Other
 
 extension GenUtil {
