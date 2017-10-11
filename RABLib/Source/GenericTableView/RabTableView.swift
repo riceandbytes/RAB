@@ -162,9 +162,7 @@ open class RabTableView: UITableView {
         
         var supportedTypes: Set<String> = []
         for x in tableData {
-            for d in x.items {
-                supportedTypes.insert(d.type)
-            }
+            supportedTypes.insert(x.type)
         }
         pln(supportedTypes)
         self.registerCells(Array(supportedTypes))

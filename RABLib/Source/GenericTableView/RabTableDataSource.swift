@@ -21,6 +21,9 @@ public enum RabTableKey: String {
 }
 
 public class RabTableDataSource {
+    // Must set the type
+    public var type: String
+    
     public var tableTitle: String?
     
     var items: [DataRow] = []
@@ -35,8 +38,14 @@ public class RabTableDataSource {
         }
     }
     
-    public init(title: String?) {
+    public init(type: String, title: String?) {
         self.tableTitle = title
+        self.type = type
+    }
+    
+    public init(_ type: String) {
+        self.tableTitle = nil
+        self.type = type
     }
     
     /// Adds a single row with a title
