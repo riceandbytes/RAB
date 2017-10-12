@@ -23,3 +23,9 @@ public func dontClipBottom()
 
 - Set HTML String
 func setHTML(html: String)
+
+----------------------------
+Optional+Utility
+
+Checks to see if string is nil or empty
+guard let title = textField.text.nilIfEmpty else

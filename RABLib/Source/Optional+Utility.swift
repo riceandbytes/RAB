@@ -27,7 +27,7 @@ import Foundation
  print(b) // ["nate", "loves", "swift"]
  */
 extension Optional where Wrapped == String {
-    var nilIfEmpty: String? {
+    public var nilIfEmpty: String? {
         guard let strongSelf = self else {
             return nil
         }
