@@ -26,8 +26,12 @@ extension String {
     /**
      Returns the float value of a string
      */
-    public var intValue: Int32 {
+    public var int32Value: Int32 {
         return (self as NSString).intValue
+    }
+
+    public var intValue: Int {
+        return (self as NSString).integerValue
     }
     
     public var int64Value: Int64 {
