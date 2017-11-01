@@ -76,6 +76,7 @@
 		14CB4C811BEF468400AE709C /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB4C801BEF468400AE709C /* String+Utility.swift */; };
 		14CB4C841BEF4D6B00AE709C /* GenInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB4C821BEF4D6B00AE709C /* GenInputField.swift */; };
 		14CB4C851BEF4D6B00AE709C /* GenInputField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14CB4C831BEF4D6B00AE709C /* GenInputField.xib */; };
+		14DD35481FAA5DA400669E60 /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD35471FAA5DA400669E60 /* Obfuscator.swift */; };
 		14DDF0361E0A51C600C72C5F /* UINavigationController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DDF0351E0A51C600C72C5F /* UINavigationController+Utility.swift */; };
 		14DDF0441E12E97800C72C5F /* UIButton+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DDF0431E12E97800C72C5F /* UIButton+Utility.swift */; };
 		14E1B77E1C52148500E7D7AD /* FacebookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B77D1C52148500E7D7AD /* FacebookHelper.swift */; };
@@ -173,6 +174,7 @@
 		14CB4C801BEF468400AE709C /* String+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		14CB4C821BEF4D6B00AE709C /* GenInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenInputField.swift; sourceTree = "<group>"; };
 		14CB4C831BEF4D6B00AE709C /* GenInputField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenInputField.xib; sourceTree = "<group>"; };
+		14DD35471FAA5DA400669E60 /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
 		14DDF0351E0A51C600C72C5F /* UINavigationController+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Utility.swift"; sourceTree = "<group>"; };
 		14DDF0431E12E97800C72C5F /* UIButton+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Utility.swift"; sourceTree = "<group>"; };
 		14E1B77D1C52148500E7D7AD /* FacebookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHelper.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */,
 				1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */,
+				14DD35471FAA5DA400669E60 /* Obfuscator.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				14A78C121D9EEF6300DDCD6B /* UILabel+Utility.swift in Sources */,
 				14FA58421B20341300DA3638 /* NSObject+Utility.swift in Sources */,
 				148917981AEDFB1D00448450 /* GenExt.swift in Sources */,
+				14DD35481FAA5DA400669E60 /* Obfuscator.swift in Sources */,
 				14B5FF601D2D7059005D414C /* TickleGestureRecognizer.swift in Sources */,
 				14FB12F71C2769D6005D2E8D /* OrderedDictionary.swift in Sources */,
 				143572061D42C27F009C8FB2 /* BottomIndicatorView.swift in Sources */,
