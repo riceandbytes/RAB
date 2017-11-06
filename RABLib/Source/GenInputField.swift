@@ -7,8 +7,11 @@ import UIKit
 
 /**
  - usage:
+ Auto Complete:
+     You must set this string array
+     autoCompletionPossibilities
  
- Normal GenInput
+ Normal GenInput:
      input.setupWith(.clearBkgLightBorderBlackText, .shipNotShownPlaceholder)
      input.textField.returnKeyType = UIReturnKeyType.done
  
@@ -52,6 +55,11 @@ public protocol GenInputFieldDelegate: class {
 
 @IBDesignable
 open class GenInputField: UIView {
+    
+    // MARK: Support Auto Complete
+    open var autoCompletionPossibilities: [String]? = nil
+    var autoCompleteCharacterCount = 0
+
     fileprivate var view: UIView!
     var currentPlaceholderText: String = ""
     open var mode: GenInputFieldMode = .ImageAndTextField
@@ -386,6 +394,97 @@ extension GenInputField: UITextFieldDelegate {
         delegate?.didPressReturn()
         textField.resignFirstResponder()
         return true
+    }
+    
+    // MARK: Auto Complete
+    
+    public func textField(_ textField: UITextField,
+                          shouldChangeCharactersIn range: NSRange,
+                          replacementString string: String) -> Bool
+    {
+        guard autoCompletionPossibilities != nil else {
+            return true
+        }
+        var subString = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string)
+        subString = formatSubstring(subString: subString)
+        
+        if subString.characters.count == 0 {
+            // when a user clears the textField
+            resetValues()
+        } else {
+            searchAutocompleteEntriesWIthSubstring(substring: subString)
+        }
+        return true
+    }
+    
+    func formatSubstring(subString: String) -> String {
+        let formatted = String(subString.characters.dropLast(autoCompleteCharacterCount)).lowercased().capitalized //5
+        return formatted
+    }
+    
+    func resetValues() {
+        autoCompleteCharacterCount = 0
+        textField.text = ""
+    }
+    
+    func searchAutocompleteEntriesWIthSubstring(substring: String) {
+        guard autoCompletionPossibilities != nil else {
+            return
+        }
+        let userQuery = substring
+        let suggestions = getAutocompleteSuggestions(userText: substring)
+        
+        if suggestions.count > 0 {
+            doOnMainAfterTime(0.01, block: {
+                let autocompleteResult =  self.formatAutocompleteResult(substring: substring, possibleMatches: suggestions)
+                self.putColourFormattedTextInTextField(autocompleteResult: autocompleteResult, userQuery : userQuery)
+                self.moveCaretToEndOfUserQueryPosition(userQuery: userQuery)
+            })
+        } else {
+            doOnMainAfterTime(0.01, block: {
+                self.textField.text = substring
+            })
+            autoCompleteCharacterCount = 0
+        }
+        
+    }
+    
+    func getAutocompleteSuggestions(userText: String) -> [String] {
+        guard let autoCompletionPossibilities = autoCompletionPossibilities else {
+            return []
+        }
+        var possibleMatches: [String] = []
+        for item in autoCompletionPossibilities {
+            let myString:NSString! = item as NSString
+            let substringRange :NSRange! = myString.range(of: userText)
+            
+            if (substringRange.location == 0)
+            {
+                possibleMatches.append(item)
+            }
+        }
+        return possibleMatches
+    }
+    
+    func putColourFormattedTextInTextField(autocompleteResult: String, userQuery : String) {
+        let colouredString: NSMutableAttributedString = NSMutableAttributedString(string: userQuery + autocompleteResult)
+        colouredString.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: NSRange(location: userQuery.characters.count, length:autocompleteResult.characters.count))
+        self.textField.attributedText = colouredString
+    }
+    
+    func moveCaretToEndOfUserQueryPosition(userQuery : String) {
+        if let newPosition = self.textField.position(from: self.textField.beginningOfDocument, offset: userQuery.characters.count) {
+            self.textField.selectedTextRange = self.textField.textRange(from: newPosition, to: newPosition)
+        }
+        let selectedRange: UITextRange? = textField.selectedTextRange
+        textField.offset(from: textField.beginningOfDocument, to: (selectedRange?.start)!)
+    }
+    
+    func formatAutocompleteResult(substring: String, possibleMatches: [String]) -> String {
+        var autoCompleteResult = possibleMatches[0]
+        autoCompleteResult.removeSubrange(autoCompleteResult.startIndex..<autoCompleteResult.index(autoCompleteResult.startIndex, offsetBy: substring.characters.count))
+        autoCompleteCharacterCount = autoCompleteResult.characters.count
+        return autoCompleteResult
     }
 }
 
