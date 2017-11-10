@@ -89,7 +89,8 @@ public extension UIView {
                         bkgColor: UIColor,
                         offsetEdge: CGFloat = 0,
                         textColor: UIColor = .white,
-                        makeCircle: Bool = true) {
+                        makeCircle: Bool = true,
+                        tag: Int? = nil) {
         
         // Find which view we can add to sometimes superview is not avail
         let parentView = self.superview ?? self
@@ -103,7 +104,11 @@ public extension UIView {
             return
         }
         
-        let badgeTag = getBadgeTag()
+        var badgeTag = getBadgeTag()
+        if let t = tag {
+            badgeTag = t
+        }
+        
         // make a generic label and get the size for it; we'll create a frame later
         let label = (parentView.viewWithTag(badgeTag) as? UILabel) ?? UILabel()
         label.tag = badgeTag
@@ -140,17 +145,19 @@ public extension UIView {
             label.frame = CGRect(x: x, y: y, width: width, height: height)
         }
     
-//        self.addSubview(label)
         parentView.addSubview(label)
     }
     
-    func removeBadge() {
-        guard getBadgeTag() > 0 else { return }
+    func removeBadge(tag: Int? = nil) {
+        var badgeTag = getBadgeTag()
+        if let t = tag {
+            badgeTag = t
+        }
 
         // Find which view we can add to sometimes superview is not avail
         let parentView = self.superview ?? self
 
-        if let badgeView = parentView.viewWithTag(getBadgeTag()) as? UILabel {
+        if let badgeView = parentView.viewWithTag(badgeTag) as? UILabel {
             badgeView.removeFromSuperview()
         }
     }
@@ -158,11 +165,26 @@ public extension UIView {
     /**
      When we rotate screen we need to recalc
      */
-//    func updateBadgeFrame() {
+//    func updateBadgeFrame(makeCircle: Bool = true,
+//                          offsetEdge: CGFloat = 0)
+//    {
 //        let parentView = self.superview ?? self
 //        
 //        if let badgeView = parentView.viewWithTag(getBadgeTag()) as? UILabel {
-//            if makeCricle {
+//            let badgeText = badgeView.text ?? ""
+//            let width = badgeView.frame.width
+//            let height = badgeView.frame.height
+//            let charCount: CGFloat = CGFloat(badgeText.characters.count)
+//            let widthPerChar = width / charCount
+//            
+//            // for each additional character, the label grows
+//            // we want to move it to the left as we add more chars
+//            let offsetFromRightEdge = ((charCount - 1) * widthPerChar / 2 )
+//            
+//            let x: CGFloat = parentView.frame.origin.x + parentView.frame.width - offsetFromRightEdge - offsetEdge
+//            let y: CGFloat = parentView.frame.origin.y - 10 + offsetEdge
+//            
+//            if makeCircle {
 //                let border: CGFloat = 5
 //                var w: CGFloat = width
 //                if height > width {
