@@ -72,6 +72,7 @@
 		14BE52201ADA568F00B82323 /* GenUIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE521D1ADA568F00B82323 /* GenUIBarButtonItem.swift */; };
 		14BE52211ADA568F00B82323 /* GenTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE521E1ADA568F00B82323 /* GenTypes.swift */; };
 		14BE52221ADA568F00B82323 /* GenTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE521E1ADA568F00B82323 /* GenTypes.swift */; };
+		14C5D3371FB98AB8002C00F1 /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C5D3361FB98AB8002C00F1 /* ColumnFlowLayout.swift */; };
 		14CB4C7D1BEF422800AE709C /* GenRoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB4C7C1BEF422800AE709C /* GenRoundRectButton.swift */; };
 		14CB4C811BEF468400AE709C /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB4C801BEF468400AE709C /* String+Utility.swift */; };
 		14CB4C841BEF4D6B00AE709C /* GenInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB4C821BEF4D6B00AE709C /* GenInputField.swift */; };
@@ -170,6 +171,7 @@
 		14B5FF6B1D2DA4E8005D414C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		14BE521D1ADA568F00B82323 /* GenUIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenUIBarButtonItem.swift; sourceTree = "<group>"; };
 		14BE521E1ADA568F00B82323 /* GenTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenTypes.swift; sourceTree = "<group>"; };
+		14C5D3361FB98AB8002C00F1 /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColumnFlowLayout.swift; path = UICollectionView/ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		14CB4C7C1BEF422800AE709C /* GenRoundRectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenRoundRectButton.swift; sourceTree = "<group>"; };
 		14CB4C801BEF468400AE709C /* String+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		14CB4C821BEF4D6B00AE709C /* GenInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenInputField.swift; sourceTree = "<group>"; };
@@ -319,13 +321,13 @@
 			children = (
 				148917A61AEE023800448450 /* Activity Indicator */,
 				1410AD0A1D237D4800DEA84C /* Array+Utility.swift */,
-				14E5050A1F33912400A5A8BD /* Float+Utility.swift */,
 				14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */,
 				14B052FC1C861FA1002172E6 /* CoreData+Utility.swift */,
 				146DD3401BEF558B009E330F /* CoreGraphicsExt.swift */,
 				143B5DF31C76780700C70DBF /* CustomStuff */,
 				141027F21E60E660007AD2DD /* Data+Utility.swift */,
 				14E1B77D1C52148500E7D7AD /* FacebookHelper.swift */,
+				14E5050A1F33912400A5A8BD /* Float+Utility.swift */,
 				145F14531DAB64E900BBD534 /* GenAlertView.swift */,
 				14A4FDE61CA8D39A00BC09EE /* GenAnimateUtil.swift */,
 				146DD33E1BEF523D009E330F /* GenConst.swift */,
@@ -337,10 +339,13 @@
 				149DAF981AB188630093CA5B /* GenUtil.swift */,
 				141BBA231E5F765F00CB7E1C /* GenUtil+Image.swift */,
 				14B5FF521D2D7033005D414C /* Gestures */,
+				1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */,
 				146DD3421BEF57CF009E330F /* NSDate+Utility.swift */,
 				14FA58411B20341300DA3638 /* NSObject+Utility.swift */,
 				146DD34C1BEF5A96009E330F /* NSURL+Utility.swift */,
+				14DD35471FAA5DA400669E60 /* Obfuscator.swift */,
 				14F0BEC71BF127050095068E /* OpenSansHelper.swift */,
+				1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */,
 				14FB12F61C2769D6005D2E8D /* OrderedDictionary.swift */,
 				14A547551E1CDAA5008B8BC3 /* RABGradient.swift */,
 				146FCDB81E1F95AD00CD68D8 /* RabMusic.swift */,
@@ -350,7 +355,7 @@
 				14CB4C801BEF468400AE709C /* String+Utility.swift */,
 				144912221CF59062000A1A6E /* UIApplication+Utility.swift */,
 				14DDF0431E12E97800C72C5F /* UIButton+Utility.swift */,
-				149F02A11D80D78F00E211B9 /* UICollectionView+Utility.swift */,
+				14C5D3351FB98A77002C00F1 /* UICollectionView */,
 				149DAF961AB188630093CA5B /* UIColor+RGB.swift */,
 				149DAF971AB188630093CA5B /* UIImage+Utility.swift */,
 				1476B7821E79E31B009AA539 /* UIImageView+Utility.swift */,
@@ -363,9 +368,6 @@
 				14E2F4C61CD16C10008D4279 /* UIView */,
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
-				1498E3C81F703A2400D9FF16 /* Optional+Utility.swift */,
-				1498E3D71F71CCA200D9FF16 /* NSAttributedString+Utility.swift */,
-				14DD35471FAA5DA400669E60 /* Obfuscator.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -413,6 +415,15 @@
 				14B5FF611D2D7B33005D414C /* CircleGestureRecognizer.swift */,
 			);
 			name = Gestures;
+			sourceTree = "<group>";
+		};
+		14C5D3351FB98A77002C00F1 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				149F02A11D80D78F00E211B9 /* UICollectionView+Utility.swift */,
+				14C5D3361FB98AB8002C00F1 /* ColumnFlowLayout.swift */,
+			);
+			name = UICollectionView;
 			sourceTree = "<group>";
 		};
 		14E2F4C61CD16C10008D4279 /* UIView */ = {
@@ -561,6 +572,7 @@
 				14E2F4D81CD16D43008D4279 /* UIView+Utility.swift in Sources */,
 				14E5050B1F33912400A5A8BD /* Float+Utility.swift in Sources */,
 				1476B7831E79E31B009AA539 /* UIImageView+Utility.swift in Sources */,
+				14C5D3371FB98AB8002C00F1 /* ColumnFlowLayout.swift in Sources */,
 				14E2F4D41CD16C3E008D4279 /* UIView+Snapshots.swift in Sources */,
 				14A547561E1CDAA5008B8BC3 /* RABGradient.swift in Sources */,
 				149A84781C1569B30004C185 /* SinglePicCell.swift in Sources */,

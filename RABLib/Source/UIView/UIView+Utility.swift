@@ -169,21 +169,21 @@ public extension UIView {
 //                          offsetEdge: CGFloat = 0)
 //    {
 //        let parentView = self.superview ?? self
-//        
+//
 //        if let badgeView = parentView.viewWithTag(getBadgeTag()) as? UILabel {
 //            let badgeText = badgeView.text ?? ""
 //            let width = badgeView.frame.width
 //            let height = badgeView.frame.height
 //            let charCount: CGFloat = CGFloat(badgeText.characters.count)
 //            let widthPerChar = width / charCount
-//            
+//
 //            // for each additional character, the label grows
 //            // we want to move it to the left as we add more chars
 //            let offsetFromRightEdge = ((charCount - 1) * widthPerChar / 2 )
-//            
+//
 //            let x: CGFloat = parentView.frame.origin.x + parentView.frame.width - offsetFromRightEdge - offsetEdge
 //            let y: CGFloat = parentView.frame.origin.y - 10 + offsetEdge
-//            
+//
 //            if makeCircle {
 //                let border: CGFloat = 5
 //                var w: CGFloat = width
