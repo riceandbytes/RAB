@@ -142,12 +142,15 @@ public enum ImageQuality: Int {
     case high
     case original
     case tiny
+    case tinyLow
     
     public var width: CGFloat {
         get {
             switch self {
             case .tiny:
                 return 50
+            case .tinyLow:
+                return 240
             case .low:
                 return 480
             case .lowMedium:
