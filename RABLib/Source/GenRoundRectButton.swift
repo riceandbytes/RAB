@@ -77,15 +77,30 @@ open class GenRoundRectButton: UIButton {
     }
     
 //    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.isHighlighted = true
 //        super.touchesBegan(touches, with: event)
 //    }
-//    
-//    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.isHighlighted = false
-//        super.touchesEnded(touches, with: event)
+    
+//    func darkenColor(color: UIColor) -> UIColor {
+//        var red = CGFloat(), green = CGFloat(), blue = CGFloat(), alpha = CGFloat()
+//        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+//        red = max(red - 0.5, 0.0)
+//        green = max(green - 0.5, 0.0)
+//        blue = max(blue - 0.5, 0.0)
+//        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
 //    }
-//    
+//
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        // To keep the button highlighted for a extra second after you touch it
+        self.isHighlighted = true
+        doOnMainAfterTime(1.0) {
+            [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.isHighlighted = false
+        }
+    }
+//
 //    open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
 //        self.isHighlighted = false
 //        if let t = touches {
