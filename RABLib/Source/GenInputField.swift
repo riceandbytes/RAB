@@ -272,7 +272,7 @@ open class GenInputField: UIView {
     
     fileprivate func updatePlaceholderText() {
         var text = NSMutableAttributedString(string: placeholder)
-        let len = placeholder.characters.count
+        let len = placeholder.count
         
         if isPlaceholderCenterAlign {
             let centeredParagraphStyle = NSMutableParagraphStyle()
@@ -408,7 +408,7 @@ extension GenInputField: UITextFieldDelegate {
         var subString = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string)
         subString = formatSubstring(subString: subString)
         
-        if subString.characters.count == 0 {
+        if subString.count == 0 {
             // when a user clears the textField
             resetValues()
         } else {
@@ -418,7 +418,7 @@ extension GenInputField: UITextFieldDelegate {
     }
     
     func formatSubstring(subString: String) -> String {
-        let formatted = String(subString.characters.dropLast(autoCompleteCharacterCount)).lowercased().capitalized //5
+        let formatted = String(subString.dropLast(autoCompleteCharacterCount)).lowercased().capitalized //5
         return formatted
     }
     
@@ -468,12 +468,12 @@ extension GenInputField: UITextFieldDelegate {
     
     func putColourFormattedTextInTextField(autocompleteResult: String, userQuery : String) {
         let colouredString: NSMutableAttributedString = NSMutableAttributedString(string: userQuery + autocompleteResult)
-        colouredString.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: NSRange(location: userQuery.characters.count, length:autocompleteResult.characters.count))
+        colouredString.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: NSRange(location: userQuery.count, length:autocompleteResult.count))
         self.textField.attributedText = colouredString
     }
     
     func moveCaretToEndOfUserQueryPosition(userQuery : String) {
-        if let newPosition = self.textField.position(from: self.textField.beginningOfDocument, offset: userQuery.characters.count) {
+        if let newPosition = self.textField.position(from: self.textField.beginningOfDocument, offset: userQuery.count) {
             self.textField.selectedTextRange = self.textField.textRange(from: newPosition, to: newPosition)
         }
         let selectedRange: UITextRange? = textField.selectedTextRange
@@ -482,8 +482,8 @@ extension GenInputField: UITextFieldDelegate {
     
     func formatAutocompleteResult(substring: String, possibleMatches: [String]) -> String {
         var autoCompleteResult = possibleMatches[0]
-        autoCompleteResult.removeSubrange(autoCompleteResult.startIndex..<autoCompleteResult.index(autoCompleteResult.startIndex, offsetBy: substring.characters.count))
-        autoCompleteCharacterCount = autoCompleteResult.characters.count
+        autoCompleteResult.removeSubrange(autoCompleteResult.startIndex..<autoCompleteResult.index(autoCompleteResult.startIndex, offsetBy: substring.count))
+        autoCompleteCharacterCount = autoCompleteResult.count
         return autoCompleteResult
     }
 }

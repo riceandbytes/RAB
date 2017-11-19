@@ -76,7 +76,7 @@ extension String {
      - returns: String
      */
     public func removeLastCharacter() -> String {
-        let stringLength = self.characters.count
+        let stringLength = self.count
         let substringIndex = stringLength - 1
         return self.substring(to: self.characters.index(self.startIndex, offsetBy: substringIndex))
     }
@@ -312,7 +312,7 @@ extension String {
 //    return [[self substringWithRange:r] stringByAppendingString:@"..."];
 //    }
     public func truncateByWordWithLimit(_ limit: Int, trailing: String? = "...") -> String {
-        if self.characters.count > limit {
+        if self.count > limit {
             let x = self.substring(to: self.characters.index(self.startIndex, offsetBy: limit))
             if let r = x.range(of: " ", options: .backwards) {
                 return x.substring(with: x.startIndex..<r.lowerBound) + (trailing ?? "")

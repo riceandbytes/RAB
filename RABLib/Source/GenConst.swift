@@ -18,7 +18,7 @@ public struct Const {
 
     public static func makeFont(_ style: FontStyle, _ size: Float) -> UIFont? {
         var fontName = FontName
-        if style.rawValue.characters.count > 0 {
+        if style.rawValue.count > 0 {
             fontName += ("-" + style.rawValue)
         }
         return UIFont(name: fontName, size: CGFloat(size))
