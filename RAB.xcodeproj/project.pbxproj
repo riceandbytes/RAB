@@ -98,6 +98,7 @@
 		14FB13021C2780BA005D2E8D /* PicWithInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */; };
 		14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB130E1C2FF92B005D2E8D /* RevCell.swift */; };
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
+		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicWithInfoCell.swift; sourceTree = "<group>"; };
 		14FB130E1C2FF92B005D2E8D /* RevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevCell.swift; sourceTree = "<group>"; };
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
+		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +370,7 @@
 				14E2F4C61CD16C10008D4279 /* UIView */,
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
+				FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				14FB12F71C2769D6005D2E8D /* OrderedDictionary.swift in Sources */,
 				143572061D42C27F009C8FB2 /* BottomIndicatorView.swift in Sources */,
 				14DDF0441E12E97800C72C5F /* UIButton+Utility.swift in Sources */,
+				FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */,
 				14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */,
 				14CB4C811BEF468400AE709C /* String+Utility.swift in Sources */,
 				145F14541DAB64E900BBD534 /* GenAlertView.swift in Sources */,
