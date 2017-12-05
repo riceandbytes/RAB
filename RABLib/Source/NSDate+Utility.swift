@@ -504,13 +504,26 @@ extension Date {
     //
     public func daysBetween(_ endDate: Date) -> Int {
         let calendar = Calendar.current
+        guard let start = calendar.ordinality(of: .day, in: .era, for: self) else {
+            return 0
+        }
         
-        let date1 = calendar.startOfDay(for: self)
-        let date2 = calendar.startOfDay(for: endDate)
+        // need to pad 12 hours to endDate to adjust for UTC
+        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 00, second: 00, of: endDate) else {
+            return 0
+        }
+
+        guard let end = calendar.ordinality(of: .day, in: .era, for: endDateAdj) else {
+            return 0
+        }
         
-        let components = calendar.dateComponents([Calendar.Component.day], from: date1, to: date2)
-        
-        return components.day ?? 0
+        // Add one to account for the current day
+        let val = abs(end - start)
+        return val
+    }
+    
+    public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
+        return self.daysBetween(endDate) + 1
     }
 }
 
