@@ -11,19 +11,6 @@ import UIKit
 @IBDesignable
 open class GenRoundRectButton: UIButton {
     
-//    override open var isHighlighted: Bool {
-//        didSet {
-//            switch isHighlighted {
-//            case true:
-//                self.roundRectLayer?.fillColor = UIColor.clear.cgColor
-//                self.roundRectLayer?.strokeColor = UIColor.clear.cgColor
-//            case false:
-//                self.roundRectLayer?.fillColor = self.bkgColor.cgColor
-//                self.roundRectLayer?.strokeColor = self.strokeColor.cgColor
-//            }
-//        }
-//    }
-    
     /// Corner radius of the background rectangle
     @IBInspectable open var cornerRadius: CGFloat = 2 {
         didSet {
@@ -49,6 +36,9 @@ open class GenRoundRectButton: UIButton {
             self.setNeedsLayout()
         }
     }
+
+    // Slow touch delays the touch of the button
+    @IBInspectable open var isFastTouch: Bool = false
     
     // MARK: Overrides
 
@@ -76,21 +66,12 @@ open class GenRoundRectButton: UIButton {
         self.roundRectLayer = shapeLayer
     }
     
-//    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//    }
-    
-//    func darkenColor(color: UIColor) -> UIColor {
-//        var red = CGFloat(), green = CGFloat(), blue = CGFloat(), alpha = CGFloat()
-//        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-//        red = max(red - 0.5, 0.0)
-//        green = max(green - 0.5, 0.0)
-//        blue = max(blue - 0.5, 0.0)
-//        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-//    }
-//
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
+        
+        guard isFastTouch == false else {
+            return
+        }
         
         // To keep the button highlighted for a extra second after you touch it
         self.isHighlighted = true
@@ -100,11 +81,4 @@ open class GenRoundRectButton: UIButton {
             sSelf.isHighlighted = false
         }
     }
-//
-//    open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-//        self.isHighlighted = false
-//        if let t = touches {
-//            super.touchesCancelled(t, with: event)
-//        }
-//    }
 }
