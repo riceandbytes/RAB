@@ -501,6 +501,7 @@ extension Date {
     }
     
     // Better use of days inbetween
+    // - Value can be negative
     //
     public func daysBetween(_ endDate: Date) -> Int {
         let calendar = Calendar.current
