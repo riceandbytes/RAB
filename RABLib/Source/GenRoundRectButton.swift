@@ -75,7 +75,7 @@ open class GenRoundRectButton: UIButton {
         
         // To keep the button highlighted for a extra second after you touch it
         self.isHighlighted = true
-        doOnMainAfterTime(0.7) {
+        doOnMainAfterTime(0.8) {
             [weak self] in
             guard let sSelf = self else { return }
             sSelf.isHighlighted = false
