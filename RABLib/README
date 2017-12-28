@@ -11,7 +11,6 @@ NSDate+Utility
 - Creates date object using day, month, year
 public static func make(day: Int, month: Int, year: Int) -> Date?
 
-
 ----------------------------
 UILabel+Utility
 
@@ -23,6 +22,10 @@ public func dontClipBottom()
 
 - Set HTML String
 func setHTML(html: String)
+
+----------------------------
+String+Utility
+openWebsite()
 
 ----------------------------
 Optional+Utility
