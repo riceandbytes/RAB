@@ -78,7 +78,8 @@ extension String {
     public func removeLastCharacter() -> String {
         let stringLength = self.count
         let substringIndex = stringLength - 1
-        return self.substring(to: self.index(self.startIndex, offsetBy: substringIndex))
+        let i = self.index(self.startIndex, offsetBy: substringIndex)
+        return String(self[..<i])
     }
     
     /// Expose integer access to a character in a string
@@ -313,9 +314,9 @@ extension String {
 //    }
     public func truncateByWordWithLimit(_ limit: Int, trailing: String? = "...") -> String {
         if self.count > limit {
-            let x = self.substring(to: self.index(self.startIndex, offsetBy: limit))
+            let x = String(self[..<self.index(self.startIndex, offsetBy: limit)])
             if let r = x.range(of: " ", options: .backwards) {
-                return x.substring(with: x.startIndex..<r.lowerBound) + (trailing ?? "")
+                return String(x[x.startIndex..<r.lowerBound]) + (trailing ?? "")
             } else {
                 return self
             }
