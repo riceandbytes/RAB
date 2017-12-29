@@ -102,7 +102,7 @@ open class GenImagePicker: NSObject {
             imagePicker.navigationBar.barTintColor = customizeLook["barTintColor"] as? UIColor
             imagePicker.navigationBar.tintColor = customizeLook["tintColor"] as? UIColor
             imagePicker.navigationBar.titleTextAttributes = [
-                NSForegroundColorAttributeName : customizeLook["titleTextAttributesColor"] as! UIColor
+                NSAttributedStringKey.foregroundColor : customizeLook["titleTextAttributesColor"] as! UIColor
             ] // Title color
         }
     }

@@ -12,7 +12,7 @@ extension UINavigationController {
     public func pushViewController(
         _ viewController: UIViewController,
         animated: Bool,
-        completion: @escaping (Void) -> Void)
+        completion: @escaping () -> Void)
     {
         pushViewController(viewController, animated: animated)
         
@@ -39,7 +39,7 @@ extension UINavigationController {
         if self.didSmartPush == nil || self.didSmartPush?.boolValue == false {
             self.didSmartPush = NSNumber(booleanLiteral: true)
             self.pushViewController(viewController, animated: animated) {
-                (Void) in
+                () in
                 self.didSmartPush = NSNumber(booleanLiteral: false)
                 
             }

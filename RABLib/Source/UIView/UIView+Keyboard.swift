@@ -21,7 +21,7 @@ public extension UIView {
         self.addSubview(NotificationRemover())
     }
     
-    func keyboardShow(_ notification : Notification) {
+    @objc func keyboardShow(_ notification : Notification) {
         var userInfo = (notification as NSNotification).userInfo!
         let val = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         
@@ -42,7 +42,7 @@ public extension UIView {
         
     }
     
-    func keyboardHide(_ notification : Notification) {
+    @objc func keyboardHide(_ notification : Notification) {
         var userInfo = (notification as NSNotification).userInfo!
         let val = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         let kbRect = val.cgRectValue

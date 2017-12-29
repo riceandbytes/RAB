@@ -277,17 +277,17 @@ open class GenInputField: UIView {
         if isPlaceholderCenterAlign {
             let centeredParagraphStyle = NSMutableParagraphStyle()
             centeredParagraphStyle.alignment = .center
-            text.addAttribute(NSParagraphStyleAttributeName,
+            text.addAttribute(NSAttributedStringKey.paragraphStyle,
                               value: centeredParagraphStyle,
                               range: NSRange(location: 0, length: len))
         }
         
         if required {
             text = NSMutableAttributedString(string: "\(placeholder)*")
-            text.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(len, 1))
+            text.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSMakeRange(len, 1))
         }
         
-        text.addAttribute(NSForegroundColorAttributeName, value: placeholderTextColor, range: NSMakeRange(0, len))
+        text.addAttribute(NSAttributedStringKey.foregroundColor, value: placeholderTextColor, range: NSMakeRange(0, len))
         textField.attributedPlaceholder = text
         self.currentPlaceholderText = placeholder
     }
@@ -364,7 +364,7 @@ extension GenInputField: UITextFieldDelegate {
     /**
      When we use the picker, and the value changes
      */
-    func datePickerValueChanged(sender: UIDatePicker) {
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
         currentPickerValue = sender.date.toString(NSDateStringStyle.monthDayYear, timeZone: "UTC")
         textField.text = currentPickerValue
     }
@@ -372,7 +372,7 @@ extension GenInputField: UITextFieldDelegate {
     /**
      Picker done button
      */
-    func donePicker() {
+    @objc func donePicker() {
         switch keyboardType {
         case .dateDayMonYear:
             textField.text = currentPickerValue
@@ -468,7 +468,7 @@ extension GenInputField: UITextFieldDelegate {
     
     func putColourFormattedTextInTextField(autocompleteResult: String, userQuery : String) {
         let colouredString: NSMutableAttributedString = NSMutableAttributedString(string: userQuery + autocompleteResult)
-        colouredString.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: NSRange(location: userQuery.count, length:autocompleteResult.count))
+        colouredString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSRange(location: userQuery.count, length:autocompleteResult.count))
         self.textField.attributedText = colouredString
     }
     

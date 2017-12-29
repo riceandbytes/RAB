@@ -22,7 +22,7 @@ public extension UIPickerView {
     func addLabel(_ label: String, leftSide left: Bool = false, forComponent component: Int, offsetFromComponent offset: CGFloat = 2, fontSize: Float = 20, fontStyle: FontStyle = .Light) -> UIView {
         
         let font = Const.makeFont(fontStyle, fontSize)!
-        let textSize = (NSString(string: label)).size(attributes: [NSFontAttributeName: font])
+        let textSize = (NSString(string: label)).size(withAttributes: [NSAttributedStringKey.font: font])
         let PaddingBetweenComponents: CGFloat = 5
         
         // determine where the component is in the x-axis

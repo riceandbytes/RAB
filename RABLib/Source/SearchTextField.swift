@@ -26,8 +26,7 @@ open class SearchTextField: UITextField {
             
             if let placeholderColor = theme.placeholderColor {
                 if let placeholderString = placeholder {
-//                    self.attributedPlaceholder = NSAttributedString(string: placeholderString, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-                        self.attributedPlaceholder = NSAttributedString(string: placeholderString, attributes: [NSForegroundColorAttributeName: placeholderColor])
+                    self.attributedPlaceholder = NSAttributedString(string: placeholderString, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
                 }
                 
                 self.placeholderLabel?.textColor = placeholderColor
@@ -71,7 +70,7 @@ open class SearchTextField: UITextField {
     
     /// Set your custom set of attributes in order to highlight the string found in each item
 //    open var highlightAttributes: [NSAttributedStringKey: AnyObject] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue):UIFont.boldSystemFont(ofSize: 10)]
-    open var highlightAttributes: [String: Any] = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)]
+    open var highlightAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.boldSystemFont(ofSize: 10)]
     
     /// Start showing the default loading indicator, useful for searches that take some time.
     open func showLoadingIndicator() {
@@ -233,7 +232,7 @@ open class SearchTextField: UITextField {
 
 //            if let placeholderColor = self.attributedPlaceholder?.attribute(NSAttributedStringKey.foregroundColor, at: 0, effectiveRange: nil) as? UIColor {
 
-            if let placeholderColor = self.attributedPlaceholder?.attribute(NSForegroundColorAttributeName, at: 0, effectiveRange: nil) as? UIColor {
+            if let placeholderColor = self.attributedPlaceholder?.attribute(NSAttributedStringKey.foregroundColor, at: 0, effectiveRange: nil) as? UIColor {
                 placeholderLabel?.textColor = placeholderColor
             } else {
                 placeholderLabel?.textColor = UIColor ( red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0 )
@@ -410,7 +409,7 @@ open class SearchTextField: UITextField {
     fileprivate func filter(forceShowAll addAll: Bool) {
         clearResults()
         
-        if text!.characters.count < minCharactersNumberToStartFiltering {
+        if text!.count < minCharactersNumberToStartFiltering {
             return
         }
         
@@ -447,7 +446,7 @@ open class SearchTextField: UITextField {
                 }
                 
                 if item.title.lowercased().hasPrefix(textToFilter) {
-                    let indexFrom = textToFilter.index(textToFilter.startIndex, offsetBy: textToFilter.characters.count)
+                    let indexFrom = textToFilter.index(textToFilter.startIndex, offsetBy: textToFilter.count)
                     let itemSuffix = item.title[indexFrom...]
                     
                     item.attributedTitle = NSMutableAttributedString(string: String(itemSuffix))
@@ -485,11 +484,11 @@ open class SearchTextField: UITextField {
 //
 //        return highlightAttributesForSubtitle
 //    }
-    fileprivate func highlightAttributesForSubtitle() -> [String: Any] {
-        var highlightAttributesForSubtitle = [String: Any]()
+    fileprivate func highlightAttributesForSubtitle() -> [NSAttributedStringKey: Any] {
+        var highlightAttributesForSubtitle = [NSAttributedStringKey: Any]()
         
         for attr in highlightAttributes {
-            if attr.0 == NSFontAttributeName {
+            if attr.0 == NSAttributedStringKey.font {
                 let fontName = (attr.1 as! UIFont).fontName
                 let pointSize = (attr.1 as! UIFont).pointSize * fontConversionRate
                 highlightAttributesForSubtitle[attr.0] = UIFont(name: fontName, size: pointSize)

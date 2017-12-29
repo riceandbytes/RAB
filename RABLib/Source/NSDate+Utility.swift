@@ -16,7 +16,7 @@ public struct Duration {
     public var seconds: Int = 0
     
     public init(_ duration: String) {
-        var vals = (duration.characters).split { $0 == ":" }.map{ String($0) }
+        var vals = duration.split { $0 == ":" }.map{ String($0) }
         
         if vals.count == 3 {
             if let hr = Int(vals[0]) {

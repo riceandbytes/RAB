@@ -50,8 +50,8 @@ open class GenUtil {
 extension GenUtil {
     
     public class func attStr(_ text: String, _ font: UIFont, _ color: UIColor) -> NSMutableAttributedString {
-        return NSMutableAttributedString(string: text, attributes: [NSFontAttributeName: font,
-                            NSForegroundColorAttributeName: color])
+        return NSMutableAttributedString(string: text, attributes: [NSAttributedStringKey.font: font,
+                                                                    NSAttributedStringKey.foregroundColor: color])
     }
 }
 
@@ -352,7 +352,7 @@ extension GenUtil {
     
     public class func videoSize(_ url: URL) -> CGSize {
         let asset: AnyObject! = AVAsset(url: url)
-        let track = asset.tracks(withMediaType: AVMediaTypeVideo)[0]
+        let track = asset.tracks(withMediaType: AVMediaType.video)[0]
         return track.naturalSize
     }
     
@@ -363,7 +363,7 @@ extension GenUtil {
     
     public class func isVideoLandscape(_ url: URL) -> Bool {
         let asset: AnyObject! = AVAsset(url: url)
-        let track = asset.tracks(withMediaType: AVMediaTypeVideo)[0]
+        let track = asset.tracks(withMediaType: AVMediaType.video)[0]
         
         let width = track.naturalSize.width
         let height = track.naturalSize.height

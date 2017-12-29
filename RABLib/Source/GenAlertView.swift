@@ -249,7 +249,7 @@ open class GenAlertView: UIViewController {
         
         // position the title
         let titleString = titleLabel.text! as NSString
-        let titleAttr: [String: Any] = [NSFontAttributeName: titleLabel.font]
+        let titleAttr: [NSAttributedStringKey: Any] = [.font: titleLabel.font]
         let titleSize = CGSize(width: contentWidth, height: 90)
         let titleRect = titleString.boundingRect(with: titleSize, options: .usesLineFragmentOrigin, attributes: titleAttr, context: nil)
         yPos += padding
@@ -260,7 +260,7 @@ open class GenAlertView: UIViewController {
         // position text
         if self.textView != nil {
             let textString = textView.text! as NSString
-            let textAttr: [String: Any]  = [NSFontAttributeName: textView.font!]
+            let textAttr: [NSAttributedStringKey: Any]  = [.font: textView.font!]
             let realSize = textView.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
             let textSize = CGSize(width: contentWidth, height: CGFloat(fmaxf(Float(90.0), Float(realSize.height))))
             let textRect = textString.boundingRect(with: textSize, options: .usesLineFragmentOrigin, attributes: textAttr, context: nil)
@@ -526,7 +526,7 @@ open class GenAlertView: UIViewController {
         self.closeAction = action
     }
     
-    func buttonTap() {
+    @objc func buttonTap() {
         closeView(true, source: .close);
     }
     
@@ -534,7 +534,7 @@ open class GenAlertView: UIViewController {
         self.cancelAction = action
     }
     
-    func cancelButtonTap() {
+    @objc func cancelButtonTap() {
         closeView(true, source: .cancel);
     }
     

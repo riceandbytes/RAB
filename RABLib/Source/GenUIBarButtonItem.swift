@@ -53,7 +53,7 @@ open class GenUIBarButtonItem: UIBarButtonItem {
         action = #selector(GenUIBarButtonItem.handleAction)
     }
     
-    open func handleAction() {
+    @objc open func handleAction() {
         touchAction()
     }
     

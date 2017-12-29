@@ -14,9 +14,9 @@ extension NSAttributedString {
                              font: UIFont? = nil,
                              color: UIColor? = nil) throws {
         
-        let options: [String: Any] = [
-            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: NSNumber(value: String.Encoding.utf8.rawValue)
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
+            NSAttributedString.DocumentReadingOptionKey.characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)
         ]
         
         guard let data = html.data(using: .utf8, allowLossyConversion: true) else {
@@ -30,10 +30,10 @@ extension NSAttributedString {
             }
             var attrs = attr.attributes(at: 0, effectiveRange: nil)
             if let font = font {
-                attrs[NSFontAttributeName] = font
+                attrs[NSAttributedStringKey.font] = font
             }
             if let color = color {
-                attrs[NSForegroundColorAttributeName] = color
+                attrs[NSAttributedStringKey.foregroundColor] = color
             }
             attr.setAttributes(attrs, range: NSRange(location: 0, length: attr.length))
             self.init(attributedString: attr)

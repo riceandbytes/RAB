@@ -155,7 +155,7 @@ extension RabTableDataSource {
     }
 }
 
-open class DataRow: AnyObject {
+open class DataRow {
     
     open var title = ""
     var model: Any? = nil

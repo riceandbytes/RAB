@@ -65,7 +65,7 @@ extension String {
         get {
             let start = self.index(self.startIndex, offsetBy: r.lowerBound)
             let end = self.index(self.startIndex, offsetBy: r.upperBound)
-            return self[start...end]
+            return String(self[start...end])
         }
     }
     //////////////////
@@ -78,7 +78,7 @@ extension String {
     public func removeLastCharacter() -> String {
         let stringLength = self.count
         let substringIndex = stringLength - 1
-        return self.substring(to: self.characters.index(self.startIndex, offsetBy: substringIndex))
+        return self.substring(to: self.index(self.startIndex, offsetBy: substringIndex))
     }
     
     /// Expose integer access to a character in a string
@@ -272,19 +272,19 @@ extension String {
                 ) else {
                     return nil
             }
-            
-            let opt: [String : Any] = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                        NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue]
+            let opt: [NSAttributedString.DocumentReadingOptionKey : Any] = [.documentType: NSAttributedString.DocumentType.html,
+                        NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue]
+
             let result = try NSAttributedString(data: data, options: opt, documentAttributes: nil)
             
             // need to convert to mutable to add the font
             let final = NSMutableAttributedString(attributedString: result)
-            final.addAttribute(NSFontAttributeName,
+            final.addAttribute(NSAttributedStringKey.font,
                 value: font,
                 range: NSRange(
                     location: 0,
                     length: result.length))
-            final.addAttribute(NSForegroundColorAttributeName,
+            final.addAttribute(NSAttributedStringKey.foregroundColor,
                 value: color,
                 range: NSRange(
                     location: 0,
@@ -313,7 +313,7 @@ extension String {
 //    }
     public func truncateByWordWithLimit(_ limit: Int, trailing: String? = "...") -> String {
         if self.count > limit {
-            let x = self.substring(to: self.characters.index(self.startIndex, offsetBy: limit))
+            let x = self.substring(to: self.index(self.startIndex, offsetBy: limit))
             if let r = x.range(of: " ", options: .backwards) {
                 return x.substring(with: x.startIndex..<r.lowerBound) + (trailing ?? "")
             } else {
@@ -334,8 +334,8 @@ extension String {
     
     // Capitalize frist letter
     public func capitalizingFirstLetter() -> String {
-        let first = String(characters.prefix(1)).capitalized
-        let other = String(characters.dropFirst())
+        let first = String(self.prefix(1)).capitalized
+        let other = String(self.dropFirst())
         return first + other
     }
     public mutating func capitalizeFirstLetter() {

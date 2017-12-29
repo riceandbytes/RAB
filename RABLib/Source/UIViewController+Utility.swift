@@ -170,7 +170,7 @@ public extension UIViewController {
         }
     }
     
-    func panAction(_ r: UIScreenEdgePanGestureRecognizer) {
+    @objc func panAction(_ r: UIScreenEdgePanGestureRecognizer) {
         // peek the other controller through the back
         var transitionLayer: CALayer!
         if let temp = objc_getAssociatedObject(self, &STDTransitionLayer) as? CALayer {

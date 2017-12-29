@@ -25,13 +25,13 @@ public extension UIColor {
         var alpha: CGFloat = 1.0
         
         if rgba.hasPrefix("#") {
-            let index   = rgba.characters.index(rgba.startIndex, offsetBy: 1)
+            let index   = rgba.index(rgba.startIndex, offsetBy: 1)
             let hex     = rgba.substring(from: index)
             let scanner = Scanner(string: hex)
             var hexValue: CUnsignedLongLong = 0
             if scanner.scanHexInt64(&hexValue) {
                 
-                switch (hex.characters.count) {
+                switch (hex.count) {
                 case 3:
                     red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
                     green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
@@ -66,7 +66,7 @@ public extension UIColor {
     convenience init(hex hexInit: String, alpha alphaInit:Float = 100) {
         var hex = hexInit
         var alpha = alphaInit
-        let hexLength = hex.characters.count
+        let hexLength = hex.count
         if !(hexLength == 7 || hexLength == 9) {
             // A hex must be either 7 or 9 characters (#GGRRBBAA)
             print("improper call to 'colorFromHex', hex length must be 7 or 9 chars (#GGRRBBAA)")
@@ -105,7 +105,7 @@ public extension UIColor {
             cString = cString.substring(from: 1) as NSString
         }
         
-        if ((cString as String).characters.count != 6) {
+        if ((cString as String).count != 6) {
             return UIColor.gray
         }
         

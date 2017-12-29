@@ -37,9 +37,9 @@ public extension UIView {
         
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(UIView.closePickerView))
-        let attr: Dictionary<String, AnyObject> = [
-            NSForegroundColorAttributeName: Const.GrayLight,
-            NSFontAttributeName: doneButtonFont
+        let attr: Dictionary<NSAttributedStringKey, AnyObject> = [
+            NSAttributedStringKey.foregroundColor: Const.GrayLight,
+            NSAttributedStringKey.font: doneButtonFont
         ]
         doneButton.setTitleTextAttributes(attr, for: UIControlState())
         toolbar.items = [spacer, doneButton]
@@ -55,7 +55,7 @@ public extension UIView {
         }
     }
     
-    public func closePickerView() {
+    @objc public func closePickerView() {
         self.endEditing(true)
         
         if let pickerView = self.inputView as? UIPickerView {
@@ -123,7 +123,7 @@ public extension UIView {
         // get the values to use for creating the label's frame
         let width = label.frame.width
         let height = label.frame.height
-        let charCount: CGFloat = CGFloat(badgeText.characters.count)
+        let charCount: CGFloat = CGFloat(badgeText.count)
         let widthPerChar = width / charCount
         
         // for each additional character, the label grows
