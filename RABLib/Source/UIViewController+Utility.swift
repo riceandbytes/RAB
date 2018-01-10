@@ -267,3 +267,22 @@ extension UIViewController {
         self.present(alert, animated: animated, completion: nil)
     }
 }
+
+// MARK: - Hide/Show NavBar
+
+extension UIViewController {
+    
+    public func goHideNavBar() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+//            self.navigationController?.setToolbarHidden(true, animated: true)
+        }, completion: nil)
+    }
+    
+    public func goShowNavBar() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+//            self.navigationController?.setToolbarHidden(false, animated: true)
+        }, completion: nil)
+    }
+}
