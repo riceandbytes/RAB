@@ -9,6 +9,15 @@
 import Foundation
 
 public extension UIView {
+
+    // MARK: - Load NIB
+    /**
+     Usage: let myCustomView: CustomView = .fromNib()
+        then you can do what ever with that view
+     */
+    public class func fromNib<T: UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
     
     /**
      This function will print out all constraints for a
