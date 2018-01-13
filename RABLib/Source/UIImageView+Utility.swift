@@ -18,4 +18,11 @@ extension UIImageView {
         self.image = img
         self.tintColor = withColor
     }
+
+    // MARK: - Change image color
+
+    public func changeImageColor(_ color: UIColor) {
+        self.image = self.image?.withRenderingMode(.alwaysTemplate)
+        self.tintColor = color
+    }
 }
