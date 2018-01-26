@@ -423,6 +423,56 @@ public extension String {
     }
 }
 
+// MARK: - Currency
+
+extension String {
+    
+    // Ex: 20.345 -> $20
+    public var currencyNoDecimal: String {
+        // removing all characters from string before formatting
+        let stringWithoutSymbol = self.replacingOccurrences(of: "$", with: "")
+        let stringWithoutComma = stringWithoutSymbol.replacingOccurrences(of: ",", with: "")
+        
+        let styler = NumberFormatter()
+        styler.minimumFractionDigits = 0
+        styler.maximumFractionDigits = 0
+        styler.currencySymbol = "$"
+        styler.numberStyle = .currency
+        
+        if let result = NumberFormatter().number(from: stringWithoutComma) {
+            return styler.string(from: result)!
+        }
+        
+        return self
+    }
+    
+    public var currencyClean: NSNumber? {
+        // removing all characters from string before formatting
+        let stringWithoutSymbol = self.replacingOccurrences(of: "$", with: "")
+        let stringWithoutComma = stringWithoutSymbol.replacingOccurrences(of: ",", with: "")
+        return NumberFormatter().number(from: stringWithoutComma)
+    }
+    
+    // Ex: 20.34 -> $20.34
+    public var currencyHasDecimal: String {
+        // removing all characters from string before formatting
+        let stringWithoutSymbol = self.replacingOccurrences(of: "$", with: "")
+        let stringWithoutComma = stringWithoutSymbol.replacingOccurrences(of: ",", with: "")
+        
+        let styler = NumberFormatter()
+        styler.minimumFractionDigits = 2
+        styler.maximumFractionDigits = 2
+        styler.currencySymbol = "$"
+        styler.numberStyle = .currency
+        
+        if let result = NumberFormatter().number(from: stringWithoutComma) {
+            return styler.string(from: result)!
+        }
+        
+        return self
+    }
+}
+
 // MARK: - More String Helpers
 /* USAGE
 "Awesome".contains("me") == true
