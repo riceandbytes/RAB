@@ -98,6 +98,7 @@
 		14FB13021C2780BA005D2E8D /* PicWithInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */; };
 		14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB130E1C2FF92B005D2E8D /* RevCell.swift */; };
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
+		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +198,7 @@
 		14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicWithInfoCell.swift; sourceTree = "<group>"; };
 		14FB130E1C2FF92B005D2E8D /* RevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevCell.swift; sourceTree = "<group>"; };
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
+		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -371,6 +373,7 @@
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */,
+				FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				14E2F4B61CCF2A69008D4279 /* GenSocialNetwork.swift in Sources */,
 				145549641D30DC070078EAEF /* Semaphore.swift in Sources */,
 				144912231CF59062000A1A6E /* UIApplication+Utility.swift in Sources */,
+				FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */,
 				14A4FDE71CA8D39A00BC09EE /* GenAnimateUtil.swift in Sources */,
 				141BBA241E5F765F00CB7E1C /* GenUtil+Image.swift in Sources */,
 				1401FB6C1C1417E000AB5E03 /* RabTableView.swift in Sources */,
