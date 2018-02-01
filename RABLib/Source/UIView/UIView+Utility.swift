@@ -413,10 +413,32 @@ extension UIView {
 
 // MARK: - Used to check if the view is Visible
 extension UIView {
+    
     public func isVisible() -> Bool {
         func isVisible(_ view: UIView, inView: UIView?) -> Bool {
             guard let inView = inView else { return true }
             let viewFrame = inView.convert(view.bounds, from: view)
+            if viewFrame.intersects(inView.bounds) {
+                return isVisible(view, inView: inView.superview)
+            }
+            return false
+        }
+        return isVisible(self, inView: self.superview)
+    }
+    
+    /// Check to see if view is visible
+    ///
+    /// - Parameter fromHeight: ex: 100 makes view smaller by height of 100
+    ///                         so it triggers sooner
+    /// - Returns: If view is visible
+    public func isVisible(fromHeight: CGFloat) -> Bool {
+        func isVisible(_ view: UIView, inView: UIView?) -> Bool {
+            guard let inView = inView else { return true }
+            // Goal is to shrink the y height of the view so it intersects sooner
+            var adjHeight = view.bounds.height - fromHeight
+            if adjHeight < 0 { adjHeight = 0 }
+            let h = CGRect(view.bounds.x, view.bounds.y, view.bounds.width, adjHeight)
+            let viewFrame = inView.convert(h, from: view)
             if viewFrame.intersects(inView.bounds) {
                 return isVisible(view, inView: inView.superview)
             }
