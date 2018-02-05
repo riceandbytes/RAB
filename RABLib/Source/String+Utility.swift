@@ -217,7 +217,7 @@ extension String {
     }
     
     public func containsIgnoreCase(_ other: String) -> Bool{
-        if self.lowercased().range(of: other) != nil {
+        if self.lowercased().range(of: other.lowercased()) != nil {
             return true
         } else {
             return false
