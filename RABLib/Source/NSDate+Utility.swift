@@ -111,6 +111,9 @@ public enum NSDateStringStyle {
     
     /// 02/12/17 08:48 PM
     case fullNoSec
+    
+    /// ex: 2016-11-28 -> 11/28
+    case veryShortDayMon
 }
 
 extension DateFormatter {
@@ -144,6 +147,8 @@ extension DateFormatter {
             self.dateFormat = "yyyy-MM-dd"
         case .fullNoSec:
             self.dateFormat = "MM/dd/yy hh:mm a"
+        case .veryShortDayMon:
+            self.dateFormat = "d/M"
         }
     }
 }
@@ -518,7 +523,6 @@ extension Date {
             return 0
         }
         
-        // Add one to account for the current day
         let val = abs(end - start)
         return val
     }
