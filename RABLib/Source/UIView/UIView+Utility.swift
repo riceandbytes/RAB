@@ -212,6 +212,13 @@ public extension UIView {
         return Int(self.frame.origin.x * self.frame.origin.y)
     }
     
+    
+    /// Turn view into circle
+    /// If it doesnt turn out right make sure you set in layout subview
+    ///     override func viewDidLayoutSubviews() {
+    ///         super.viewDidLayoutSubviews()
+    ///         imgBkgView.isCircle = true
+    ///     }
     @IBInspectable public var isCircle: Bool {
         set {
             if newValue {
