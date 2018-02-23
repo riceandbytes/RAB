@@ -100,6 +100,8 @@
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
+		FFFD8334203AC32A001E5D83 /* Int+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD8333203AC32A001E5D83 /* Int+Utility.swift */; };
+		FFFD834B204006AC001E5D83 /* Double+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD834A204006AC001E5D83 /* Double+Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +202,8 @@
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		FFFD8333203AC32A001E5D83 /* Int+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Utility.swift"; sourceTree = "<group>"; };
+		FFFD834A204006AC001E5D83 /* Double+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Utility.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +378,8 @@
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */,
 				FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */,
+				FFFD8333203AC32A001E5D83 /* Int+Utility.swift */,
+				FFFD834A204006AC001E5D83 /* Double+Utility.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				143572061D42C27F009C8FB2 /* BottomIndicatorView.swift in Sources */,
 				14DDF0441E12E97800C72C5F /* UIButton+Utility.swift in Sources */,
 				FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */,
+				FFFD834B204006AC001E5D83 /* Double+Utility.swift in Sources */,
 				14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */,
 				14CB4C811BEF468400AE709C /* String+Utility.swift in Sources */,
 				145F14541DAB64E900BBD534 /* GenAlertView.swift in Sources */,
@@ -615,6 +622,7 @@
 				1498E3D81F71CCA200D9FF16 /* NSAttributedString+Utility.swift in Sources */,
 				14F0BEC81BF127060095068E /* OpenSansHelper.swift in Sources */,
 				14E2F4B61CCF2A69008D4279 /* GenSocialNetwork.swift in Sources */,
+				FFFD8334203AC32A001E5D83 /* Int+Utility.swift in Sources */,
 				145549641D30DC070078EAEF /* Semaphore.swift in Sources */,
 				144912231CF59062000A1A6E /* UIApplication+Utility.swift in Sources */,
 				FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */,
