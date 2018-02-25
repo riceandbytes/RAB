@@ -114,6 +114,9 @@ public enum NSDateStringStyle {
     
     /// ex: 2016-11-28 -> 11/28
     case veryShortDayMon
+    
+    /// 11/28/18
+    case shortDayMonYr
 }
 
 extension DateFormatter {
@@ -149,6 +152,8 @@ extension DateFormatter {
             self.dateFormat = "MM/dd/yy hh:mm a"
         case .veryShortDayMon:
             self.dateFormat = "d/M"
+        case .shortDayMonYr:
+            self.dateFormat = "d/M/yy"
         }
     }
 }
