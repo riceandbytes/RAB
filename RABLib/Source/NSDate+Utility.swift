@@ -295,6 +295,26 @@ public extension Date {
     public func minus(days: Int = 0, hr: Int = 0, min: Int = 0, sec: Int = 0) -> Date {
         return plus(days: -days, hr: -hr, min: -min, sec: -sec)
     }
+
+    public func isToday() -> Bool {
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        
+        let enteredDate = self
+        let today = Date()
+        
+        let result = today.compare(enteredDate)
+        
+        switch (result) {
+        case .orderedAscending:
+            break
+        case .orderedDescending:
+            break
+        case .orderedSame:
+            return true
+        }
+        return false
+    }
     
     public func isYesterday() -> Bool {
         let df = DateFormatter()
