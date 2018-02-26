@@ -151,9 +151,9 @@ extension DateFormatter {
         case .fullNoSec:
             self.dateFormat = "MM/dd/yy hh:mm a"
         case .veryShortDayMon:
-            self.dateFormat = "d/M"
+            self.dateFormat = "M/d"
         case .shortDayMonYr:
-            self.dateFormat = "d/M/yy"
+            self.dateFormat = "M/d/yy"
         }
     }
 }
@@ -724,6 +724,17 @@ extension Date {
         todayComponents.hour = 23
         todayComponents.minute = 59
         return (gregorian?.date(from: todayComponents))!
+    }
+    
+    // A better version of start and end of day need to test
+    public var startOfDay2: Date {
+        return NSCalendar.current.startOfDay(for: self)
+    }
+    public var endOfDay2: Date? {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return NSCalendar.current.date(byAdding: components, to: startOfDay2)
     }
     
     /**
