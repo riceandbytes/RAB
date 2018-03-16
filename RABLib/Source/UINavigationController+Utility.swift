@@ -49,3 +49,11 @@ extension UINavigationController {
 
 private var smartPushAssociationKey: UInt8 = 0
 
+// MARK: - Utility
+
+extension UINavigationController {
+    
+    public func getNavBarHeight() -> CGFloat {
+        return self.navigationBar.frame.height
+    }
+}
