@@ -396,7 +396,8 @@ public extension String {
      Calls phone number
      */
     public func openPhoneNumber() {
-        if let url = URL(string: "tel://\(self)"),
+        let onlyNumbers = self.removeAllNonNumeric()
+        if let url = URL(string: "tel://\(onlyNumbers)"),
             UIApplication.shared.canOpenURL(url)
         {
             if #available(iOS 10, *) {
