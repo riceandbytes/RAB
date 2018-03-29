@@ -440,11 +440,11 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    open func helperTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    @objc open func helperTableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
     
-    open func helperTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    @objc open func helperTableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if self.tableData[section].tableTitle != nil && self.tableData[section].tableTitle?.isEmpty == false {
             return sectionHeight
         } else if headerTitle != nil && headerImage != nil {
@@ -455,10 +455,10 @@ extension RabTableView: UITableViewDataSource, UITableViewDelegate {
             return 0
         }
     }
-    open func helperTableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    @objc open func helperTableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
-    open func helperTableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    @objc open func helperTableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if footerReadMore != nil {
             return 84
         } else if let hd = footerData as? RabTableModelProtocol {
