@@ -160,12 +160,10 @@ open class RabTableView: UITableView {
             selectCallback = x
         }
         
-        var supportedTypes: Set<String> = []
-        for x in tableData {
-            supportedTypes.insert(x.type)
+        // MARK: Register Cells
+        for rabDataSources in tableData {
+            self.registerCells(Array(rabDataSources.types))
         }
-        pln(supportedTypes)
-        self.registerCells(Array(supportedTypes))
     }
     
     deinit {

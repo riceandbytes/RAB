@@ -21,9 +21,7 @@ public enum RabTableKey: String {
 }
 
 public class RabTableDataSource {
-    // Must set the type
-    public var type: String
-    
+    var types = Set<String>()
     public var tableTitle: String?
     
     var items: [DataRow] = []
@@ -38,14 +36,12 @@ public class RabTableDataSource {
         }
     }
     
-    public init(type: String, title: String?) {
+    public init(title: String?) {
         self.tableTitle = title
-        self.type = type
     }
     
-    public init(_ type: String) {
+    public init() {
         self.tableTitle = nil
-        self.type = type
     }
     
     /// Adds a single row with a title
@@ -95,6 +91,9 @@ public class RabTableDataSource {
     }
     
     open func add(_ any: DataRow) {
+        // Make sure we add the type so we can register the cell
+        types.insert(any.type)
+        
         items.append(any)
     }
     
