@@ -169,6 +169,7 @@ extension String {
     
     /// Convert New York date string thats passed in to a nsdate
     ///
+    @available(*, deprecated, message: "Use toDateCustomFormatWith(timeZoneId: String) class instead")
     public func toDateCustomFormat_toNewYorkTimeZone() -> Date? {
         
         // Lets get timezone sec difference betweeen 2 locs
@@ -185,6 +186,28 @@ extension String {
         
         let dateFormatter = DateFormatter()
 
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: interval)
+        let iso8601String = dateFormatter.date(from: self)
+        return iso8601String
+    }
+    /// timeZoneId: example "America/New_York"
+    public func toDateCustomFormatWith(timeZoneId: String) -> Date? {
+        
+        // Lets get timezone sec difference betweeen 2 locs
+        guard let sourceTimeZone = TimeZone(abbreviation: "GMT") else {
+            return nil
+        }
+        guard let destinationTimeZone = TimeZone(identifier: timeZoneId) else {
+            return nil
+        }
+        let sourceSeconds = sourceTimeZone.secondsFromGMT(for: Date())
+        let destinationSeconds = destinationTimeZone.secondsFromGMT(for: Date())
+        
+        let interval = destinationSeconds - sourceSeconds
+        
+        let dateFormatter = DateFormatter()
+        
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: interval)
         let iso8601String = dateFormatter.date(from: self)
