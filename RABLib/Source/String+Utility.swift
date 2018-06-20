@@ -143,10 +143,20 @@ extension String {
      - returns: NSDate
      */
     public func toDateISO8601Format() -> Date? {
-        let iso8601String = Date.dateFromISOString(self)        
-        return iso8601String
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+        return dateFormatter.date(from: self)
     }
-
+    
+    public func toDateISO8601FormatGMT0() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter.date(from: self)
+    }
+    
     /**
     This function takes care of cases when the string provided has no timezone,
     as a normal iso string from server, (notice it doesn't have ZZZZ)
@@ -191,6 +201,8 @@ extension String {
         let iso8601String = dateFormatter.date(from: self)
         return iso8601String
     }
+    /// This funciton will take a string iso date and convert it to the local
+    /// time and then subtrack the gmt time from it to give it gmt 0 time
     /// timeZoneId: example "America/New_York"
     public func toDateCustomFormatWith(timeZoneId: String) -> Date? {
         

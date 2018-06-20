@@ -259,7 +259,7 @@ public extension Date {
     public static func dateFromISOString(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         return dateFormatter.date(from: string)
     }
     
@@ -540,20 +540,23 @@ extension Date {
         }
         
         // need to pad 12 hours to endDate to adjust for UTC
-        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 00, second: 00, of: endDate) else {
+        guard let endDateAdj = calendar.date(bySettingHour: 23, minute: 59, second: 00, of: endDate) else {
             return 0
         }
+//        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 00, second: 00, of: endDate) else {
+//            return 0
+//        }
 
         guard let end = calendar.ordinality(of: .day, in: .era, for: endDateAdj) else {
             return 0
         }
         
-        let val = abs(end - start)
+        let val = start - end
         return val
     }
     
     public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
-        return self.daysBetween(endDate) + 1
+        return abs(self.daysBetween(endDate)) + 1
     }
 }
 
