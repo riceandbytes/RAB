@@ -492,11 +492,14 @@ public extension Date {
         return destinationDate
     }
     
-    
+    /// Dont really need to use this, you should always convert your ios to
+    /// NSDate format, to GMT0
     public func getCurrentDateForTimezone(_ timeZoneStr: String) -> Date? {
+        guard let destinationTimeZone = TimeZone(identifier: timeZoneStr) else {
+            return nil
+        }
         let sourceDate = self
         let sourceTimeZone = TimeZone(abbreviation: "GMT")
-        let destinationTimeZone = TimeZone(identifier: timeZoneStr)!
         
         let sourceGMTOffset = sourceTimeZone?.secondsFromGMT(for: sourceDate)
         let destinationGMTOffset = destinationTimeZone.secondsFromGMT(for: sourceDate)
