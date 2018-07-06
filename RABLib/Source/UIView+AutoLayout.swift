@@ -49,4 +49,23 @@ extension UIView {
                 views: bindings)
         self.addConstraints(verticalConstraints)
     }
+    
+    public func addOnlyFullWidthHeightLayoutConstraints(_ v: UIView) {
+        v.translatesAutoresizingMaskIntoConstraints = false
+        let bindings: [String: UIView] = ["myView": v]
+        
+        let horizontalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-0-[myView]-0-|",
+                metrics: nil,
+                views: bindings)
+        self.addConstraints(horizontalConstraints)
+        
+        let verticalConstraints =
+            NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-0-[myView]-0-|",
+                metrics: nil,
+                views: bindings)
+        self.addConstraints(verticalConstraints)
+    }
 }
