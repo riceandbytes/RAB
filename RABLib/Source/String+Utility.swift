@@ -131,8 +131,11 @@ extension String {
     
     // MARK: - Date Helpers
     
-    public func toDate(_ format: NSDateStringStyle) -> Date? {        
+    public func toDate(_ format: NSDateStringStyle, timeZone: String? = nil) -> Date? {        
         let dateFormatter = DateFormatter(style: format)
+        if let tz = timeZone {
+            dateFormatter.timeZone = TimeZone(abbreviation: tz)
+        }
         return dateFormatter.date(from: self)
     }
     
