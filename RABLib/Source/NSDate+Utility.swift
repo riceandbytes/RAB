@@ -537,6 +537,13 @@ extension Date {
     // - Value can be negative
     //
     public func daysBetween(_ endDate: Date) -> Int {
+        // remove time
+        let e = endDate.toString(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC")
+        guard let end = e.toDate(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC") else { return 0 }
+        let s = self.toString(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC")
+        guard let start = s.toDate(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC") else { return 0 }
+        
+        
 //        let calendar = Calendar.current
 //        guard let startAdj = calendar.date(bySettingHour: 23, minute: 59, second: 00, of: self) else {
 //            return 0
@@ -562,12 +569,13 @@ extension Date {
 //        let val = start - end
 //        return val
         
-        let diffInDays = Calendar.current.dateComponents([.day], from: self, to: endDate).day ?? 0
-        return diffInDays
+        let diff = Calendar.current.dateComponents([.day, .minute], from: start, to: end)
+//        let min = diff.minute
+        return diff.day ?? 0
     }
     
     public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
-        return abs(self.daysBetween(endDate))
+        return abs(self.daysBetween(endDate)) + 1
     }
 }
 
