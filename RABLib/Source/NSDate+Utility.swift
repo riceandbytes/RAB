@@ -537,40 +537,7 @@ extension Date {
     // - Value can be negative
     //
     public func daysBetween(_ endDate: Date) -> Int {
-        // remove time
-        let e = endDate.toString(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC")
-        guard let end = e.toDate(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC") else { return 0 }
-        let s = self.toString(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC")
-        guard let start = s.toDate(NSDateStringStyle.isoMonthDayYear, timeZone: "UTC") else { return 0 }
-        
-        
-//        let calendar = Calendar.current
-//        guard let startAdj = calendar.date(bySettingHour: 23, minute: 59, second: 00, of: self) else {
-//            return 0
-//        }
-//        guard let start = calendar.ordinality(of: .day, in: .era, for: startAdj) else {
-//            return 0
-//        }
-//
-//
-//        // Time time of endDate to last minute of the day, so its the full day
-//        guard let endDateAdj = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: endDate) else {
-//            return 0
-//        }
-//        // need to pad 12 hours to endDate to adjust for UTC
-////        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 01, second: 00, of: endDate) else {
-////            return 0
-////        }
-//
-//        guard let end = calendar.ordinality(of: .day, in: .era, for: endDateAdj) else {
-//            return 0
-//        }
-//
-//        let val = start - end
-//        return val
-        
-        let diff = Calendar.current.dateComponents([.day, .minute], from: start, to: end)
-//        let min = diff.minute
+        let diff = Calendar.current.dateComponents([.day, .minute], from: self, to: endDate)
         return diff.day ?? 0
     }
     
