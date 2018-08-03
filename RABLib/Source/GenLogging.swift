@@ -29,3 +29,10 @@ func pAssert(_ exp: Bool, _ object: Any, file:String = #file, function:String = 
         if !exp { pErr("[ERROR][\(NSString(string: file).lastPathComponent)][\(function)][\(line)] -> \(object)") }
     #endif
 }
+
+func pFail(_ object: Any,
+           file: String = #file,
+           function:String = #function,
+           line:Int = #line) {
+    pAssert(false, object, file: file, function: function, line: line)
+}

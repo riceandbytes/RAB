@@ -36,12 +36,14 @@ public class RabTableDataSource {
         }
     }
     
-    public init(title: String?) {
+    public init(title: String?, types: Set<String>) {
         self.tableTitle = title
+        self.types = types
     }
     
-    public init() {
+    public init(types: Set<String>) {
         self.tableTitle = nil
+        self.types = types
     }
     
     /// Adds a single row with a title
