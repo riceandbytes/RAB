@@ -9,7 +9,7 @@
 import Foundation
 
 public extension UIView {
-
+    
     // MARK: - Load NIB
     /**
      Usage: let myCustomView: CustomView = .fromNib()

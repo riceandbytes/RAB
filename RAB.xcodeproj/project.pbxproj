@@ -100,6 +100,12 @@
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
+		FFD80F7B20D1C2D6002D9D3C /* SwiftModalWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */; };
+		FFD80F7D20D1C30C002D9D3C /* SwiftWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7C20D1C30C002D9D3C /* SwiftWebVC.swift */; };
+		FFD80F7F20D1C32F002D9D3C /* SwiftWebVCActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7E20D1C32F002D9D3C /* SwiftWebVCActivity.swift */; };
+		FFD80F8120D1C373002D9D3C /* SwiftWebVCActivityChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F8020D1C373002D9D3C /* SwiftWebVCActivityChrome.swift */; };
+		FFD80F8320D1C380002D9D3C /* SwiftWebVCActivitySafari.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F8220D1C380002D9D3C /* SwiftWebVCActivitySafari.swift */; };
+		FFD80F8A20D21285002D9D3C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD80F8920D21285002D9D3C /* Media.xcassets */; };
 		FFFD8334203AC32A001E5D83 /* Int+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD8333203AC32A001E5D83 /* Int+Utility.swift */; };
 		FFFD834B204006AC001E5D83 /* Double+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD834A204006AC001E5D83 /* Double+Utility.swift */; };
 		FFFD836020439B66001E5D83 /* NSLayoutConstraint+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD835F20439B66001E5D83 /* NSLayoutConstraint+Utility.swift */; };
@@ -203,6 +209,12 @@
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftModalWebVC.swift; sourceTree = "<group>"; };
+		FFD80F7C20D1C30C002D9D3C /* SwiftWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWebVC.swift; sourceTree = "<group>"; };
+		FFD80F7E20D1C32F002D9D3C /* SwiftWebVCActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWebVCActivity.swift; sourceTree = "<group>"; };
+		FFD80F8020D1C373002D9D3C /* SwiftWebVCActivityChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWebVCActivityChrome.swift; sourceTree = "<group>"; };
+		FFD80F8220D1C380002D9D3C /* SwiftWebVCActivitySafari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWebVCActivitySafari.swift; sourceTree = "<group>"; };
+		FFD80F8920D21285002D9D3C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		FFFD8333203AC32A001E5D83 /* Int+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Utility.swift"; sourceTree = "<group>"; };
 		FFFD834A204006AC001E5D83 /* Double+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Utility.swift"; sourceTree = "<group>"; };
 		FFFD835F20439B66001E5D83 /* NSLayoutConstraint+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Utility.swift"; sourceTree = "<group>"; };
@@ -329,6 +341,7 @@
 		149DAF941AB188630093CA5B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FFD80F7920D1C2B1002D9D3C /* GenWebView */,
 				148917A61AEE023800448450 /* Activity Indicator */,
 				1410AD0A1D237D4800DEA84C /* Array+Utility.swift */,
 				14E2F4EB1CD913C4008D4279 /* CollectionType+Utility.swift */,
@@ -402,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				14A1B5BF1AB17EA30054ADA2 /* Info.plist */,
+				FFD80F8920D21285002D9D3C /* Media.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -458,6 +472,18 @@
 				14E2F4DA1CD16E89008D4279 /* UIViewController+Animation.swift */,
 			);
 			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		FFD80F7920D1C2B1002D9D3C /* GenWebView */ = {
+			isa = PBXGroup;
+			children = (
+				FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */,
+				FFD80F7C20D1C30C002D9D3C /* SwiftWebVC.swift */,
+				FFD80F7E20D1C32F002D9D3C /* SwiftWebVCActivity.swift */,
+				FFD80F8020D1C373002D9D3C /* SwiftWebVCActivityChrome.swift */,
+				FFD80F8220D1C380002D9D3C /* SwiftWebVCActivitySafari.swift */,
+			);
+			name = GenWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +590,7 @@
 				1443C74F1C9740B40093FC4D /* FancyButtonView.xib in Resources */,
 				1401FB691C1417E000AB5E03 /* RabSingleCell.xib in Resources */,
 				146FF90C1C1A180000C90A42 /* TitleDetailPicCell.xib in Resources */,
+				FFD80F8A20D21285002D9D3C /* Media.xcassets in Resources */,
 				1401FB651C1417E000AB5E03 /* KeyValueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,13 +618,17 @@
 				14E2F4D41CD16C3E008D4279 /* UIView+Snapshots.swift in Sources */,
 				14A547561E1CDAA5008B8BC3 /* RABGradient.swift in Sources */,
 				149A84781C1569B30004C185 /* SinglePicCell.swift in Sources */,
+				FFD80F8120D1C373002D9D3C /* SwiftWebVCActivityChrome.swift in Sources */,
 				14E1B77E1C52148500E7D7AD /* FacebookHelper.swift in Sources */,
 				146FF90A1C1A161700C90A42 /* TitleDetailPicCell.swift in Sources */,
+				FFD80F7B20D1C2D6002D9D3C /* SwiftModalWebVC.swift in Sources */,
 				146DD33F1BEF523D009E330F /* GenConst.swift in Sources */,
 				14CB4C841BEF4D6B00AE709C /* GenInputField.swift in Sources */,
 				14FB13021C2780BA005D2E8D /* PicWithInfoCell.swift in Sources */,
+				FFD80F8320D1C380002D9D3C /* SwiftWebVCActivitySafari.swift in Sources */,
 				146FCDB91E1F95AD00CD68D8 /* RabMusic.swift in Sources */,
 				146DD3431BEF57CF009E330F /* NSDate+Utility.swift in Sources */,
+				FFD80F7F20D1C32F002D9D3C /* SwiftWebVCActivity.swift in Sources */,
 				1469B69C1E1CD4DC00B28AE4 /* RabSound.swift in Sources */,
 				149DAF9D1AB188630093CA5B /* UIImage+Utility.swift in Sources */,
 				146DD33D1BEF4EB2009E330F /* GenLogging.swift in Sources */,
@@ -606,6 +637,7 @@
 				1443C7511C9775AB0093FC4D /* FancyButtonView.swift in Sources */,
 				146DD3491BEF5988009E330F /* UIPickerView+Utility.swift in Sources */,
 				146FF8FC1C192C6100C90A42 /* TitleWithPicCell.swift in Sources */,
+				FFD80F7D20D1C30C002D9D3C /* SwiftWebVC.swift in Sources */,
 				14A78C121D9EEF6300DDCD6B /* UILabel+Utility.swift in Sources */,
 				14FA58421B20341300DA3638 /* NSObject+Utility.swift in Sources */,
 				148917981AEDFB1D00448450 /* GenExt.swift in Sources */,

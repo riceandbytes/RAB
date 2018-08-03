@@ -259,7 +259,7 @@ public extension Date {
     public static func dateFromISOString(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         return dateFormatter.date(from: string)
     }
     
@@ -492,11 +492,14 @@ public extension Date {
         return destinationDate
     }
     
-    
+    /// Dont really need to use this, you should always convert your ios to
+    /// NSDate format, to GMT0
     public func getCurrentDateForTimezone(_ timeZoneStr: String) -> Date? {
+        guard let destinationTimeZone = TimeZone(identifier: timeZoneStr) else {
+            return nil
+        }
         let sourceDate = self
         let sourceTimeZone = TimeZone(abbreviation: "GMT")
-        let destinationTimeZone = TimeZone(identifier: timeZoneStr)!
         
         let sourceGMTOffset = sourceTimeZone?.secondsFromGMT(for: sourceDate)
         let destinationGMTOffset = destinationTimeZone.secondsFromGMT(for: sourceDate)
@@ -534,26 +537,12 @@ extension Date {
     // - Value can be negative
     //
     public func daysBetween(_ endDate: Date) -> Int {
-        let calendar = Calendar.current
-        guard let start = calendar.ordinality(of: .day, in: .era, for: self) else {
-            return 0
-        }
-        
-        // need to pad 12 hours to endDate to adjust for UTC
-        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 00, second: 00, of: endDate) else {
-            return 0
-        }
-
-        guard let end = calendar.ordinality(of: .day, in: .era, for: endDateAdj) else {
-            return 0
-        }
-        
-        let val = abs(end - start)
-        return val
+        let diff = Calendar.current.dateComponents([.day, .minute], from: self, to: endDate)
+        return diff.day ?? 0
     }
     
     public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
-        return self.daysBetween(endDate) + 1
+        return abs(self.daysBetween(endDate)) + 1
     }
 }
 
@@ -604,19 +593,24 @@ extension Date {
     /// ex:
     /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
     ///
-    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
-        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-        let cal = Calendar.current
-        var components = cal.dateComponents(x, from: self)
-
-        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
-        // Change the time to 9:30:00 in your locale
-        components.hour = hour
-        components.minute = min
-        components.second = sec
-
-        return cal.date(from: components)
-    }
+//    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
+//        let cal = Calendar.current
+//
+//        var components = cal.dateComponents([], from: self)
+//        let cMon = cal.component(.month, from: self)
+//        let cDay = cal.component(.day, from: self)
+//        let cYr = cal.component(.year, from: self)
+//
+//        components.month = cMon
+//        components.day = cDay
+//        components.year = cYr
+//        // Change the time to 9:30:00 in your locale
+//        components.hour = hour
+//        components.minute = min
+//        components.second = sec
+//        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
+//        return cal.date(from: components)
+//    }
 }
 
 // MARK: - Find Time Between Two Dates

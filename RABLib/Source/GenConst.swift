@@ -24,3 +24,9 @@ public struct Const {
         return UIFont(name: fontName, size: CGFloat(size))
     }
 }
+
+// MARK: - Protocols
+
+public protocol UIViewSetupDelegate {
+    func setup()
+}

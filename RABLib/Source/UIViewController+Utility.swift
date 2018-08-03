@@ -247,9 +247,9 @@ public extension UIViewController {
 
 extension UIViewController {
     
-    // Special function to help present a popover controller when using
-    // UIAlertControllers on a iPad
-    //
+    /// Special function to help present a popover controller when using
+    /// UIAlertControllers on a iPad
+    ///
     public func presentAlert(_ alert: UIAlertController, animated: Bool = true, sender: AnyObject? = nil) {
         if let presenter = alert.popoverPresentationController {
             if let s = sender as? UIView {
