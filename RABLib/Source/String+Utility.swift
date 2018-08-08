@@ -82,13 +82,6 @@ extension String {
         return String(self[..<i])
     }
     
-    /// Expose integer access to a character in a string
-//    subscript(integerIndex: Int) -> Character
-//        {
-//            let index = characters.index(startIndex, offsetBy: integerIndex)
-//            return self[index]
-//    }
-    
     var lastPathComponent: String {
         get {
             return (self as NSString).lastPathComponent
@@ -101,12 +94,14 @@ extension String {
         }
     }
     
+    /// https://developer.apple.com/documentation/foundation/nsstring/1411141-deletinglastpathcomponent
     var stringByDeletingLastPathComponent: String {
         get {
             return (self as NSString).deletingLastPathComponent
         }
     }
     
+    /// ex: “/tmp/” -> “/tmp”
     var stringByDeletingPathExtension: String {
         get {
             return (self as NSString).deletingPathExtension
@@ -338,6 +333,17 @@ extension String {
     //
     public func cleanHtml() -> String {
         return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
+    
+    /// Remove first / in a string
+    /// ex: "/hello/dog" -> "hello/dog"
+    /// if first character does not have slash then return original
+    public var removeFirstForwardSlash: String {
+        // check for fwd slash
+        if self.first == "/" {
+            return String(self.dropFirst())
+        }
+        return self
     }
     
 //    - (NSString *)truncateByWordWithLimit:(NSInteger)limit {
