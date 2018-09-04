@@ -85,6 +85,7 @@ open class RabTableView: UITableView {
      tableData2 = TableDataSource(title: "TITLE2", tableType: .TitleWithPic)
      ex: pass this [self.tableData1, self.tableData2]
      
+     - parameter cellTypes: a list of the cell class names
      - parameter hideSeparator:     table separators
      - parameter textFont:          font for title
      - parameter selectionColor:    color when you select the row
@@ -159,10 +160,9 @@ open class RabTableView: UITableView {
         if let x = canSelectCallback {
             selectCallback = x
         }
-        
         // MARK: Register Cells
-        for rabDataSources in tableData {
-            self.registerCells(Array(rabDataSources.types))
+        for td in tableData {
+            self.registerCells(Array(td.types))
         }
     }
     

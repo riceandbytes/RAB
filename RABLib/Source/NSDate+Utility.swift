@@ -505,25 +505,8 @@ extension Date {
     // - Value can be negative
     //
     public func daysBetween(_ endDate: Date) -> Int {
-        let calendar = Calendar.current
-        guard let start = calendar.ordinality(of: .day, in: .era, for: self) else {
-            return 0
-        }
-        
-        // need to pad 12 hours to endDate to adjust for UTC
-        guard let endDateAdj = calendar.date(bySettingHour: 23, minute: 59, second: 00, of: endDate) else {
-            return 0
-        }
-//        guard let endDateAdj = calendar.date(bySettingHour: 12, minute: 00, second: 00, of: endDate) else {
-//            return 0
-//        }
-
-        guard let end = calendar.ordinality(of: .day, in: .era, for: endDateAdj) else {
-            return 0
-        }
-        
-        let val = start - end
-        return val
+        let diff = Calendar.current.dateComponents([.day, .minute], from: self, to: endDate)
+        return diff.day ?? 0
     }
     
     public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
@@ -578,19 +561,24 @@ extension Date {
     /// ex:
     /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
     ///
-    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
-        let x: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-        let cal = Calendar.current
-        var components = cal.dateComponents(x, from: self)
-
-        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
-        // Change the time to 9:30:00 in your locale
-        components.hour = hour
-        components.minute = min
-        components.second = sec
-
-        return cal.date(from: components)
-    }
+//    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
+//        let cal = Calendar.current
+//
+//        var components = cal.dateComponents([], from: self)
+//        let cMon = cal.component(.month, from: self)
+//        let cDay = cal.component(.day, from: self)
+//        let cYr = cal.component(.year, from: self)
+//
+//        components.month = cMon
+//        components.day = cDay
+//        components.year = cYr
+//        // Change the time to 9:30:00 in your locale
+//        components.hour = hour
+//        components.minute = min
+//        components.second = sec
+//        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
+//        return cal.date(from: components)
+//    }
 }
 
 // MARK: - Find Time Between Two Dates
