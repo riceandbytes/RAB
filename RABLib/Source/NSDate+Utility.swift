@@ -297,43 +297,11 @@ public extension Date {
     }
 
     public func isToday() -> Bool {
-        let df = DateFormatter()
-        df.dateFormat = "MM/dd/yyyy"
-        
-        let enteredDate = self
-        let today = Date()
-        
-        let result = today.compare(enteredDate)
-        
-        switch (result) {
-        case .orderedAscending:
-            break
-        case .orderedDescending:
-            break
-        case .orderedSame:
-            return true
-        }
-        return false
+        return Calendar.current.isDateInToday(self)
     }
     
     public func isYesterday() -> Bool {
-        let df = DateFormatter()
-        df.dateFormat = "MM/dd/yyyy"
-        
-        let enteredDate = self
-        let today = Date()
-        
-        let result = today.compare(enteredDate)
-        
-        switch (result) {
-        case .orderedAscending:
-            break
-        case .orderedDescending:
-            return true
-        case .orderedSame:
-            break
-        }
-        return false
+        return Calendar.current.isDateInYesterday(self)
     }
     
     public func getYear() -> Int {
