@@ -329,6 +329,27 @@ public extension Date {
 //        print(day)
     }
     
+    public func getHour() -> Int {
+        let calendar = Calendar.current
+        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute]
+        let components = (calendar as NSCalendar).components(com, from: self)
+        return components.hour!
+    }
+    
+    public func getMinute() -> Int {
+        let calendar = Calendar.current
+        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute]
+        let components = (calendar as NSCalendar).components(com, from: self)
+        return components.minute!
+    }
+    
+    public func getSecond() -> Int {
+        let calendar = Calendar.current
+        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute, .second]
+        let components = (calendar as NSCalendar).components(com, from: self)
+        return components.second!
+    }
+    
     // example:
     // true when ex: today date is 10/30 and self date is 10/29
     // so true when 10/29 <= (10/30)

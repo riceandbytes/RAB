@@ -99,6 +99,7 @@
 		14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB130E1C2FF92B005D2E8D /* RevCell.swift */; };
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
+		FFBD54122154CBEF00B40E85 /* RabNotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
 		FFD80F7B20D1C2D6002D9D3C /* SwiftModalWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */; };
 		FFD80F7D20D1C30C002D9D3C /* SwiftWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7C20D1C30C002D9D3C /* SwiftWebVC.swift */; };
@@ -208,6 +209,7 @@
 		14FB130E1C2FF92B005D2E8D /* RevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevCell.swift; sourceTree = "<group>"; };
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
+		FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabNotifyService.swift; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftModalWebVC.swift; sourceTree = "<group>"; };
 		FFD80F7C20D1C30C002D9D3C /* SwiftWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWebVC.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		149DAF941AB188630093CA5B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FFBD54102154CBD700B40E85 /* Services */,
 				FFD80F7920D1C2B1002D9D3C /* GenWebView */,
 				148917A61AEE023800448450 /* Activity Indicator */,
 				1410AD0A1D237D4800DEA84C /* Array+Utility.swift */,
@@ -472,6 +475,14 @@
 				14E2F4DA1CD16E89008D4279 /* UIViewController+Animation.swift */,
 			);
 			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		FFBD54102154CBD700B40E85 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		FFD80F7920D1C2B1002D9D3C /* GenWebView */ = {
@@ -650,6 +661,7 @@
 				FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */,
 				FFFD834B204006AC001E5D83 /* Double+Utility.swift in Sources */,
 				14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */,
+				FFBD54122154CBEF00B40E85 /* RabNotifyService.swift in Sources */,
 				14CB4C811BEF468400AE709C /* String+Utility.swift in Sources */,
 				145F14541DAB64E900BBD534 /* GenAlertView.swift in Sources */,
 				14BE521F1ADA568F00B82323 /* GenUIBarButtonItem.swift in Sources */,
