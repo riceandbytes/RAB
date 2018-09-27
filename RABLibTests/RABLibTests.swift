@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import RABLib
 
 class RABLibTests: XCTestCase {
     
@@ -31,6 +32,14 @@ class RABLibTests: XCTestCase {
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testDateSetExact() {
+        let today = Date()
+        let x = today.setTimeExact(hour: 11, min: 50, sec: 25)
+        XCTAssertEqual(x?.getHour(), 11)
+        XCTAssertEqual(x?.getMinute(), 50)
+        XCTAssertEqual(x?.getSecond(), 25)
     }
     
 }

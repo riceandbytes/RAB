@@ -329,25 +329,17 @@ public extension Date {
 //        print(day)
     }
     
+    /// Will return the hour in local
     public func getHour() -> Int {
-        let calendar = Calendar.current
-        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute]
-        let components = (calendar as NSCalendar).components(com, from: self)
-        return components.hour!
+        return Calendar.current.component(.hour, from: self)
     }
     
     public func getMinute() -> Int {
-        let calendar = Calendar.current
-        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute]
-        let components = (calendar as NSCalendar).components(com, from: self)
-        return components.minute!
+        return Calendar.current.component(.minute, from: self)
     }
     
     public func getSecond() -> Int {
-        let calendar = Calendar.current
-        let com: NSCalendar.Unit = [.day , .month , .year, .hour, .minute, .second]
-        let components = (calendar as NSCalendar).components(com, from: self)
-        return components.second!
+        return Calendar.current.component(.second, from: self)
     }
     
     // example:
@@ -582,24 +574,28 @@ extension Date {
     /// ex:
     /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
     ///
-//    public func setTimeExact(hour: Int, min: Int, sec: Int, timeZoneAbbrev: String = "UTC") -> Date? {
-//        let cal = Calendar.current
-//
-//        var components = cal.dateComponents([], from: self)
-//        let cMon = cal.component(.month, from: self)
-//        let cDay = cal.component(.day, from: self)
-//        let cYr = cal.component(.year, from: self)
-//
-//        components.month = cMon
-//        components.day = cDay
-//        components.year = cYr
-//        // Change the time to 9:30:00 in your locale
-//        components.hour = hour
-//        components.minute = min
-//        components.second = sec
-//        components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
-//        return cal.date(from: components)
-//    }
+    public func setTimeExact(hour: Int, min: Int, sec: Int) -> Date? {
+        let cal = Calendar.current
+
+        var components = cal.dateComponents([], from: self)
+        let cMon = cal.component(.month, from: self)
+        let cDay = cal.component(.day, from: self)
+        let cYr = cal.component(.year, from: self)
+
+        components.month = cMon
+        components.day = cDay
+        components.year = cYr
+        // Change the time to 9:30:00 in your locale
+        components.hour = hour
+        components.minute = min
+        components.second = sec
+        components.timeZone = TimeZone.current
+        // Not using UTC, will be local time
+        // timeZoneAbbrev: String = "UTC"
+        // components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
+        
+        return cal.date(from: components)
+    }
 }
 
 // MARK: - Find Time Between Two Dates

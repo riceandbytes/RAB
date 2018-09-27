@@ -7,7 +7,20 @@
 		<key>RABLib.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>33</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>14A1B5BB1AB17EA30054ADA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>14A1B5C51AB17EA30054ADA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -62,7 +62,7 @@ extension MutableCollection where Indices.Iterator.Element == Index {
 
 extension Sequence {
     /// Returns an array with the contents of this sequence, shuffled.
-    public func shuffled() -> [Iterator.Element] {
+    public func shuffledArray() -> [Iterator.Element] {
         var result = Array(self)
         result.shuffle()
         return result
