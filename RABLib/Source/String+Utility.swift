@@ -346,6 +346,10 @@ extension String {
         return self
     }
     
+    public func trim() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
 //    - (NSString *)truncateByWordWithLimit:(NSInteger)limit {
 //    NSRange r = NSMakeRange(0, self.length);
 //    while (r.length > limit) {
@@ -455,8 +459,8 @@ public extension String {
     /**
      Opens a website
      */
-    public func openWebsite() -> Bool {
-        guard let url = URL(string: self) else {
+    public func openWebsite() -> Bool {        
+        guard let url = URL(string: self.trim()) else {
             return false
         }
         if #available(iOS 10.0, *) {
