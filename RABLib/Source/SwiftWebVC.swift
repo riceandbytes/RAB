@@ -329,11 +329,7 @@ extension SwiftWebVC: WKNavigationDelegate {
         
         let hostAddress = navigationAction.request.url?.host
         
-        if (navigationAction.targetFrame == nil) {
-//            if UIApplication.shared.canOpenURL(url!) {
-//                UIApplication.shared.openURL(url!)
-//            }
-            
+        if (navigationAction.targetFrame == nil) {            
             // Use this to keep it request in the webview
             webView.load(navigationAction.request)
         }
