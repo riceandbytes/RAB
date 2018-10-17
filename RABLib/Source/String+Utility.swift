@@ -243,6 +243,7 @@ extension String {
 
     /**
      Check for whitespaces, newlines, and tabs
+     ex: "    \r\n  " would be empty
      */
     public var isEmptyField: Bool {
         return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
