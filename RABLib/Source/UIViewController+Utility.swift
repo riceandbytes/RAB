@@ -286,3 +286,27 @@ extension UIViewController {
         }, completion: nil)
     }
 }
+
+// MARK: - Keyboard
+
+extension UIViewController {
+    
+    /// Use this to calculate how much the keyboard goes up
+    /// - takes into account tabbar, and toolbar/safeArea
+    /// - Parameter: sender from
+    ///   - override func keyboardWillShow(_ sender: Notification)
+    public func calcKeyboardHeight(_ sender: Notification?) -> CGFloat? {
+        guard let notify = sender as NSNotification? else { return nil }
+        guard let userInfo = notify.userInfo else { return nil }
+        guard let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else { return nil }
+        var newHeight: CGFloat = keyboardHeight
+        if #available(iOS 11.0, *) {
+            newHeight = newHeight - self.view.safeAreaInsets.bottom
+        }
+        // need to adjust height if tabbar is present
+        if let tb = self.tabBarController?.tabBar {
+            newHeight = newHeight - tb.frame.size.height
+        }
+        return newHeight
+    }
+}
