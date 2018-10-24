@@ -16,9 +16,8 @@ extension UICollectionView {
         let indexPath: IndexPath = IndexPath(row: i, section: 0)
         self.performBatchUpdates({
             self.deleteItems(at: [indexPath])
-            }, completion: {
-                (finished: Bool) in
-                self.reloadItems(at: self.indexPathsForVisibleItems)
+        }, completion: { (finished: Bool) in
+            self.reloadItems(at: self.indexPathsForVisibleItems)
         })
     }
 }
