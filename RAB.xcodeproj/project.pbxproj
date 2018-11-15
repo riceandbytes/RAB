@@ -98,6 +98,7 @@
 		14FB13021C2780BA005D2E8D /* PicWithInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */; };
 		14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB130E1C2FF92B005D2E8D /* RevCell.swift */; };
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
+		FF266AED219D4AAC006E5B0B /* Formatter+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
 		FFBD54122154CBEF00B40E85 /* RabNotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
@@ -208,6 +209,7 @@
 		14FB13011C2780BA005D2E8D /* PicWithInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicWithInfoCell.swift; sourceTree = "<group>"; };
 		14FB130E1C2FF92B005D2E8D /* RevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevCell.swift; sourceTree = "<group>"; };
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
+		FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Utility.swift"; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
 		FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabNotifyService.swift; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				14E2F4D91CD16D48008D4279 /* UIViewController */,
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				FFFD835F20439B66001E5D83 /* NSLayoutConstraint+Utility.swift */,
+				FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				14E2F4D81CD16D43008D4279 /* UIView+Utility.swift in Sources */,
 				14E5050B1F33912400A5A8BD /* Float+Utility.swift in Sources */,
 				1476B7831E79E31B009AA539 /* UIImageView+Utility.swift in Sources */,
+				FF266AED219D4AAC006E5B0B /* Formatter+Utility.swift in Sources */,
 				14C5D3371FB98AB8002C00F1 /* ColumnFlowLayout.swift in Sources */,
 				14E2F4D41CD16C3E008D4279 /* UIView+Snapshots.swift in Sources */,
 				14A547561E1CDAA5008B8BC3 /* RABGradient.swift in Sources */,

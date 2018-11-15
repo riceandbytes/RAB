@@ -218,6 +218,14 @@ public extension Date {
         return dateFormatter.string(from: self) + "Z"
     }
 
+//    public func toISOStringFromDateNoTimeZone() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+//        //dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+//        return dateFormatter.string(from: self) + "Z"
+//    }
+    
 //    public class func dateFromISOString(string: String) -> NSDate {
 //        var dateFormatter = NSDateFormatter()
 //        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
