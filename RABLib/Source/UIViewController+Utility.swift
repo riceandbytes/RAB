@@ -249,7 +249,6 @@ extension UIViewController {
     
     /// Special function to help present a popover controller when using
     /// UIAlertControllers on a iPad
-    ///
     public func presentAlert(_ alert: UIAlertController, animated: Bool = true, sender: AnyObject? = nil) {
         if let presenter = alert.popoverPresentationController {
             if let s = sender as? UIView {
@@ -265,6 +264,23 @@ extension UIViewController {
             }
         }
         self.present(alert, animated: animated, completion: nil)
+    }
+    
+    public func presentActivityViewController(_ vc: UIActivityViewController, animated: Bool = true, sender: AnyObject? = nil) {
+        if let presenter = vc.popoverPresentationController {
+            if let s = sender as? UIView {
+                presenter.sourceView = s
+                presenter.sourceRect = s.bounds
+            } else {
+                if let rightButton = self.navigationItem.rightBarButtonItem {
+                    presenter.barButtonItem = rightButton
+                } else {
+                    presenter.sourceView = self.view
+                    presenter.sourceRect = self.view.bounds
+                }
+            }
+        }
+        self.present(vc, animated: animated, completion: nil)
     }
 }
 
