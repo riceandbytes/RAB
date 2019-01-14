@@ -240,6 +240,15 @@ public extension UIView {
             return (self.layer.cornerRadius == self.frame.size.height/2) && self.layer.masksToBounds
         }
     }
+
+    @IBInspectable public var RoundCornerValue: CGFloat {
+        set {
+                self.layer.cornerRadius = newValue
+        }
+        get {
+            return self.layer.cornerRadius
+        }
+    }
     
     fileprivate func doRoundCorners() {
         doOnMain {

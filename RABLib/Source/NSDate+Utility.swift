@@ -214,10 +214,17 @@ public extension Date {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        
         return dateFormatter.string(from: self) + "Z"
     }
 
+    public func ISOStringShortFromDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.string(from: self) + "Z"
+    }
+    
 //    public func toISOStringFromDateNoTimeZone() -> String {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -366,6 +373,12 @@ public extension Date {
     public func isBetweenDates(startDate: Date, endDate: Date) -> Bool {
         let fallsBetween = (startDate...endDate).contains(self)
         return fallsBetween
+    }
+    
+    /// Converts date between 2 timezones
+    public func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
+        let delta = TimeInterval(timeZone.secondsFromGMT() - initTimeZone.secondsFromGMT())
+        return addingTimeInterval(delta)
     }
 }
 
