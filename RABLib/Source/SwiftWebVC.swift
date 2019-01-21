@@ -277,7 +277,7 @@ open class SwiftWebVC: UIViewController {
     /// Helper function to get image within SwiftWebVCResources bundle
     ///
     /// - parameter named: The name of the image in the SwiftWebVCResources bundle
-    class func bundledImage(named: String) -> UIImage? {
+    public class func bundledImage(named: String) -> UIImage? {
         let image = UIImage(named: named)
         if image == nil {
             return UIImage(named: named, in: Bundle(for: SwiftWebVC.self), compatibleWith: nil)

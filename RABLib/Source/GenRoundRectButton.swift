@@ -41,7 +41,7 @@ open class GenRoundRectButton: UIButton {
     @IBInspectable open var isFastTouch: Bool = false
     
     // MARK: Overrides
-
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
         layoutRoundRectLayer()
