@@ -480,3 +480,34 @@ extension UIView {
     }
     
 }
+
+
+/// Usage view.fadeOut(0.5, onCompletion: {
+/// print("Animation completed, do whatever you want")
+/// })
+/// or
+/// view.fadeIn() for a default 0.2 sec animation, or view.fadeIn(1)
+public extension UIView {
+    
+    public func fadeIn(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+        self.alpha = 0
+        self.isHidden = false
+        UIView.animate(withDuration: duration!,
+                       animations: { self.alpha = 1 },
+                       completion: { (value: Bool) in
+                        if let complete = onCompletion { complete() }
+        }
+        )
+    }
+    
+    public func fadeOut(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration!,
+                       animations: { self.alpha = 0 },
+                       completion: { (value: Bool) in
+                        self.isHidden = true
+                        if let complete = onCompletion { complete() }
+        }
+        )
+    }
+    
+}
