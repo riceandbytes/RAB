@@ -31,20 +31,23 @@ extension UIView {
      - goes from edge to edge
      */
     public func addSubview_fullWidthHeightLayoutConstraints(_ v: UIView) {
+        self.addSubview_fullWidthHeightLayoutConstraints(v, 0)
+    }
+    public func addSubview_fullWidthHeightLayoutConstraints(_ v: UIView, _ border: Int) {
         self.addSubview(v)
         v.translatesAutoresizingMaskIntoConstraints = false
         let bindings: [String: UIView] = ["myView": v]
         
         let horizontalConstraints =
             NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-0-[myView]-0-|",
+                withVisualFormat: "H:|-\(border)-[myView]-\(border)-|",
                 metrics: nil,
                 views: bindings)
         self.addConstraints(horizontalConstraints)
         
         let verticalConstraints =
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-0-[myView]-0-|",
+                withVisualFormat: "V:|-\(border)-[myView]-\(border)-|",
                 metrics: nil,
                 views: bindings)
         self.addConstraints(verticalConstraints)
