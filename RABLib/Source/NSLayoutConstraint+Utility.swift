@@ -9,12 +9,32 @@
 import Foundation
 
 extension NSLayoutConstraint {
-    
-//    var newConstraint = self.constraintToChange.constraintWithMultiplier(0.75)
-//    self.view!.removeConstraint(self.constraintToChange)
-//    self.view!.addConstraint(self.constraintToChange = newConstraint)
-//    self.view!.layoutIfNeeded()
-    public func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: self.firstItem, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    /**
+     Change multiplier constraint
+     
+     - Remember to use layoutIfNeeded
+     
+     - parameter multiplier: CGFloat
+     - returns: NSLayoutConstraint
+     */
+    public func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+        
+        NSLayoutConstraint.deactivate([self])
+        
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+        
+        newConstraint.priority = priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+        
+        NSLayoutConstraint.activate([newConstraint])
+        return newConstraint
     }
 }
