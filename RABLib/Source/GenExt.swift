@@ -56,7 +56,7 @@ public extension UIButton
     
     public func unhighlight() {
         backgroundColor = Const.GrayLight
-        setTitleColor(Const.White, for: UIControlState())
+        setTitleColor(Const.White, for: UIControl.State())
         isSelected = false
     }
 }

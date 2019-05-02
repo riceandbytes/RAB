@@ -50,7 +50,7 @@ public extension UIView {
             NSAttributedStringKey.foregroundColor: Const.GrayLight,
             NSAttributedStringKey.font: doneButtonFont
         ]
-        doneButton.setTitleTextAttributes(attr, for: UIControlState())
+        doneButton.setTitleTextAttributes(attr, for: UIControl.State())
         toolbar.items = [spacer, doneButton]
         toolbar.backgroundColor = backgroundColor
         

@@ -441,7 +441,7 @@ open class GenAlertView: UIViewController {
                 buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
             }
             
-            dismissButton.setBackgroundImage(buttonColor, for: UIControlState())
+            dismissButton.setBackgroundImage(buttonColor, for: UIControl.State())
             dismissButton.setBackgroundImage(buttonHighlightColor, for: .highlighted)
             dismissButton.addTarget(self, action: #selector(GenAlertView.buttonTap), for: .touchUpInside)
             alertBackgroundView!.addSubview(dismissButton)
@@ -476,7 +476,7 @@ open class GenAlertView: UIViewController {
                     buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
                 }
                 
-                cancelButton.setBackgroundImage(buttonColor, for: UIControlState())
+                cancelButton.setBackgroundImage(buttonColor, for: UIControl.State())
                 cancelButton.setBackgroundImage(buttonHighlightColor, for: .highlighted)
                 cancelButton.addTarget(self, action: #selector(GenAlertView.cancelButtonTap), for: .touchUpInside)
                 alertBackgroundView!.addSubview(cancelButton)

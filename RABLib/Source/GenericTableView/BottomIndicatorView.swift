@@ -36,7 +36,7 @@ open class BottomIndicatorView: UIView {
     fileprivate func setup() {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Ships")
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let topView = UIView()
         topView.translatesAutoresizingMaskIntoConstraints = false

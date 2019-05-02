@@ -90,21 +90,21 @@ open class TwoButtonView: UIView {
             leftTitleColor = strokeColor
         }
             
-        self.leftButton.setTitle(leftTitle, for: UIControlState())
+        self.leftButton.setTitle(leftTitle, for: UIControl.State())
         self.leftButton.titleLabel!.font = font
         self.leftButton.cornerRadius = cornerRadius
         self.leftButton.bkgColor = bkgColor
         self.leftButton.strokeColor = leftStrokeColor
         self.leftButton.lineWidth = lineWidth
-        self.leftButton.setTitleColor(leftTitleColor, for: UIControlState())
+        self.leftButton.setTitleColor(leftTitleColor, for: UIControl.State())
         
-        self.rightButton.setTitle(rightTitle, for: UIControlState())
+        self.rightButton.setTitle(rightTitle, for: UIControl.State())
         self.rightButton.titleLabel?.font = font
         self.rightButton.cornerRadius = cornerRadius
         self.rightButton.bkgColor = bkgColor
         self.rightButton.strokeColor = rightStrokeColor
         self.rightButton.lineWidth = lineWidth
-        self.rightButton.setTitleColor(rightTitleColor, for: UIControlState())
+        self.rightButton.setTitleColor(rightTitleColor, for: UIControl.State())
 
     }
 }
