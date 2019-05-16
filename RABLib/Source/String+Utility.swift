@@ -46,6 +46,12 @@ extension String {
     
     
     // MARK: - Sub Strings
+    
+    public func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+    
     // Usage: // Now we can use integer subscripts with our extension
     //    let ch: Character = aString[15] // g
     //    let subStr1 = aString[19..<23]  // Hello
