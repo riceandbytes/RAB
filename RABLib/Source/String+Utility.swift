@@ -8,6 +8,27 @@
 
 import Foundation
 
+// hash generators unique
+// https://stackoverflow.com/questions/52440502/string-hashvalue-not-unique-after-reset-app-when-build-in-xcode-10
+extension String {
+    //    "Hello".djb2hash    //210676686969
+    //    "Hello".sdbmhash    //5142962386210502930
+    
+    public var hashDjb2: Int {
+        let unicodeScalars = self.unicodeScalars.map { $0.value }
+        return unicodeScalars.reduce(5381) {
+            ($0 << 5) &+ $0 &+ Int($1)
+        }
+    }
+    
+    public var hashSdbm: Int {
+        let unicodeScalars = self.unicodeScalars.map { $0.value }
+        return unicodeScalars.reduce(0) {
+            (Int($1) &+ ($0 << 6) &+ ($0 << 16)).addingReportingOverflow(-$0).partialValue
+        }
+    }
+}
+
 extension String {
     public var doubleValue: Double {
         if let number = NumberFormatter().number(from: self) {
