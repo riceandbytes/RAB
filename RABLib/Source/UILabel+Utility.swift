@@ -59,4 +59,29 @@ extension UILabel {
             self.text = html
         }
     }
+    
+    // MARK: - Attributed String
+    
+    public func attStr(_ text: String, _ font: UIFont, _ color: UIColor) {
+        let att1 = [NSAttributedString.Key.font: font,
+                    NSAttributedString.Key.foregroundColor: color]
+        let st1 = NSMutableAttributedString(string: text, attributes: att1)
+        self.attributedText = st1
+    }
+    
+    public func attStrWithSpace(_ text1: String,
+                       _ font1: UIFont,
+                       _ color1: UIColor,
+                       _ text2: String,
+                       _ font2: UIFont,
+                       _ color2: UIColor) {
+        let att1 = [NSAttributedString.Key.font: font1,
+                    NSAttributedString.Key.foregroundColor: color1]
+        let st1 = NSMutableAttributedString(string: "\(text1) ", attributes: att1)
+        let att2 = [NSAttributedString.Key.font: font2,
+                    NSAttributedString.Key.foregroundColor: color2]
+        let st2 = NSMutableAttributedString(string: text2, attributes: att2)
+        st1.append(st2)
+        self.attributedText = st1
+    }
 }
