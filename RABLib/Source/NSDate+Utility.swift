@@ -57,11 +57,11 @@ public struct Duration {
         }
     }
     
-    public func stringValue() -> String {
+    func stringValue() -> String {
         return String(format:"%02d:%02d:%02d", self.hours, self.minutes, self.seconds)
     }
     
-    public func elapsedString() -> String {
+    func elapsedString() -> String {
         var string = ""
         var suffix = "min"
         if hours > 0 {
@@ -161,7 +161,7 @@ extension DateFormatter {
 public extension Date {
     
     // Calculates age based on date to todays date
-    public func getAge() -> String {
+    func getAge() -> String {
         let birthdate = self
         let todaydate = Date()
         let time = todaydate.timeIntervalSince(birthdate)
@@ -177,7 +177,7 @@ public extension Date {
     // look at the enum type for more description on what styles it can
     // produce
     //
-    public func toString(_ format: NSDateStringStyle, timeZone: String? = nil) -> String {
+    func toString(_ format: NSDateStringStyle, timeZone: String? = nil) -> String {
         let dateFormatter = DateFormatter(style: format)
 
         if let tz = timeZone {
@@ -186,7 +186,7 @@ public extension Date {
         return dateFormatter.string(from: self)
     }
     
-    public func toShortString() -> String {
+    func toShortString() -> String {
         let dateFormatter = DateFormatter()
         let theDateFormat = DateFormatter.Style.short
         let theTimeFormat = DateFormatter.Style.short
@@ -196,20 +196,20 @@ public extension Date {
     }
     
     // Convert UTC (or GMT) to local time
-    public func toLocalTime() -> Date {
+    func toLocalTime() -> Date {
         let timezone: TimeZone = TimeZone.autoupdatingCurrent
         let seconds: TimeInterval = TimeInterval(timezone.secondsFromGMT(for: self))
         return Date(timeInterval: seconds, since: self)
     }
     
     // Convert local time to UTC (or GMT)
-    public func toGlobalTime() -> Date {
+    func toGlobalTime() -> Date {
         let timezone: TimeZone = TimeZone.autoupdatingCurrent
         let seconds: TimeInterval = -TimeInterval(timezone.secondsFromGMT(for: self))
         return Date(timeInterval: seconds, since: self)
     }
     
-    public func ISOStringFromDate() -> String {
+    func ISOStringFromDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
@@ -217,7 +217,7 @@ public extension Date {
         return dateFormatter.string(from: self) + "Z"
     }
 
-    public func ISOStringShortFromDate() -> String {
+    func ISOStringShortFromDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
@@ -225,7 +225,7 @@ public extension Date {
         return dateFormatter.string(from: self) + "Z"
     }
     
-//    public func toISOStringFromDateNoTimeZone() -> String {
+//    func toISOStringFromDateNoTimeZone() -> String {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 //        //dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
@@ -245,7 +245,7 @@ public extension Date {
     /**
      Used when a string looks like this "yyyy-MM-dd HH:mm:ss"
      */
-    public static func dateFromISOStringSpecial1(_ string: String) -> Date? {
+    static func dateFromISOStringSpecial1(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
@@ -271,7 +271,7 @@ public extension Date {
      http://www.iso.org/iso/home/standards/iso8601.htm
      http://stackoverflow.com/questions/28016578/swift-how-to-create-a-date-time-stamp-and-format-as-iso-8601-rfc-3339-utc-tim
      */
-    public static func dateFromISOString(_ string: String) -> Date? {
+    static func dateFromISOString(_ string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
@@ -290,15 +290,15 @@ public extension Date {
         return dateFormatter.date(from: string)
     }
     
-    public func plus(_ duration: Duration) -> Date {
+    func plus(_ duration: Duration) -> Date {
         return plus(days: duration.days, hr: duration.hours, min: duration.minutes, sec: duration.seconds)
     }
     
-    public func minus(_ duration: Duration) -> Date {
+    func minus(_ duration: Duration) -> Date {
         return minus(days: duration.days, hr: duration.hours, min: duration.minutes, sec: duration.seconds)
     }
     
-    public func plus(days: Int = 0, hr: Int = 0, min: Int = 0, sec: Int = 0) -> Date {
+    func plus(days: Int = 0, hr: Int = 0, min: Int = 0, sec: Int = 0) -> Date {
         var comps = DateComponents()
         comps.hour = hr
         comps.minute = min
@@ -307,31 +307,31 @@ public extension Date {
         return (Calendar.current as NSCalendar).date(byAdding: comps, to: self, options: [])!
     }
     
-    public func minus(days: Int = 0, hr: Int = 0, min: Int = 0, sec: Int = 0) -> Date {
+    func minus(days: Int = 0, hr: Int = 0, min: Int = 0, sec: Int = 0) -> Date {
         return plus(days: -days, hr: -hr, min: -min, sec: -sec)
     }
 
-    public func isToday() -> Bool {
+    func isToday() -> Bool {
         return Calendar.current.isDateInToday(self)
     }
     
-    public func isYesterday() -> Bool {
+    func isYesterday() -> Bool {
         return Calendar.current.isDateInYesterday(self)
     }
     
-    public func getYear() -> Int {
+    func getYear() -> Int {
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components([.day , .month , .year], from: self)
         return components.year!
     }
     
-    public func getMonth() -> Int {
+    func getMonth() -> Int {
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components([.day , .month , .year], from: self)
         return components.month!
     }
     
-    public func getDay() -> Int {
+    func getDay() -> Int {
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components([.day , .month , .year], from: self)
         
@@ -345,22 +345,22 @@ public extension Date {
     }
     
     /// Will return the hour in local
-    public func getHour() -> Int {
+    func getHour() -> Int {
         return Calendar.current.component(.hour, from: self)
     }
     
-    public func getMinute() -> Int {
+    func getMinute() -> Int {
         return Calendar.current.component(.minute, from: self)
     }
     
-    public func getSecond() -> Int {
+    func getSecond() -> Int {
         return Calendar.current.component(.second, from: self)
     }
     
     // example:
     // true when ex: today date is 10/30 and self date is 10/29
     // so true when 10/29 <= (10/30)
-    public func dateHasPassedToday() -> Bool {
+    func dateHasPassedToday() -> Bool {
         if self <= Date() {
             return true
         } else {
@@ -370,13 +370,13 @@ public extension Date {
     
     // check if this date is between these dates
     //
-    public func isBetweenDates(startDate: Date, endDate: Date) -> Bool {
+    func isBetweenDates(startDate: Date, endDate: Date) -> Bool {
         let fallsBetween = (startDate...endDate).contains(self)
         return fallsBetween
     }
     
     /// Converts date between 2 timezones
-    public func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
+    func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
         let delta = TimeInterval(timeZone.secondsFromGMT() - initTimeZone.secondsFromGMT())
         return addingTimeInterval(delta)
     }
@@ -386,7 +386,7 @@ public extension Date {
 
     // Add 1 year to current nsdate
     //
-    public func addYears(_ year: Int) -> Date? {
+    func addYears(_ year: Int) -> Date? {
         let startDate = self
         var dateComponent = DateComponents()
         dateComponent.year = year
@@ -394,8 +394,12 @@ public extension Date {
         return (cal as NSCalendar).date(byAdding: dateComponent, to: startDate, options: NSCalendar.Options(rawValue: 0))
     }
 
+    func addDays(_ days: Int) -> Date? {
+        return self.addHours(days * 24)
+    }
+    
     // - param Float because you can have .5 hour offset
-    public func addHours(_ hours: Int) -> Date? {
+    func addHours(_ hours: Int) -> Date? {
         let startDate = self
         var dateComponent = DateComponents()
         dateComponent.hour = hours
@@ -405,25 +409,25 @@ public extension Date {
 
     // use this when you have a time that is a local port and you have
     // the offset
-    public func addHoursInverse(_ hoursOffset: Float) -> Date? {
+    func addHoursInverse(_ hoursOffset: Float) -> Date? {
         // need to convert hours to seconds becuase date component for hours
         // is only Int
         let secs: Int = Int(hoursOffset * 60 * 60) * -1
         return self.addSeconds(secs)
     }
     
-    public func addHours(_ hours: Float) -> Date? {
+    func addHours(_ hours: Float) -> Date? {
         // need to convert hours to seconds becuase date component for hours
         // is only Int
         let secs: Int = Int(hours * 60 * 60)
         return self.addSeconds(secs)
     }
 
-    public func addSecondsInverse(_ sec: Int) -> Date? {
+    func addSecondsInverse(_ sec: Int) -> Date? {
         return addSeconds(sec * -1)
     }
     
-    public func addSeconds(_ sec: Int) -> Date? {
+    func addSeconds(_ sec: Int) -> Date? {
         let startDate = self
         var dateComponent = DateComponents()
         dateComponent.second = sec
@@ -437,7 +441,7 @@ public extension Date {
      - param: timezone: should be in format "America/New_York"
      - returns: Date String
      */
-    public func timeFromDateTillNow(_ currentDate: Date) -> String? {
+    func timeFromDateTillNow(_ currentDate: Date) -> String? {
         // http://nshipster.com/nscalendar-additions/
         //
         let gregorianCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
@@ -476,12 +480,12 @@ public extension Date {
         }
     }
     
-//    public func getYear() -> Int {
+//    func getYear() -> Int {
 //        let gregorianCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
 //        return gregorianCalendar?.component([.Year], fromDate: self) ?? 0
 //    }
     
-    public func getCurrentDateInSystemTimezone() -> Date? {
+    func getCurrentDateInSystemTimezone() -> Date? {
         let sourceDate = Date()
         let sourceTimeZone = TimeZone(abbreviation: "GMT")
         let destinationTimeZone = TimeZone.current
@@ -496,7 +500,7 @@ public extension Date {
     
     /// Dont really need to use this, you should always convert your ios to
     /// NSDate format, to GMT0
-    public func getCurrentDateForTimezone(_ timeZoneStr: String) -> Date? {
+    func getCurrentDateForTimezone(_ timeZoneStr: String) -> Date? {
         guard let destinationTimeZone = TimeZone(identifier: timeZoneStr) else {
             return nil
         }
@@ -512,9 +516,9 @@ public extension Date {
     }
 }
 
-extension Date {
+public extension Date {
 
-//    public func dateWithOutTime() -> Date {
+//    func dateWithOutTime() -> Date {
 //        let x: Set<Calendar.Component> = [.year, .month, .day]
 //        let comps = Calendar.current.dateComponents(x, from: self)
 //        return Calendar.current.date(from: comps)!
@@ -524,7 +528,7 @@ extension Date {
     /// https://www.timeanddate.com/date/duration.html
     /// Usage: Date().numberOfDaysUntilDateTimeAdjusted(sd, inTimeZone: TimeZone(abbreviation: "UTC"))
     ///
-    public func numberOfDaysUntilDateTimeAdjusted(_ toDateTimeUTC: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
+    func numberOfDaysUntilDateTimeAdjusted(_ toDateTimeUTC: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current
         let adjustedDate = toDateTimeUTC
         if let timeZone = timeZone {
@@ -538,23 +542,23 @@ extension Date {
     // Better use of days inbetween
     // - Value can be negative
     //
-    public func daysBetween(_ endDate: Date) -> Int {
+    func daysBetween(_ endDate: Date) -> Int {
         let diff = Calendar.current.dateComponents([.day, .minute], from: self, to: endDate)
         return diff.day ?? 0
     }
     
-    public func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
+    func daysBetweenIncludingStartDay(_ endDate: Date) -> Int {
         return abs(self.daysBetween(endDate)) + 1
     }
 }
 
-extension Date {
+public extension Date {
     
     // usage let today = Date() // date is then today for this example
     //    let tomorrow = today.add(days: 1)
     
     /// Returns a Date with the specified days added to the one it is called with
-    public func add(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
+    func add(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
         var targetDay: Date
         targetDay = Calendar.current.date(byAdding: .year, value: years, to: self)!
         targetDay = Calendar.current.date(byAdding: .month, value: months, to: targetDay)!
@@ -566,7 +570,7 @@ extension Date {
     }
     
     /// Returns a Date with the specified days subtracted from the one it is called with
-    public func subtract(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
+    func subtract(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date {
         let inverseYears = -1 * years
         let inverseMonths = -1 * months
         let inverseDays = -1 * days
@@ -579,7 +583,7 @@ extension Date {
     // MARK: Zero out time - removes the time from the date
     // http://stackoverflow.com/questions/4187478/truncate-nsdate-zero-out-time
     //
-    public func trimTime() -> Date {
+    func trimTime() -> Date {
         let x: Set<Calendar.Component> = [.year, .month, .day]
         
         var comps =  Calendar.current.dateComponents(x, from: self)
@@ -595,7 +599,7 @@ extension Date {
     /// ex:
     /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
     ///
-    public func setTimeExact(hour: Int, min: Int, sec: Int) -> Date? {
+    func setTimeExact(hour: Int, min: Int, sec: Int) -> Date? {
         let cal = Calendar.current
 
         var components = cal.dateComponents([], from: self)
@@ -692,11 +696,11 @@ extension Date {
 
 // MARK: - Date Helpers
 
-extension Date {
+public extension Date {
 
     // MARK: Shows extact time difference between two dates like "1h 59m 20s" ago
 
-    public func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
+    func offsetFrom(date: Date) -> (months: Int, days: Int, hours: Int) {
         let adjustedDate = date
         let unitFlags = Set<Calendar.Component>([.month, .day, .hour])
         var diff = NSCalendar.current.dateComponents(unitFlags, from: self, to: adjustedDate)
@@ -708,7 +712,7 @@ extension Date {
     // usage: 
     // let pred = NSPredicate(format: "(createdAt => %@) AND (createdAt <= %@)", Date().startOfDay() as NSDate, Date().endOfDay() as NSDate)
 
-    public func startOfDay() -> Date {
+    func startOfDay() -> Date {
         let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
         let unitFlags: NSCalendar.Unit = [.minute, .hour, .day, .month, .year]
         var todayComponents = gregorian!.components(unitFlags, from: self)
@@ -717,7 +721,7 @@ extension Date {
         return (gregorian?.date(from: todayComponents))!
     }
     
-    public func endOfDay() -> Date {
+    func endOfDay() -> Date {
         let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
         let unitFlags: NSCalendar.Unit = [.minute, .hour, .day, .month, .year]
         var todayComponents = gregorian!.components(unitFlags, from: self)
@@ -741,7 +745,7 @@ extension Date {
      Uses Date() object and check to see how
      many days are in this month
      */
-    public func howManyDaysInMonth() -> Int {
+    func howManyDaysInMonth() -> Int {
         let cal = Calendar(identifier: .gregorian)
         let monthRange = cal.range(of: .day, in: .month, for: self)!
         let daysInMonth = monthRange.count
@@ -754,7 +758,7 @@ extension Date {
      - Usage:
         let monthCheck = Date.make(day: 1, month: monthInt, year: yearInt)
      */
-    public static func make(day: Int, month: Int, year: Int) -> Date? {
+    static func make(day: Int, month: Int, year: Int) -> Date? {
         var c = DateComponents()
         c.year = year
         c.month = month
