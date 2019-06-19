@@ -177,13 +177,17 @@ public extension Date {
     // look at the enum type for more description on what styles it can
     // produce
     //
-    func toString(_ format: NSDateStringStyle, timeZone: String? = nil) -> String {
+    func toString(_ format: NSDateStringStyle, timeZone: String?) -> String {
         let dateFormatter = DateFormatter(style: format)
 
         if let tz = timeZone {
             dateFormatter.timeZone = TimeZone(abbreviation: tz)
         }
         return dateFormatter.string(from: self)
+    }
+    
+    func toStringUTC(_ format: NSDateStringStyle) -> String {
+        return self.toString(format, timeZone: "UTC")
     }
     
     func toShortString() -> String {

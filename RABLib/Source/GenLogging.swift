@@ -9,7 +9,7 @@
 import Foundation
 
 func pln(_ object: Any = "called.", file:String = #file, function:String = #function, line:Int = #line) {
-    print(file, "[\(Date().toString(.debug))][\(NSString(string: file).lastPathComponent)][\(function)][\(line)] -> \(object)")
+    print(file, "[\(Date().toString(.debug, timeZone: nil))][\(NSString(string: file).lastPathComponent)][\(function)][\(line)] -> \(object)")
 }
 
 func pErr(_ object: Any, file:String = #file, function:String = #function,
