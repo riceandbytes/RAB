@@ -22,6 +22,14 @@ open class GenUtil {
         
     }
     
+    // Checks to see if your are runing Unit Tests
+    // https://stackoverflow.com/questions/44164172/detect-in-runtime-if-is-production-code-or-test-code-in-swift
+    public static var isRunningTests : Bool {
+        get {
+            return NSClassFromString("XCTest") != nil;
+        }
+    }
+    
     open class func generateRandomNumber() -> Int {
         let maxInt32: Int32 = 2147483647
         let val: Int32 = Int32(arc4random_uniform(UInt32(maxInt32 - 1)))
