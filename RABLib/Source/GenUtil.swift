@@ -175,7 +175,7 @@ extension GenUtil {
         prefs.removeObject(forKey: key)
     }
     
-    public class func setUserDefault(_ key: String, value: AnyObject) {
+    public class func setUserDefault(_ key: String, value: Any) {
         let prefs = UserDefaults.standard
         prefs.setValue(value, forKey: key)
     }
