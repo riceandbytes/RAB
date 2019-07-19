@@ -91,15 +91,13 @@ open class GenInputField: UIView {
     open var pickerToolbarTintColor: UIColor = .lightGray
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var textFieldLeading: NSLayoutConstraint!
-    @IBOutlet weak var placeImageWidth: NSLayoutConstraint!
     @IBOutlet open weak var textField: UITextField!
     @IBOutlet open weak var placeImage: UIImageView!
-
-    @IBOutlet weak var leadingEdge: NSLayoutConstraint!
-    @IBOutlet weak var tailEdge: NSLayoutConstraint!
-    @IBOutlet weak var topEdge: NSLayoutConstraint!
-    @IBOutlet weak var bottomEdge: NSLayoutConstraint!
+    @IBOutlet weak var placeImgView: UIView!
+    
+    // right side button used for hide/show password
+    @IBOutlet weak var rightButtonView: UIView!
+    @IBOutlet weak var rightButton: UIButton!
     
     // Shortcut to get textfield value
     open var text: String? {
@@ -109,22 +107,11 @@ open class GenInputField: UIView {
     override open func updateConstraints() {
         switch self.mode {
         case .ImageAndTextField:
-            placeImage.isHidden = false
-            placeImageWidth.constant = 20
-            textFieldLeading.constant = 8
+            placeImgView.isHidden = false
         case .TextFieldOnly:
-            placeImage.isHidden = true
-            placeImageWidth.constant = 0
-            textFieldLeading.constant = 0
+            placeImgView.isHidden = true
         case .TextFieldOnlyNoEdge:
-            placeImage.isHidden = true
-            placeImageWidth.constant = 0
-            textFieldLeading.constant = 0
-            
-            topEdge.constant = 5
-            bottomEdge.constant = 5
-            leadingEdge.constant = 5
-            tailEdge.constant = 5
+            placeImgView.isHidden = true
         }
         super.updateConstraints()
     }
@@ -132,12 +119,6 @@ open class GenInputField: UIView {
     open var strokeColor: UIColor = UIColor.clear {
         didSet {
             self.setNeedsLayout()
-        }
-    }
-    
-    @IBInspectable open var isPassword: Bool = false {
-        didSet {
-            self.textField.isSecureTextEntry = isPassword
         }
     }
     
@@ -158,6 +139,24 @@ open class GenInputField: UIView {
     @IBInspectable open var placeholderImage: String! = ""  {
         didSet {
             updatePlaceholderImage()
+        }
+    }
+    
+    @IBInspectable open var isPassword: Bool = false {
+        didSet {
+            self.textField.isSecureTextEntry = isPassword
+            rightButtonView.isHidden = !isPassword
+        }
+    }
+    
+    open var passwordImgNameShow: String! = "" {
+        didSet {
+            updateSentitivePasswordImage()
+        }
+    }
+    open var passwordImgNameHide: String! = "" {
+        didSet {
+            updateSentitivePasswordImage()
         }
     }
     
@@ -308,6 +307,25 @@ open class GenInputField: UIView {
         
         view.backgroundColor = self.bkgColorForView
         self.contentView.backgroundColor = self.bkgColor
+    }
+
+    // MARK: - Right Button
+    
+    private func updateSentitivePasswordImage() {
+            if textField.isSecureTextEntry {
+            if let img = UIImage(named: passwordImgNameHide) {
+                rightButton.setImage(img, for: .normal)
+            }
+        } else {
+            if let img = UIImage(named: passwordImgNameShow) {
+                rightButton.setImage(img, for: .normal)
+            }
+        }
+    }
+
+    @IBAction func actionRightButton(_ sender: Any) {
+        textField.isSecureTextEntry = !textField.isSecureTextEntry
+        updateSentitivePasswordImage()
     }
     
     // MARK: - Utility
