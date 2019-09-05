@@ -76,7 +76,16 @@ public struct Duration {
 //http://nsdateformatter.com/
 
 public enum NSDateStringStyle {
+    
+    /// Sun
+    case dayName
 
+    /// 14
+    case dayNumber
+
+    /// Jun
+    case monthName
+    
     /// ex: 2016-11-28
     case yearMonDay
 
@@ -123,6 +132,12 @@ extension DateFormatter {
     convenience init(style: NSDateStringStyle) {
         self.init()
         switch style {
+        case .dayName:
+            self.dateFormat = "E"
+        case .dayNumber:
+            self.dateFormat = "d"
+        case .monthName:
+            self.dateFormat = "MMM"
         // hh is for 12 hour and HH is for 24 hour
         case .time:
             self.dateFormat = "hh:mm a"
