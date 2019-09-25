@@ -99,6 +99,7 @@
 		14FB130F1C2FF92B005D2E8D /* RevCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB130E1C2FF92B005D2E8D /* RevCell.swift */; };
 		14FB13111C2FF938005D2E8D /* RevCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FB13101C2FF938005D2E8D /* RevCell.xib */; };
 		FF266AED219D4AAC006E5B0B /* Formatter+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */; };
+		FF2EC46B23297EF2001874BE /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EC46A23297EF2001874BE /* Gradients.swift */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
 		FFBD54122154CBEF00B40E85 /* RabNotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
@@ -210,6 +211,7 @@
 		14FB130E1C2FF92B005D2E8D /* RevCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevCell.swift; sourceTree = "<group>"; };
 		14FB13101C2FF938005D2E8D /* RevCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RevCell.xib; sourceTree = "<group>"; };
 		FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Utility.swift"; sourceTree = "<group>"; };
+		FF2EC46A23297EF2001874BE /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
 		FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabNotifyService.swift; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				14FA583E1B20335E00DA3638 /* UIViewController+Utility.swift */,
 				FFFD835F20439B66001E5D83 /* NSLayoutConstraint+Utility.swift */,
 				FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */,
+				FF2EC46A23297EF2001874BE /* Gradients.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -688,6 +692,7 @@
 				149DAF9F1AB188630093CA5B /* GenUtil.swift in Sources */,
 				14DDF0361E0A51C600C72C5F /* UINavigationController+Utility.swift in Sources */,
 				1498E3C91F703A2400D9FF16 /* Optional+Utility.swift in Sources */,
+				FF2EC46B23297EF2001874BE /* Gradients.swift in Sources */,
 				146DD34D1BEF5A96009E330F /* NSURL+Utility.swift in Sources */,
 				14E2F4EC1CD913C4008D4279 /* CollectionType+Utility.swift in Sources */,
 				14E2F4D71CD16D43008D4279 /* UIView+Keyboard.swift in Sources */,

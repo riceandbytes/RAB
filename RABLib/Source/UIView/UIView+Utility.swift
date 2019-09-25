@@ -15,7 +15,7 @@ public extension UIView {
      Usage: let myCustomView: CustomView = .fromNib()
         then you can do what ever with that view
      */
-    public class func fromNib<T: UIView>() -> T {
+    class func fromNib<T: UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
     
@@ -23,7 +23,7 @@ public extension UIView {
      This function will print out all constraints for a
      UI object
      */
-    public func printAllConstraints() {
+    func printAllConstraints() {
         for con in self.constraints {
             pWarn(con.debugDescription)
         }
@@ -33,7 +33,7 @@ public extension UIView {
      This adds a Done button above the keyboard
      
      */
-    public func addDoneButton(_ backgroundColor: UIColor = .white) {
+    func addDoneButton(_ backgroundColor: UIColor = .white) {
         let doneButtonFont = Const.makeFont(.Regular, 18)!
         
         // add done button
@@ -64,7 +64,7 @@ public extension UIView {
         }
     }
     
-    @objc public func closePickerView() {
+    @objc func closePickerView() {
         self.endEditing(true)
         
         if let pickerView = self.inputView as? UIPickerView {
@@ -77,7 +77,7 @@ public extension UIView {
         }
     }
     
-    public func setupGradient() {
+    func setupGradient() {
         let gradientLayerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height/2))
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = gradientLayerView.bounds
@@ -86,7 +86,13 @@ public extension UIView {
         self.layer.insertSublayer(gradientLayerView.layer, at: 0)
     }
     
-    public func turnIntoCircle() {
+    func addGradientTopToBottom(_ topColor: UIColor, _ bottomColor: UIColor) {
+        let gradient = CAGradientLayer(start: .topCenter, end: .bottomCenter, colors: [topColor.cgColor, bottomColor.cgColor])
+        gradient.frame = self.bounds
+        self.layer.addSublayer(gradient)
+    }
+    
+    func turnIntoCircle() {
         doOnMain {
             self.layer.cornerRadius = self.bounds.size.width / 2
             self.layer.masksToBounds = true
@@ -219,7 +225,7 @@ public extension UIView {
     ///         super.viewDidLayoutSubviews()
     ///         imgBkgView.isCircle = true
     ///     }
-    @IBInspectable public var isCircle: Bool {
+    @IBInspectable var isCircle: Bool {
         set {
             if newValue {
                 turnIntoCircle()
@@ -230,7 +236,7 @@ public extension UIView {
         }
     }
 
-    @IBInspectable public var isRoundCorners: Bool {
+    @IBInspectable var isRoundCorners: Bool {
         set {
             if newValue {
                 doRoundCorners()
@@ -241,7 +247,7 @@ public extension UIView {
         }
     }
 
-    @IBInspectable public var RoundCornerValue: CGFloat {
+    @IBInspectable var RoundCornerValue: CGFloat {
         set {
                 self.layer.cornerRadius = newValue
         }
@@ -264,7 +270,7 @@ public extension UIView {
     // ex:     NSData *data = UIImageJPEGRepresentation(UIImageToSend,1);
     // mail ex:         mailComposeVC.addAttachmentData(UIImageJPEGRepresentation(UIImage(named: "emailImage")!, CGFloat(1.0))!, mimeType: "image/jpeg", fileName:  "test.jpeg")
     //
-    public func takeSnapshot() -> UIImage {
+    func takeSnapshot() -> UIImage {
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         if self.superview == nil {
@@ -282,13 +288,13 @@ public extension UIView {
     /**
      Used to clear all subviews
      */
-    public func removeAllSubviews() {
+    func removeAllSubviews() {
         for subview in self.subviews as [UIView] {
             subview.removeFromSuperview()
         }
     }
     
-    public class func loadFromNibNamed(_ nibNamed: String, bundle : Bundle? = nil) -> UIView? {
+    class func loadFromNibNamed(_ nibNamed: String, bundle : Bundle? = nil) -> UIView? {
         return UINib(
             nibName: nibNamed,
             bundle: bundle
@@ -489,7 +495,7 @@ extension UIView {
 /// view.fadeIn() for a default 0.2 sec animation, or view.fadeIn(1)
 public extension UIView {
     
-    public func fadeIn(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+    func fadeIn(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
         self.alpha = 0
         self.isHidden = false
         UIView.animate(withDuration: duration!,
@@ -500,7 +506,7 @@ public extension UIView {
         )
     }
     
-    public func fadeOut(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+    func fadeOut(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
         UIView.animate(withDuration: duration!,
                        animations: { self.alpha = 0 },
                        completion: { (value: Bool) in

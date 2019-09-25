@@ -140,7 +140,7 @@ extension DateFormatter {
             self.dateFormat = "MMM"
         // hh is for 12 hour and HH is for 24 hour
         case .time:
-            self.dateFormat = "hh:mm a"
+            self.dateFormat = "h:mm a"
         case .yearMonDay:
             self.dateFormat = "yyyy-MM-dd"
         case .shortMonDayYear:
