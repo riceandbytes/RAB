@@ -20,7 +20,15 @@ extension UILabel {
         self.font = font
         self.textColor = textColor
     }
-    
+
+    /**
+     Helper font, and color
+     */
+    public func setup(_ font: UIFont,
+                      _ textColor: UIColor) {
+        self.font = font
+        self.textColor = textColor
+    }
     /**
      Stop clipping of letters like y or g
      */
