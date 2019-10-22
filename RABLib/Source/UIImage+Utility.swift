@@ -133,6 +133,47 @@ extension UIImage {
             return normalize(qual.width)
         }
     }
+    
+    /**
+            Reduce size of image to value under mb
+     
+     parameter:
+     */
+    
+    /// Resize image
+    /// - Parameter percentage: reduce image by 0.5 is 50%
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    
+    
+    /**
+     Normalize image to be less than value
+        - will run in a for loop and reduce image 0.2 times
+     - Parameter valMB: ex: 4, means image must be lest than 4 mb
+     */
+    public func normalizeToMB(_ valMB: Int) -> UIImage? {
+        guard let imageData = UIImagePNGRepresentation(self) else { return nil }
+         let megaByte = 1000.0 * Double(valMB)
+
+         var resizingImage = self
+         var imageSizeKB = Double(imageData.count) / megaByte // ! Or divide for 1024 if you need KB but not kB
+
+         while imageSizeKB > megaByte { // ! Or use 1024 if you need KB but not kB
+             guard let resizedImage = resizingImage.resized(withPercentage: 0.8),
+             let imageData =  UIImagePNGRepresentation(resizedImage) else { return nil }
+
+             resizingImage = resizedImage
+             imageSizeKB = Double(imageData.count) / megaByte // ! Or devide for 1024 if you need KB but not kB
+         }
+
+         return resizingImage
+     }
 }
 
 public enum ImageQuality: Int {
