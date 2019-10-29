@@ -262,6 +262,20 @@ public extension UIView {
             self.layer.masksToBounds = true
         }
     }
+    
+    func squareRoundCorners() {
+        self.roundCorner(10.0)
+    }
+    
+    /**
+            10 is a good value
+     */
+    func roundCorner(_ val: CGFloat) {
+        doOnMain {
+            self.layer.cornerRadius = val
+            self.layer.masksToBounds = true
+        }
+    }
 
     // MARK: - Image
     
