@@ -10,6 +10,14 @@ import Foundation
 
 extension UILabel {
     
+    public func addDropShadow(_ offset: CGFloat = 1) {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowOffset = CGSize(width: offset, height: offset)
+        self.layer.masksToBounds = false
+    }
+    
     /**
      Helper set text, font, and color
      */
