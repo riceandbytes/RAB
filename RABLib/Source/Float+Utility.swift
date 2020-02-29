@@ -11,6 +11,12 @@ import Foundation
 
 extension Float {
 
+    // 234.234234 -> 234.23
+    // you must add the dollar sign
+    public var toDollarString: String {
+        return String(format: "%.02f", self)
+    }
+    
     /**
      Only show decimal if number has a decimal
      

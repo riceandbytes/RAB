@@ -126,6 +126,10 @@ public enum NSDateStringStyle {
     
     /// 11/28/18
     case shortDayMonYr
+    
+    /// "yyyy:MM:dd HH:mm:ss"
+    /// Used for writing Exif Date
+    case simpleUTC
 }
 
 extension DateFormatter {
@@ -169,6 +173,8 @@ extension DateFormatter {
             self.dateFormat = "M/d"
         case .shortDayMonYr:
             self.dateFormat = "M/d/yy"
+        case .simpleUTC:
+            self.dateFormat = "yyyy:MM:dd HH:mm:ss"
         }
     }
 }
