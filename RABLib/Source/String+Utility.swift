@@ -203,10 +203,11 @@ extension String {
     */
     public func toDateCustomFormat_NoTimeZone() -> Date? {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let iso8601String = dateFormatter.date(from: self)
-        return iso8601String
+        let result = dateFormatter.date(from: self)
+        return result
     }
     
     /// Convert New York date string thats passed in to a nsdate
