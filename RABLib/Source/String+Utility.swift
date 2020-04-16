@@ -181,12 +181,24 @@ extension String {
         dateFormatter.timeZone = TimeZone(identifier: withTimeZone)
         return dateFormatter.date(from: self)
     }
+    //         let x2 = "2022-03-14T08:00:00Z"
     public func toDateISO8601FormatGMT0() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         return dateFormatter.date(from: self)
+    }
+    
+    // // 2022-03-14T00:00:00.000+0000
+    //         pDebug("2022-03-14T00:00:00.000+0000".toDateISO8601FormatGMT0ZZZZ()!.toISO())
+    public func toDateISO8601FormatGMT0ZZZZ() -> Date? {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter.date(from: self)
     }
     
     /**

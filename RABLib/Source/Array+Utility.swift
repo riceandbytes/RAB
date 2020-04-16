@@ -68,3 +68,23 @@ extension Sequence {
         return result
     }
 }
+
+/**
+ *
+ * Remove Duplicates https://www.hackingwithswift.com/example-code/language/how-to-remove-duplicate-items-from-an-array
+ *let numbers = [1, 5, 3, 4, 5, 1, 3]
+ *  let unique = numbers.removingDuplicates()
+ */
+extension Array where Element: Hashable {
+    public func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    public mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}

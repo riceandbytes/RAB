@@ -207,6 +207,10 @@ public extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func toISO() -> String {
+        return self.toStringUTC(NSDateStringStyle.isoDateTimeUTC)
+    }
+    
     func toStringUTC(_ format: NSDateStringStyle) -> String {
         return self.toString(format, timeZone: "UTC")
     }
@@ -568,7 +572,7 @@ public extension Date {
     // - Value can be negative
     //
     func daysBetween(_ endDate: Date) -> Int {
-        let diff = Calendar.current.dateComponents([.day, .minute], from: self, to: endDate)
+        let diff = Calendar.current.dateComponents([.day, .hour, .minute], from: self, to: endDate)
         return diff.day ?? 0
     }
     
@@ -610,7 +614,6 @@ public extension Date {
     //
     func trimTime() -> Date {
         let x: Set<Calendar.Component> = [.year, .month, .day]
-        
         var comps =  Calendar.current.dateComponents(x, from: self)
         comps.timeZone = TimeZone(abbreviation: "GMT")
         comps.hour = 0
