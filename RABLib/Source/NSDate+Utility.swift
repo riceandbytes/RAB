@@ -547,11 +547,39 @@ public extension Date {
 
 public extension Date {
 
-//    func dateWithOutTime() -> Date {
-//        let x: Set<Calendar.Component> = [.year, .month, .day]
-//        let comps = Calendar.current.dateComponents(x, from: self)
-//        return Calendar.current.date(from: comps)!
-//    }
+    /**
+     * Check if dates are the same day, time does not matter
+     */
+    func isSameDay(_ checkDate: Date) -> Bool {
+        let d1 = self.toISO()
+        let d2 = checkDate.toISO()
+        let r1 = matchesISODateFormat(in: d1).joined()
+        let r2 = matchesISODateFormat(in: d2).joined()
+        return r1 == r2
+//        let order = Calendar.current.compare(self, to: checkDate, toGranularity: .day)
+//        switch order {
+//        case .orderedDescending:
+//            return false
+//        case .orderedAscending:
+//            return false
+//        case .orderedSame:
+//            return true
+//        }
+    }
+    func matchesISODateFormat(in text: String) -> [String] {
+        let regex: String = "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+//            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
     
     /// MARK: - Find number of days between 2 NSDates
     /// https://www.timeanddate.com/date/duration.html
@@ -613,13 +641,24 @@ public extension Date {
     // http://stackoverflow.com/questions/4187478/truncate-nsdate-zero-out-time
     //
     func trimTime() -> Date {
-        let x: Set<Calendar.Component> = [.year, .month, .day]
-        var comps =  Calendar.current.dateComponents(x, from: self)
-        comps.timeZone = TimeZone(abbreviation: "GMT")
-        comps.hour = 0
-        comps.minute = 0
-        comps.second = 0
-        return Calendar.current.date(from: comps)!
+//        let x: Set<Calendar.Component> = [.year, .month, .day]
+//        var comps =  Calendar.current.dateComponents(x, from: self)
+//        comps.timeZone = TimeZone(abbreviation: "GMT")
+//        comps.hour = 0
+//        comps.minute = 0
+//        comps.second = 0
+//        return Calendar.current.date(from: comps)!
+        
+//        return self.setTimeExact(hour: 0, min: 0, sec: 0, timeZone: TimeZone(abbreviation: "UTC")!)!
+        let val = self.toISO()
+        let d1 = matchesISODateFormat(in: val).joined()
+        
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: d1)!
     }
     
     /// MARK: Sets the exact time
@@ -627,7 +666,7 @@ public extension Date {
     /// ex:
     /// pass 9, 30, 0  -> time will be 9:30:00 in your locale
     ///
-    func setTimeExact(hour: Int, min: Int, sec: Int) -> Date? {
+    func setTimeExact(hour: Int, min: Int, sec: Int, timeZone: TimeZone = .current) -> Date? {
         let cal = Calendar.current
 
         var components = cal.dateComponents([], from: self)
@@ -642,7 +681,7 @@ public extension Date {
         components.hour = hour
         components.minute = min
         components.second = sec
-        components.timeZone = TimeZone.current
+        components.timeZone = timeZone
         // Not using UTC, will be local time
         // timeZoneAbbrev: String = "UTC"
         // components.timeZone = TimeZone(abbreviation: timeZoneAbbrev)
