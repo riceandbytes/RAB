@@ -17,6 +17,7 @@ public protocol DataSourceProtocol {
 public enum RabTableKey: String {
     case subTitle
     case someId
+    case someIdStr
     case Unknown
 }
 
