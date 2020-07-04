@@ -36,7 +36,9 @@ import Foundation
 open class TwoButtonView: UIView {
     @IBOutlet open weak var leftButton: GenRoundRectButton!
     @IBOutlet open weak var rightButton: GenRoundRectButton!
-    
+    @IBOutlet open weak var highlightLeft: UIView!
+    @IBOutlet open weak var highlightRight: UIView!
+
     @IBOutlet var myView: UIView!
     
     /// This lets you know which side is selected, right or left
@@ -71,40 +73,40 @@ open class TwoButtonView: UIView {
     }
     
     open func configure(_ leftTitle: String, rightTitle: String,
-        font: UIFont, cornerRadius: CGFloat, bkgColor: UIColor,
-        strokeColor: UIColor, lineWidth: Float, isRightSelected: Bool) {
+        font: UIFont, isRightSelected: Bool) {
             
-        var leftStrokeColor  = UIColor.clear
-        var rightStrokeColor = UIColor.clear
+        let highlightColor = UIColor(hex: "#5CABE5")
+        let gray = UIColor(hex: "#536F8A")
+        let clear = UIColor.clear
 
-        var leftTitleColor   = UIColor(hex: "#FFFFFF", alpha: 60)
-        var rightTitleColor  = UIColor(hex: "#FFFFFF", alpha: 60)
+        self.leftButton.setTitleColor(gray, for: UIControl.State())
+        self.rightButton.setTitleColor(gray, for: UIControl.State())
+        highlightLeft.backgroundColor = clear
+        highlightRight.backgroundColor = clear
+
+        var leftTitleColor = gray
+        var rightTitleColor = gray
 
         if isRightSelected {
             isRightEnabled = true
-            rightStrokeColor = strokeColor
-            rightTitleColor = strokeColor
+            rightTitleColor = highlightColor
+            highlightRight.backgroundColor = highlightColor
         } else {
             isRightEnabled = false
-            leftStrokeColor = strokeColor
-            leftTitleColor = strokeColor
+            leftTitleColor = highlightColor
+            highlightLeft.backgroundColor = highlightColor
         }
             
-        self.leftButton.setTitle(leftTitle, for: UIControl.State())
+        self.leftButton.setTitle(leftTitle.uppercased(), for: UIControl.State())
         self.leftButton.titleLabel!.font = font
-        self.leftButton.cornerRadius = cornerRadius
-        self.leftButton.bkgColor = bkgColor
-        self.leftButton.strokeColor = leftStrokeColor
-        self.leftButton.lineWidth = lineWidth
+        self.leftButton.bkgColor = clear
+        self.leftButton.strokeColor = clear
         self.leftButton.setTitleColor(leftTitleColor, for: UIControl.State())
         
-        self.rightButton.setTitle(rightTitle, for: UIControl.State())
+        self.rightButton.setTitle(rightTitle.uppercased(), for: UIControl.State())
         self.rightButton.titleLabel?.font = font
-        self.rightButton.cornerRadius = cornerRadius
-        self.rightButton.bkgColor = bkgColor
-        self.rightButton.strokeColor = rightStrokeColor
-        self.rightButton.lineWidth = lineWidth
+        self.rightButton.bkgColor = clear
+        self.rightButton.strokeColor = clear
         self.rightButton.setTitleColor(rightTitleColor, for: UIControl.State())
-
     }
 }
