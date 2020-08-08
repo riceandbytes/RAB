@@ -34,8 +34,9 @@ extension UINavigationController {
             objc_setAssociatedObject(self, &smartPushAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
     }
-    public func smartPushViewController(_ viewController: UIViewController,
+    public func smartPushViewController(_ viewController: UIViewController?,
                                         animated: Bool = true) {
+        guard let viewController = viewController else { return }
         if self.didSmartPush == nil || self.didSmartPush?.boolValue == false {
             self.didSmartPush = NSNumber(booleanLiteral: true)
             self.pushViewController(viewController, animated: animated) {
