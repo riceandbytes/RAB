@@ -281,6 +281,9 @@ extension String {
     
     // MARK: - Utility
 
+    public func isEqualIgnoreCase(_ val: String) -> Bool {
+        return self.lowercased() == val.lowercased()
+    }
     /**
      Check for whitespaces, newlines, and tabs
      ex: "    \r\n  " would be empty
