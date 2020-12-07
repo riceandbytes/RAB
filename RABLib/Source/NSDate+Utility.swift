@@ -91,6 +91,9 @@ public enum NSDateStringStyle {
 
     /// ex: Sep 30, 2016
     case shortMonDayYear
+
+    /// ex: Sep 30, 16
+    case shortMonDayYearType2
     
     /// Birthday Style
     /// example: May 30, 1999
@@ -149,6 +152,8 @@ extension DateFormatter {
             self.dateFormat = "yyyy-MM-dd"
         case .shortMonDayYear:
             self.dateFormat = "MMM d, yyyy"
+        case .shortMonDayYearType2:
+            self.dateFormat = "MMM d, YY"
         case .monthDayYear:
             self.doesRelativeDateFormatting = false
             self.dateStyle = DateFormatter.Style.medium
