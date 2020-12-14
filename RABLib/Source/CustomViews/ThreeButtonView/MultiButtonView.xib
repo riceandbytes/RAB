@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThreeButtonView" customModule="RABLib" customModuleProvider="target">
+            <connections>
+                <outlet property="button1" destination="t5g-lT-73u" id="crg-Va-5gp"/>
+                <outlet property="button2" destination="oKg-eD-7Ra" id="fGt-6R-ml0"/>
+                <outlet property="button3" destination="arY-Na-qBA" id="Qvv-Hk-nnN"/>
+                <outlet property="highlight1" destination="DXY-lO-JRk" id="Ppo-gy-1VK"/>
+                <outlet property="highlight2" destination="VuU-xJ-7A8" id="cMj-J8-vse"/>
+                <outlet property="highlight3" destination="3db-3C-xgI" id="XnY-6U-oTL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="90a-gN-Bnt">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ksa-lO-7Va">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" id="Jyi-Zs-RLO">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-G9-u9e">
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="667"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5g-lT-73u" userLabel="Button1" customClass="GenRoundRectButton" customModule="RABLib" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="662"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXY-lO-JRk">
+                                            <rect key="frame" x="0.0" y="663" width="115" height="4"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="H9F-BG-F57"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rV4-S8-ZaQ">
+                                    <rect key="frame" x="130" y="0.0" width="115" height="667"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-eD-7Ra" userLabel="Button2" customClass="GenRoundRectButton" customModule="RABLib" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="662"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VuU-xJ-7A8">
+                                            <rect key="frame" x="0.0" y="663" width="115" height="4"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="Npg-Ts-uFv"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ILv-6X-ltw">
+                                    <rect key="frame" x="260" y="0.0" width="115" height="667"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arY-Na-qBA" userLabel="Button3" customClass="GenRoundRectButton" customModule="RABLib" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="662"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3db-3C-xgI">
+                                            <rect key="frame" x="0.0" y="663" width="115" height="4"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="4" id="x0d-hy-FnI"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ksa-lO-7Va" firstAttribute="top" secondItem="90a-gN-Bnt" secondAttribute="top" id="4Km-ON-vKQ"/>
+                <constraint firstAttribute="bottom" secondItem="ksa-lO-7Va" secondAttribute="bottom" id="7pq-lg-vWo"/>
+                <constraint firstItem="ksa-lO-7Va" firstAttribute="leading" secondItem="90a-gN-Bnt" secondAttribute="leading" id="fn2-Ie-Nnh"/>
+                <constraint firstAttribute="trailing" secondItem="ksa-lO-7Va" secondAttribute="trailing" id="znm-mb-dSz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137" y="815"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="arY-Na-qBA">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="oKg-eD-7Ra">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="t5g-lT-73u">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
+</document>

@@ -101,6 +101,8 @@
 		FF266AED219D4AAC006E5B0B /* Formatter+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */; };
 		FF2EC46B23297EF2001874BE /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2EC46A23297EF2001874BE /* Gradients.swift */; };
 		FF473BD72019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */; };
+		FF7BC2182586D44400201C00 /* MultiButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7BC2162586D44400201C00 /* MultiButtonView.swift */; };
+		FF7BC2192586D44400201C00 /* MultiButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7BC2172586D44400201C00 /* MultiButtonView.xib */; };
 		FFBD54122154CBEF00B40E85 /* RabNotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */; };
 		FFD6DCED1FCD3BAF00A747BB /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */; };
 		FFD80F7B20D1C2D6002D9D3C /* SwiftModalWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */; };
@@ -213,6 +215,8 @@
 		FF266AEC219D4AAC006E5B0B /* Formatter+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Utility.swift"; sourceTree = "<group>"; };
 		FF2EC46A23297EF2001874BE /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		FF473BD62019B6D800A425D9 /* UITapGestureRecognizer+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Utility.swift"; sourceTree = "<group>"; };
+		FF7BC2162586D44400201C00 /* MultiButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButtonView.swift; path = RABLib/Source/CustomViews/ThreeButtonView/MultiButtonView.swift; sourceTree = SOURCE_ROOT; };
+		FF7BC2172586D44400201C00 /* MultiButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MultiButtonView.xib; path = RABLib/Source/CustomViews/ThreeButtonView/MultiButtonView.xib; sourceTree = SOURCE_ROOT; };
 		FFBD54112154CBEF00B40E85 /* RabNotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabNotifyService.swift; sourceTree = "<group>"; };
 		FFD6DCEC1FCD3BAF00A747BB /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		FFD80F7A20D1C2D6002D9D3C /* SwiftModalWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftModalWebVC.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 		143B5DF31C76780700C70DBF /* CustomStuff */ = {
 			isa = PBXGroup;
 			children = (
+				FF7BC2152586D3EF00201C00 /* MultiButtonView */,
 				14F0BEE61BF2C5280095068E /* GenImagePicker.swift */,
 				14BE521D1ADA568F00B82323 /* GenUIBarButtonItem.swift */,
 				14CB4C7C1BEF422800AE709C /* GenRoundRectButton.swift */,
@@ -483,6 +488,15 @@
 			name = UIViewController;
 			sourceTree = "<group>";
 		};
+		FF7BC2152586D3EF00201C00 /* MultiButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				FF7BC2162586D44400201C00 /* MultiButtonView.swift */,
+				FF7BC2172586D44400201C00 /* MultiButtonView.xib */,
+			);
+			path = MultiButtonView;
+			sourceTree = "<group>";
+		};
 		FFBD54102154CBD700B40E85 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +618,7 @@
 				14CB4C851BEF4D6B00AE709C /* GenInputField.xib in Resources */,
 				146FF8FE1C192C8800C90A42 /* TitleWithPicCell.xib in Resources */,
 				143B5DF51C76783200C70DBF /* TwoButtonView.xib in Resources */,
+				FF7BC2192586D44400201C00 /* MultiButtonView.xib in Resources */,
 				14FB13001C277DFB005D2E8D /* PicWithInfoCell.xib in Resources */,
 				1443C74F1C9740B40093FC4D /* FancyButtonView.xib in Resources */,
 				1401FB691C1417E000AB5E03 /* RabSingleCell.xib in Resources */,
@@ -658,6 +673,7 @@
 				146FF8FC1C192C6100C90A42 /* TitleWithPicCell.swift in Sources */,
 				FFD80F7D20D1C30C002D9D3C /* SwiftWebVC.swift in Sources */,
 				14A78C121D9EEF6300DDCD6B /* UILabel+Utility.swift in Sources */,
+				FF7BC2182586D44400201C00 /* MultiButtonView.swift in Sources */,
 				14FA58421B20341300DA3638 /* NSObject+Utility.swift in Sources */,
 				148917981AEDFB1D00448450 /* GenExt.swift in Sources */,
 				14DD35481FAA5DA400669E60 /* Obfuscator.swift in Sources */,
