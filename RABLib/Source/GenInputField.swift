@@ -368,6 +368,14 @@ extension GenInputField: UITextFieldDelegate {
             // MARK: Setup Picker
             let datePickerView: UIDatePicker = UIDatePicker()
             datePickerView.datePickerMode = UIDatePickerMode.date
+            
+            if #available(iOS 14.0, *) {
+                datePickerView.preferredDatePickerStyle = .wheels
+            }
+            else if #available(iOS 13.4, *) {
+                datePickerView.preferredDatePickerStyle = .wheels
+            }
+            
             datePickerView.timeZone = TimeZone(abbreviation: "UTC")
             textField.inputView = datePickerView
             datePickerView.addTarget(self,
